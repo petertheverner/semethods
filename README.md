@@ -1,12 +1,12 @@
 # sem-coursework
-## Release Branch
+## Develop Branch
 
 **Master Build Status:**
 [![Build Status](https://travis-ci.com/The-Liam-Blair/sem-coursework.svg?branch=master)](https://travis-ci.com/The-Liam-Blair/sem-coursework)
 
 
-**Release Build Status:**
-[![Build Status](https://travis-ci.com/The-Liam-Blair/sem-coursework.svg?branch=Release)](https://travis-ci.com/The-Liam-Blair/sem-coursework)
+**Develop Build Status:**
+[![Build Status](https://travis-ci.com/The-Liam-Blair/sem-coursework.svg?branch=Develop)](https://travis-ci.com/The-Liam-Blair/sem-coursework)
 
 
 **License:**
