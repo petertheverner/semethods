@@ -1,4 +1,5 @@
-# sem-coursework - Release Branch
+# sem-coursework
+## Release Branch
 
 **Master Build Status:**
 [![Build Status](https://travis-ci.com/The-Liam-Blair/sem-coursework.svg?branch=master)](https://travis-ci.com/The-Liam-Blair/sem-coursework)
