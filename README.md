@@ -1,5 +1,4 @@
 # sem-coursework
-## Master Branch
 By Liam Blair, Peter Verner, Euan Campbell, and Neil Massella.
 
 **Master Build Status:**
