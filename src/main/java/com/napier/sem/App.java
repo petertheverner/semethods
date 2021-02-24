@@ -88,7 +88,7 @@ import java.util.ArrayList;
                 while(rset.next())
                 {
                     Country tempCount = new Country();
-                    tempCount.code = rset.getInt("Code");
+                    tempCount.code = rset.getString("Code");
                     tempCount.name = rset.getString("Name");
                     Countries.add(tempCount);
                 }
@@ -108,9 +108,10 @@ import java.util.ArrayList;
             for (Country count : Countries)
             {
                 System.out.println("Name : " + count.name);
-                System.out.println("Code : " + count.name);
+                System.out.println("Code : " + count.code);
+                System.out.println("--------------------------");
             }
-            System.out.println("Number of countries (Expected 208) : " + Countries.size());
+            System.out.println("Number of countries : " + Countries.size());
         }
 
 
