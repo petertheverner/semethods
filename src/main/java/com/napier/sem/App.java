@@ -7,6 +7,7 @@
 package com.napier.sem;
 // Imports all SQL methods.
 import java.sql.*;
+import java.util.ArrayList;
 
     public class App
     {
@@ -73,12 +74,54 @@ import java.sql.*;
             }
         }
 
+        // TEST METHOD: Used to ensure that the database connection works and
+        // can retrieve data from the database.
+        public ArrayList<Country> GetAllCountries()
+        {
+            try {
+                Statement stmt = con.createStatement();
+                String query = "SELECT Code, Name "
+                        + "FROM country";
+                ResultSet rset = stmt.executeQuery(query);
+                ArrayList<Country> Countries = new ArrayList<>();
+
+                while(rset.next())
+                {
+                    Country tempCount = new Country();
+                    tempCount.code = rset.getInt("Code");
+                    tempCount.name = rset.getString("Name");
+                    Countries.add(tempCount);
+                }
+                return Countries;
+            }
+
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Failed to retrieve country names");
+                return null;
+            }
+        }
+
+        public void Display(ArrayList<Country> Countries)
+        {
+            for (Country count : Countries)
+            {
+                System.out.println("Name : " + count.name);
+                System.out.println("Code : " + count.name);
+            }
+            System.out.println("Number of countries (Expected 208) : " + Countries.size());
+        }
+
 
         public static void main(String[] args)
         {
             App a = new App();
             a.Connect();
+            ArrayList<Country> Countries = a.GetAllCountries();
+            a.Display(Countries);
             a.Disconnect();
 
         }
+
    }
