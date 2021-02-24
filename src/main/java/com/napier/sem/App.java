@@ -54,10 +54,30 @@ import java.sql.*;
             }
         }
 
+
+        // Disconnect method: Attempts to sever the connection to the database.
+        // Returns an error message if the attempt fails.
+        public void Disconnect()
+        {
+            if (con != null)
+            {
+                try
+                {
+                    con.close();
+                }
+                catch (Exception e)
+                {
+                    System.out.println("Error terminating connection to the database.");
+                }
+            }
+        }
+
+
         public static void main(String[] args)
         {
             App a = new App();
             a.Connect();
+            a.Disconnect();
 
         }
    }
