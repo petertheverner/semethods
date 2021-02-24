@@ -1,13 +1,16 @@
 package com.napier.sem;
 
-import javax.swing.plaf.nimbus.State;
-import javax.xml.transform.Result;
+// Imports all SQL methods.
 import java.sql.*;
 
     public class App
     {
+        // Connection object initialised as null.
         private Connection con = null;
 
+        // Connect method: Attempts to connect to the database when called. Will
+        // attempt to connect several times, and will display a relevant error message
+        // each time the connection attempt fails.
         public void Connect() {
 
             try

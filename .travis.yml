@@ -5,6 +5,7 @@ language: java
 services:
   - docker
 
+## Parameter that makes docker end all services when 1 container is finished
+## (To close the database container once the application container has finished running).
 after_success:
-  - docker build -t se_methods .
-  - docker run se_methods
+  - docker-compose up --abort-on-container-exit
