@@ -1,5 +1,10 @@
-package com.napier.sem;
+/* Authors:
+           Liam Blair - 40437578
+           Peter Verner - 40488882
 
+   Last modified: 24/02/2020
+*/
+package com.napier.sem;
 // Imports all SQL methods.
 import java.sql.*;
 
@@ -53,5 +58,6 @@ import java.sql.*;
         {
             App a = new App();
             a.Connect();
+
         }
    }
