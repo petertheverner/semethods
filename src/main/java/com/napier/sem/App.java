@@ -64,6 +64,7 @@ import java.sql.*;
                 try
                 {
                     con.close();
+                    System.out.println("Successfully terminated connection to the database");
                 }
                 catch (Exception e)
                 {
