@@ -37,7 +37,7 @@ import java.util.ArrayList;
                 try
                 {
                     Thread.sleep(30000);
-                    con = DriverManager.getConnection("jdbc:mysql://DB:3306/world?useSSL=false", "root", "example");
+                    con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                     System.out.println("Succesful connection to the database.");
                     break;
                 }
