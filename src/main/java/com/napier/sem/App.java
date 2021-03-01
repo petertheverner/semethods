@@ -150,9 +150,9 @@ import java.util.ArrayList;
             System.out.println("----- POPULATIONS -----");
 
             System.out.println("\nPopulation of the world");
-            System.out.println(">> " + a.GetWorldPopulation() + " <<");
+            System.out.println(">> " + String.format("%,d",a.GetWorldPopulation()) + " <<");
             System.out.println("Population of a continent (Europe)");
-            System.out.println(">> " + a.GetContinentPopulation() + " <<");
+            System.out.println(">> " + String.format("%,d", a.GetContinentPopulation()) + " <<");
 
             // Terminate connection to the database.
             a.Disconnect();
