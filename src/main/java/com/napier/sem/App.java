@@ -74,24 +74,32 @@ import java.util.ArrayList;
             }
         }
 
-        public int GetWorldPopulation()
+        // Method that retrieves the world population, stores it in a long, and returns it.
+        public long GetWorldPopulation()
         {
-            int total = 0;
+             // A long is used to store the world population. Both an int and an unsigned int are too small to
+             // store the number.
+             long total = 0;
             try
             {
+                // Create statement that selects the population field from the country table.
                 Statement stmt = con.createStatement();
                 String query = "SELECT Population FROM country";
                 ResultSet rset = stmt.executeQuery(query);
 
-                if(rset.next())
+                // Runs through all retrieved rows.
+                while(rset.next())
                 {
-                    total += rset.getInt("Population");
+                    // Add the population from the retrieved row to the total.
+                    total = total + rset.getInt("Population");
                 }
             }
+            // Catches and throws an error if an error is encountered.
             catch (Exception e)
             {
                 System.out.println(e.getMessage());
                 System.out.println("Failed to retrieve world population");
+                return -1;
             }
             return total;
         }
@@ -105,8 +113,8 @@ import java.util.ArrayList;
             a.Connect();
 
             System.out.println("----- POPULATIONS -----");
-            System.out.println("\nPopulation of the world");
 
+            System.out.println("\nPopulation of the world");
             System.out.println(">> " + a.GetWorldPopulation() + " <<");
 
             // Terminate connection to the database.
