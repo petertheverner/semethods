@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="semethods-master" />
+        <module name="semethods" />
         <module name="seMethods" />
       </profile>
     </annotationProcessing>
