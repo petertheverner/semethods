@@ -106,10 +106,13 @@ import java.util.ArrayList;
             return total;
         }
 
-        //
+        // Method that retrieves the population of a continent.
         public long GetContinentPopulation()
         {
+            // long used to store larger numerical values, int datatype is too small.
             long total = 0;
+            // Create statement to search database for the population field in the
+            // country database where the country's continent is equal to "Europe".
             try
             {
                 Statement stmt = con.createStatement();
@@ -118,11 +121,14 @@ import java.util.ArrayList;
                         +"WHERE Continent = 'Europe'";
                 ResultSet rset = stmt.executeQuery(query);
 
+                // Loop through all retrieved populations, add to total.
                 while(rset.next())
                 {
                     total += rset.getInt("Population");
                 }
             }
+            // Catch errors and return -1 and error response to indicate the method failed to
+            // run correctly.
             catch (Exception e)
             {
                 System.out.println(e.getMessage());
@@ -139,6 +145,7 @@ import java.util.ArrayList;
             App a = new App();
             // Connect to the database
             a.Connect();
+
             // Print populations of regions ( Use Case 04)
             System.out.println("----- POPULATIONS -----");
 
