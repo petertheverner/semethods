@@ -74,53 +74,42 @@ import java.util.ArrayList;
             }
         }
 
-        // TEST METHOD: Used to ensure that the database connection works and
-        // can retrieve data from the database.
-        public ArrayList<Country> GetAllCountries()
+        public int GetWorldPopulation()
         {
-            try {
+            int total = 0;
+            try
+            {
                 Statement stmt = con.createStatement();
-                String query = "SELECT Code, Name "
-                        + "FROM country";
+                String query = "SELECT Population FROM country";
                 ResultSet rset = stmt.executeQuery(query);
-                ArrayList<Country> Countries = new ArrayList<>();
 
-                while(rset.next())
+                if(rset.next())
                 {
-                    Country tempCount = new Country();
-                    tempCount.code = rset.getString("Code");
-                    tempCount.name = rset.getString("Name");
-                    Countries.add(tempCount);
+                    total += rset.getInt("Population");
                 }
-                return Countries;
             }
-
             catch (Exception e)
             {
                 System.out.println(e.getMessage());
-                System.out.println("Failed to retrieve country names");
-                return null;
+                System.out.println("Failed to retrieve world population");
             }
-        }
-
-        public void Display(ArrayList<Country> Countries)
-        {
-            for (Country count : Countries)
-            {
-                System.out.println("Name : " + count.name);
-                System.out.println("Code : " + count.code);
-                System.out.println("--------------------------");
-            }
-            System.out.println("Number of countries : " + Countries.size());
+            return total;
         }
 
 
         public static void main(String[] args)
         {
+            // Initialise the application
             App a = new App();
+            // Connect to the database
             a.Connect();
-            ArrayList<Country> Countries = a.GetAllCountries();
-            a.Display(Countries);
+
+            System.out.println("----- POPULATIONS -----");
+            System.out.println("\nPopulation of the world");
+
+            System.out.println(">> " + a.GetWorldPopulation() + " <<");
+
+            // Terminate connection to the database.
             a.Disconnect();
 
         }
