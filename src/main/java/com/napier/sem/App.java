@@ -147,7 +147,7 @@ import java.util.ArrayList;
             a.Connect();
 
             // Print populations of regions ( Use Case 04)
-            System.out.println("----- POPULATIONS -----");
+            System.out.println("----- POPULATIONS - Use Case 04 -----");
 
             System.out.println("\nPopulation of the world");
             System.out.println(">> " + String.format("%,d",a.GetWorldPopulation()) + " <<");
