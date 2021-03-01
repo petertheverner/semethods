@@ -39,6 +39,7 @@ import java.util.ArrayList;
                     Thread.sleep(30000);
                     con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                     System.out.println("Succesful connection to the database.");
+                    System.out.println("--------------------------------------------------");
                     break;
                 }
 
@@ -65,6 +66,7 @@ import java.util.ArrayList;
                 try
                 {
                     con.close();
+                    System.out.println("--------------------------------------------------");
                     System.out.println("Successfully terminated connection to the database");
                 }
                 catch (Exception e)
@@ -91,7 +93,7 @@ import java.util.ArrayList;
                 while(rset.next())
                 {
                     // Add the population from the retrieved row to the total.
-                    total = total + rset.getInt("Population");
+                    total += rset.getInt("Population");
                 }
             }
             // Catches and throws an error if an error is encountered.
@@ -104,6 +106,32 @@ import java.util.ArrayList;
             return total;
         }
 
+        //
+        public long GetContinentPopulation()
+        {
+            long total = 0;
+            try
+            {
+                Statement stmt = con.createStatement();
+                String query = "SELECT Population "
+                        +"FROM country "
+                        +"WHERE Continent = 'Europe'";
+                ResultSet rset = stmt.executeQuery(query);
+
+                while(rset.next())
+                {
+                    total += rset.getInt("Population");
+                }
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Failed to retrieve continent population.");
+                return -1;
+            }
+            return total;
+        }
+
 
         public static void main(String[] args)
         {
@@ -111,11 +139,13 @@ import java.util.ArrayList;
             App a = new App();
             // Connect to the database
             a.Connect();
-
+            // Print populations of regions ( Use Case 04)
             System.out.println("----- POPULATIONS -----");
 
             System.out.println("\nPopulation of the world");
             System.out.println(">> " + a.GetWorldPopulation() + " <<");
+            System.out.println("Population of a continent (Europe)");
+            System.out.println(">> " + a.GetContinentPopulation() + " <<");
 
             // Terminate connection to the database.
             a.Disconnect();
