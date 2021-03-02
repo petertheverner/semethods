@@ -231,6 +231,37 @@ import java.util.ArrayList;
             return total;
         }
 
+        // Method that retrieves a city's population
+        public int GetCityPopulation()
+        {
+            // Stores the population total of the city
+            int total = 0;
+            try
+            {
+                // Create and execute query.
+                Statement stmt = con.createStatement();
+                String query = "SELECT Population "
+                        +"FROM city "
+                        +"WHERE Name = 'Edinburgh'";
+                ResultSet rset = stmt.executeQuery(query);
+
+                while(rset.next())
+                {
+                    // Add population to total
+                    total += rset.getInt("Population");
+                }
+            }
+
+            catch (Exception e)
+            {
+                // Return error if an error is encountered and end method execution.
+                System.out.println(e.getMessage());
+                System.out.println("Failed to retrieve city population");
+                return -1;
+            }
+            return total;
+        }
+
 
         public static void main(String[] args)
         {
@@ -252,7 +283,8 @@ import java.util.ArrayList;
             System.out.println(">> " + String.format("%,d", a.GetCountryPopulation()) + " <<");
             System.out.println("Population of a district (Scotland)");
             System.out.println(">> " + String.format("%,d", a.GetDistrictPopulation()) + " <<");
-
+            System.out.println("Population of a city (Edinburgh)");
+            System.out.println(">> " + String.format("%,d", a.GetCityPopulation()) + " <<");
             // Terminate connection to the database.
             a.Disconnect();
 
