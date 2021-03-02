@@ -138,6 +138,37 @@ import java.util.ArrayList;
             return total;
         }
 
+        // Method that retrieves a region's population
+        public int GetRegionPopulation()
+        {
+            // Stores the population total of the region
+            int total = 0;
+            try
+            {
+                // Create and execute query.
+                Statement stmt = con.createStatement();
+                String query = "SELECT Population "
+                        +"FROM country "
+                        +"WHERE Region = 'British Islands'";
+                ResultSet rset = stmt.executeQuery(query);
+
+                while(rset.next())
+                {
+                    // Add population to total
+                    total += rset.getInt("Population");
+                }
+            }
+
+            catch (Exception e)
+            {
+                // Return error if an error is encountered and end method execution.
+                System.out.println(e.getMessage());
+                System.out.println("Failed to retrieve region population");
+                return -1;
+            }
+            return total;
+        }
+
 
         public static void main(String[] args)
         {
@@ -153,6 +184,9 @@ import java.util.ArrayList;
             System.out.println(">> " + String.format("%,d",a.GetWorldPopulation()) + " <<");
             System.out.println("Population of a continent (Europe)");
             System.out.println(">> " + String.format("%,d", a.GetContinentPopulation()) + " <<");
+            System.out.println("Population of a region (British Islands)");
+            System.out.println(">> " + String.format("%,d", a.GetRegionPopulation()) + " <<");
+
 
             // Terminate connection to the database.
             a.Disconnect();
