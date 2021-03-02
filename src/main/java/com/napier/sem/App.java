@@ -14,9 +14,10 @@ import java.util.ArrayList;
         // Connection object initialised as null.
         private Connection con = null;
 
-        // Connect method: Attempts to connect to the database when called. Will
-        // attempt to connect several times, and will display a relevant error message
-        // each time the connection attempt fails.
+        /**
+         * Method that attempts to connect to the database container. Will
+         * Make up to 10 attempts until returning an error.
+         */
         public void Connect() {
 
             try
@@ -57,8 +58,9 @@ import java.util.ArrayList;
         }
 
 
-        // Disconnect method: Attempts to sever the connection to the database.
-        // Returns an error message if the attempt fails.
+        /**
+         * Method that attempts to sever the connection to a connected database.
+         */
         public void Disconnect()
         {
             if (con != null)
@@ -75,6 +77,7 @@ import java.util.ArrayList;
                 }
             }
         }
+
 
         /**
          * This is the method that searches for the total population of a specific place or area.
@@ -164,6 +167,13 @@ import java.util.ArrayList;
             return total;
         }
 
+
+        /** This method instantiates a country object and populates it with relating to
+         * the input country.
+         *
+         * @param country String The name of the country used as an input for the search
+         * @return Country A country object with relevant information to it's country.
+         */
         public Country GetCountryReport(String country)
         {
             Country tempCountry = new Country();
@@ -241,6 +251,8 @@ import java.util.ArrayList;
             // Print report of a specified country (Use Case 07)
             System.out.println("\n----- COUNTRY REPORT - Use Case 07 -----");
             System.out.println("\nCountry report of the country 'Denmark' : ");
+            // Calls the GetCountryReport method which returns a country object. Then it calls
+            // the toString method of the Country class which returns a text output.
             System.out.println(a.GetCountryReport("Denmark").toString());
 
             // Terminate connection to the database.
