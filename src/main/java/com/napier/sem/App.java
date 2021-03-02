@@ -76,10 +76,23 @@ import java.util.ArrayList;
             }
         }
 
+        /**
+         * This is the method that searches for the total population of a specific place or area.
+         *
+         * @param searchType int The type of search being done (Country, City, etc).
+         * @param search String The name of the location used in the search.
+         * @return long The total population of the search.
+         */
         public long GetPopulation(int searchType, String search)
         {
+            // Total stored as long to be able to output extremely large population numbers, such
+            // as worldwide population
             long total = 0;
             String query;
+
+            // Switch statement takes in the search type and uses it to determine what population search
+            // is being done. For example, inputting a searchType of 2 means that a query will be built for
+            // searching for continent population data.
             switch (searchType)
             {
                 // World Population
@@ -129,19 +142,25 @@ import java.util.ArrayList;
 
             try
             {
+                // After query is built, it is executed
                 Statement stmt = con.createStatement();
                 ResultSet rset = stmt.executeQuery(query);
 
+                // Loops through all retrieved rows.
                 while(rset.next())
                 {
+                    // Population is added to the total
                     total += rset.getInt("Population");
                 }
             }
+            // Catches any errors that occurr during the query execution and returns an appropiate
+            // error message.
             catch(Exception e)
             {
                 System.out.println(e.getMessage());
                 System.out.println("Error retrieving population data for:" + search);
             }
+            // Total is returned if no errors are found and the query is successfully executed.
             return total;
         }
 
@@ -153,7 +172,7 @@ import java.util.ArrayList;
             // Connect to the database
             a.Connect();
 
-            // Print populations of regions ( Use Case 04)
+            // Print populations of regions (Use Case 04)
             System.out.println("----- POPULATIONS - Use Case 04 -----");
 
             System.out.println("\nPopulation of the world");
