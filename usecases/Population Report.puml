@@ -1,0 +1,30 @@
+@startuml
+
+
+
+rectangle "Population Report" {
+
+actor RA as "Report Analyst"
+
+                               rectangle Database
+    usecase UC4 as "Checks report"
+    usecase UC5 as "Populates data"
+    usecase UCa as "Country Report"
+    usecase UCb as "City Report"
+    usecase UCc as "Region Report"
+    usecase UCd as "Language Report"
+    usecase UCe as "Percentages Report"
+
+    Manager - UC4
+    Manager - RA
+    UC4 ..> UCa
+    UC4 ..> UCb
+    UC4 ..> UCc
+    UC4 ..> UCd
+    UC4 ..> UCe
+    UC4 - UC5
+    UC5 - Database
+    Database <.. RA : Uses Database
+}
+
+@enduml
