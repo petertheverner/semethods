@@ -76,188 +76,71 @@ import java.util.ArrayList;
             }
         }
 
-        // Method that retrieves the world population, stores it in a long, and returns it.
-        public long GetWorldPopulation()
+        public long GetPopulation(int searchType, String search)
         {
-             // A long is used to store the world population. Both an int and an unsigned int are too small to
-             // store the number.
-             long total = 0;
-            try
-            {
-                // Create statement that selects the population field from the country table.
-                Statement stmt = con.createStatement();
-                String query = "SELECT Population FROM country";
-                ResultSet rset = stmt.executeQuery(query);
-
-                // Runs through all retrieved rows.
-                while(rset.next())
-                {
-                    // Add the population from the retrieved row to the total.
-                    total += rset.getInt("Population");
-                }
-            }
-            // Catches and throws an error if an error is encountered.
-            catch (Exception e)
-            {
-                System.out.println(e.getMessage());
-                System.out.println("Failed to retrieve world population");
-                return -1;
-            }
-            return total;
-        }
-
-        // Method that retrieves the population of a continent.
-        public long GetContinentPopulation()
-        {
-            // long used to store larger numerical values, int datatype is too small.
             long total = 0;
-            // Create statement to search database for the population field in the
-            // country database where the country's continent is equal to "Europe".
+            String query;
+            switch (searchType)
+            {
+                // World Population
+                case 1:
+                    query = "SELECT Population FROM country";
+                    break;
+
+                // Continent Population
+                case 2:
+                    query = "SELECT Population "
+                            +"FROM country "
+                            +"WHERE Continent = '" + search + "'";
+                    break;
+
+                // Region Population
+                case 3:
+                    query = "SELECT Population "
+                            +"FROM country "
+                            +"WHERE Region = '" + search + "'";
+                    break;
+
+                // Country Population
+                case 4:
+                    query = "SELECT Population "
+                            +"FROM country "
+                            +"WHERE Name = '" + search + "'";
+                    break;
+
+                // District Population
+                case 5:
+                    query = "SELECT Population "
+                            +"FROM city "
+                            +"WHERE District = '" + search + "'";
+                    break;
+
+                // City Population
+                case 6:
+                    query ="SELECT Population "
+                            +"FROM city "
+                            +"WHERE Name = '" + search + "'";
+                    break;
+
+                default:
+                    System.out.println("Error: Incorrect search type provided.");
+                    return -1;
+            }
+
             try
             {
                 Statement stmt = con.createStatement();
-                String query = "SELECT Population "
-                        +"FROM country "
-                        +"WHERE Continent = 'Europe'";
                 ResultSet rset = stmt.executeQuery(query);
 
-                // Loop through all retrieved populations, add to total.
                 while(rset.next())
                 {
                     total += rset.getInt("Population");
                 }
             }
-            // Catch errors and return -1 and error response to indicate the method failed to
-            // run correctly.
-            catch (Exception e)
+            catch(Exception e)
             {
                 System.out.println(e.getMessage());
-                System.out.println("Failed to retrieve continent population.");
-                return -1;
-            }
-            return total;
-        }
-
-        // Method that retrieves a region's population
-        public int GetRegionPopulation()
-        {
-            // Stores the population total of the region
-            int total = 0;
-            try
-            {
-                // Create and execute query.
-                Statement stmt = con.createStatement();
-                String query = "SELECT Population "
-                        +"FROM country "
-                        +"WHERE Region = 'British Islands'";
-                ResultSet rset = stmt.executeQuery(query);
-
-                while(rset.next())
-                {
-                    // Add population to total
-                    total += rset.getInt("Population");
-                }
-            }
-
-            catch (Exception e)
-            {
-                // Return error if an error is encountered and end method execution.
-                System.out.println(e.getMessage());
-                System.out.println("Failed to retrieve region population");
-                return -1;
-            }
-            return total;
-        }
-
-        // Method that retrieves a country's population
-        public int GetCountryPopulation()
-        {
-            // Stores the population total of the country
-            int total = 0;
-            try
-            {
-                // Create and execute query.
-                Statement stmt = con.createStatement();
-                String query = "SELECT Population "
-                        +"FROM country "
-                        +"WHERE Name = 'United Kingdom'";
-                ResultSet rset = stmt.executeQuery(query);
-
-                while(rset.next())
-                {
-                    // Add population to total
-                    total += rset.getInt("Population");
-                }
-            }
-
-            catch (Exception e)
-            {
-                // Return error if an error is encountered and end method execution.
-                System.out.println(e.getMessage());
-                System.out.println("Failed to retrieve country population");
-                return -1;
-            }
-            return total;
-        }
-
-        // Method that retrieves a district's population
-        public int GetDistrictPopulation()
-        {
-            // Stores the population total of the country
-            int total = 0;
-            try
-            {
-                // Create and execute query.
-                Statement stmt = con.createStatement();
-                String query = "SELECT Population "
-                        +"FROM city "
-                        +"WHERE District = 'Scotland'";
-                ResultSet rset = stmt.executeQuery(query);
-
-                while(rset.next())
-                {
-                    // Add population to total
-                    total += rset.getInt("Population");
-                }
-            }
-
-            catch (Exception e)
-            {
-                // Return error if an error is encountered and end method execution.
-                System.out.println(e.getMessage());
-                System.out.println("Failed to retrieve district population");
-                return -1;
-            }
-            return total;
-        }
-
-        // Method that retrieves a city's population
-        public int GetCityPopulation()
-        {
-            // Stores the population total of the city
-            int total = 0;
-            try
-            {
-                // Create and execute query.
-                Statement stmt = con.createStatement();
-                String query = "SELECT Population "
-                        +"FROM city "
-                        +"WHERE Name = 'Edinburgh'";
-                ResultSet rset = stmt.executeQuery(query);
-
-                while(rset.next())
-                {
-                    // Add population to total
-                    total += rset.getInt("Population");
-                }
-            }
-
-            catch (Exception e)
-            {
-                // Return error if an error is encountered and end method execution.
-                System.out.println(e.getMessage());
-                System.out.println("Failed to retrieve city population");
-                return -1;
+                System.out.println("Error retrieving population data for:" + search);
             }
             return total;
         }
@@ -274,17 +157,17 @@ import java.util.ArrayList;
             System.out.println("----- POPULATIONS - Use Case 04 -----");
 
             System.out.println("\nPopulation of the world");
-            System.out.println(">> " + String.format("%,d",a.GetWorldPopulation()) + " <<");
+            System.out.println(">> " + String.format("%,d",a.GetPopulation(1, "")) + " <<");
             System.out.println("Population of a continent (Europe)");
-            System.out.println(">> " + String.format("%,d", a.GetContinentPopulation()) + " <<");
+            System.out.println(">> " + String.format("%,d", a.GetPopulation(2, "Europe")) + " <<");
             System.out.println("Population of a region (British Islands)");
-            System.out.println(">> " + String.format("%,d", a.GetRegionPopulation()) + " <<");
+            System.out.println(">> " + String.format("%,d", a.GetPopulation(3, "British Islands")) + " <<");
             System.out.println("Population of a country (Great Britain)");
-            System.out.println(">> " + String.format("%,d", a.GetCountryPopulation()) + " <<");
+            System.out.println(">> " + String.format("%,d", a.GetPopulation(4, "United Kingdom")) + " <<");
             System.out.println("Population of a district (Scotland)");
-            System.out.println(">> " + String.format("%,d", a.GetDistrictPopulation()) + " <<");
+            System.out.println(">> " + String.format("%,d", a.GetPopulation(5, "Scotland")) + " <<");
             System.out.println("Population of a city (Edinburgh)");
-            System.out.println(">> " + String.format("%,d", a.GetCityPopulation()) + " <<");
+            System.out.println(">> " + String.format("%,d", a.GetPopulation(6, "Edinburgh")) + " <<");
             // Terminate connection to the database.
             a.Disconnect();
 
