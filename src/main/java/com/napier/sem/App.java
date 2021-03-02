@@ -38,7 +38,7 @@ import java.util.ArrayList;
                 {
                     Thread.sleep(30000);
                     con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
-                    System.out.println("Succesful connection to the database.");
+                    System.out.println("Successful connection to the database.");
                     System.out.println("--------------------------------------------------");
                     break;
                 }
@@ -153,7 +153,7 @@ import java.util.ArrayList;
                     total += rset.getInt("Population");
                 }
             }
-            // Catches any errors that occurr during the query execution and returns an appropiate
+            // Catches any errors that occur during the query execution and returns an appropriate
             // error message.
             catch(Exception e)
             {
@@ -162,6 +162,55 @@ import java.util.ArrayList;
             }
             // Total is returned if no errors are found and the query is successfully executed.
             return total;
+        }
+
+        public Country GetCountryReport(String country)
+        {
+            Country tempCountry = new Country();
+            int capitalSearch = 0;
+            String query = "SELECT Code, Name, Continent, Region, Population, Capital "
+                    +"FROM country "
+                    +"WHERE Name = '" + country + "'";
+
+            try
+            {
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery(query);
+
+                if(rset.next())
+                {
+                    tempCountry.setName(rset.getString("Name"));
+                    tempCountry.setCode(rset.getString("Code"));
+                    tempCountry.setContinent(rset.getString("Continent"));
+                    tempCountry.setRegion(rset.getString("Region"));
+                    capitalSearch = rset.getInt("Capital");
+                    tempCountry.setPopulation(rset.getInt("Population"));
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Error retrieving the report for the country " + country);
+                return null;
+            }
+
+
+            try
+            {
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery("SELECT Name FROM city WHERE id = '" + capitalSearch + "'");
+                if(rset.next())
+                {
+                    tempCountry.setCapital(rset.getString("Name"));
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Error retrieving the capital city from the country " + country);
+                return null;
+            }
+            return tempCountry;
         }
 
 
@@ -187,6 +236,13 @@ import java.util.ArrayList;
             System.out.println(">> " + String.format("%,d", a.GetPopulation(5, "Scotland")) + " <<");
             System.out.println("Population of a city (Edinburgh)");
             System.out.println(">> " + String.format("%,d", a.GetPopulation(6, "Edinburgh")) + " <<");
+
+
+            // Print report of a specified country (Use Case 07)
+            System.out.println("\n----- COUNTRY REPORT - Use Case 07 -----");
+            System.out.println("\nCountry report of the country 'Denmark' : ");
+            System.out.println(a.GetCountryReport("Denmark").toString());
+
             // Terminate connection to the database.
             a.Disconnect();
 
