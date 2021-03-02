@@ -8,13 +8,23 @@ actor RA as "Report Analyst"
 
                                rectangle Database
     usecase UC4 as "Checks report"
-
-    usecase UCa as "Finished Report"
+    usecase UC5 as "Populates data"
+    usecase UCa as "Country Report"
+    usecase UCb as "City Report"
+    usecase UCc as "Region Report"
+    usecase UCd as "Language Report"
+    usecase UCe as "Percentages Report"
 
     Manager - UC4
-    UC4 ..> UCa : Publishes
-    UC4 - Database
-    Database <.. RA : Uses
+    Manager - RA
+    UC4 ..> UCa
+    UC4 ..> UCb
+    UC4 ..> UCc
+    UC4 ..> UCd
+    UC4 ..> UCe
+    UC4 - UC5
+    UC5 - Database
+    Database <.. RA : Uses Database
 }
 
 @enduml
