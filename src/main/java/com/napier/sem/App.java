@@ -169,6 +169,68 @@ import java.util.ArrayList;
             return total;
         }
 
+        // Method that retrieves a country's population
+        public int GetCountryPopulation()
+        {
+            // Stores the population total of the country
+            int total = 0;
+            try
+            {
+                // Create and execute query.
+                Statement stmt = con.createStatement();
+                String query = "SELECT Population "
+                        +"FROM country "
+                        +"WHERE Name = 'United Kingdom'";
+                ResultSet rset = stmt.executeQuery(query);
+
+                while(rset.next())
+                {
+                    // Add population to total
+                    total += rset.getInt("Population");
+                }
+            }
+
+            catch (Exception e)
+            {
+                // Return error if an error is encountered and end method execution.
+                System.out.println(e.getMessage());
+                System.out.println("Failed to retrieve country population");
+                return -1;
+            }
+            return total;
+        }
+
+        // Method that retrieves a district's population
+        public int GetDistrictPopulation()
+        {
+            // Stores the population total of the country
+            int total = 0;
+            try
+            {
+                // Create and execute query.
+                Statement stmt = con.createStatement();
+                String query = "SELECT Population "
+                        +"FROM city "
+                        +"WHERE District = 'Scotland'";
+                ResultSet rset = stmt.executeQuery(query);
+
+                while(rset.next())
+                {
+                    // Add population to total
+                    total += rset.getInt("Population");
+                }
+            }
+
+            catch (Exception e)
+            {
+                // Return error if an error is encountered and end method execution.
+                System.out.println(e.getMessage());
+                System.out.println("Failed to retrieve district population");
+                return -1;
+            }
+            return total;
+        }
+
 
         public static void main(String[] args)
         {
@@ -186,7 +248,10 @@ import java.util.ArrayList;
             System.out.println(">> " + String.format("%,d", a.GetContinentPopulation()) + " <<");
             System.out.println("Population of a region (British Islands)");
             System.out.println(">> " + String.format("%,d", a.GetRegionPopulation()) + " <<");
-
+            System.out.println("Population of a country (Great Britain)");
+            System.out.println(">> " + String.format("%,d", a.GetCountryPopulation()) + " <<");
+            System.out.println("Population of a district (Scotland)");
+            System.out.println(">> " + String.format("%,d", a.GetDistrictPopulation()) + " <<");
 
             // Terminate connection to the database.
             a.Disconnect();
