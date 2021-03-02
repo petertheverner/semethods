@@ -1,0 +1,20 @@
+@startuml
+
+
+
+rectangle "Population Report" {
+
+actor RA as "Report Analyst"
+
+                               rectangle Database
+    usecase UC4 as "Checks report"
+
+    usecase UCa as "Finished Report"
+
+    Manager - UC4
+    UC4 ..> UCa : Publishes
+    UC4 - Database
+    Database <.. RA : Uses
+}
+
+@enduml
