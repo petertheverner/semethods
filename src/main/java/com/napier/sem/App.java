@@ -223,9 +223,17 @@ import java.util.ArrayList;
             return tempCountry;
         }
 
+        /** This method instantiates a country arraylist and adds countries equal to the count
+         * provided by the user. Only logs country names and populations.
+         *
+         * @param count int The number of countries to output
+         * @return Countries An arraylist of countries, stores country objects for output.
+         */
         public ArrayList<Country> GetCountryPopulations(int count)
         {
+            // i used to check count
             int i = 0;
+            // Init arraylist and query
             ArrayList<Country> Countries = new ArrayList<Country>();
             String query = "SELECT Population, Name "
                     +"FROM country "
@@ -233,9 +241,12 @@ import java.util.ArrayList;
 
             try
             {
+                // Execute statement
                 Statement stmt = con.createStatement();
                 ResultSet rset = stmt.executeQuery(query);
 
+                // Keep adding country objects until either the entire country table has been searched or the count limited
+                // is reached.
                 while(rset.next() && i < count)
                 {
                     Country tempCountry = new Country();
@@ -287,11 +298,15 @@ import java.util.ArrayList;
             // the toString method of the Country class which returns a text output.
             System.out.println(a.GetCountryReport("Denmark").toString());
 
+            // Print N most populated countries in the world (Use Case 02).
             System.out.println("\n----- COUNTRY POPULATION BY NUMBER - USE CASE 2 -----");
             System.out.println("\nTop 10 most populated countries : ");
+            // Init array for output
             ArrayList <Country> Countries = new ArrayList<Country>();
-            System.out.println(Countries = a.GetCountryPopulations(10));
+            // Retrieve array
+            Countries = a.GetCountryPopulations(10);
 
+            // Output
             System.out.println("TOP 10 MOST POPULATED COUNTRIES : ");
             for(int i = 0; i < 10; i++)
             { System.out.println("Country " +  " : " + Countries.get(i).getName());
