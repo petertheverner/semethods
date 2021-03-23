@@ -20,6 +20,10 @@ public class Country
     public void setCapital(String Capital) { this.capital = Capital; }
     public void setPopulation(int Population) { this.population = Population; }
 
+    // Getters
+    public String getName() { return this.name; }
+    public int getPopulation() { return this.population; }
+
     // toString output method.
     @Override
     public String toString()

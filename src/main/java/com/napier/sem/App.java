@@ -289,8 +289,14 @@ import java.util.ArrayList;
 
             System.out.println("\n----- COUNTRY POPULATION BY NUMBER - USE CASE 2 -----");
             System.out.println("\nTop 10 most populated countries : ");
-
-            System.out.println(a.GetCountryPopulations(10).toString());
+            ArrayList <Country> Countries = new ArrayList<Country>();
+            System.out.println(Countries = a.GetCountryPopulations(10));
+            for(int i = 0; i < 10; i++)
+            {
+                System.out.println("Country " + i + " : " + Countries.get(i).getName());
+                System.out.println(String.format("%,d", "Population : " + Countries.get(i).getPopulation()));
+                System.out.print("\n");
+            }
 
             // Terminate connection to the database.
             a.Disconnect();
