@@ -291,11 +291,11 @@ import java.util.ArrayList;
             System.out.println("\nTop 10 most populated countries : ");
             ArrayList <Country> Countries = new ArrayList<Country>();
             System.out.println(Countries = a.GetCountryPopulations(10));
+
+            System.out.println("TOP 10 MOST POPULATED COUNTRIES : ");
             for(int i = 0; i < 10; i++)
-            {
-                System.out.println("Country " + i + " : " + Countries.get(i).getName());
-                System.out.println(String.format("%,d", "Population : " + Countries.get(i).getPopulation()));
-                System.out.print("\n");
+            { System.out.println("Country " +  " : " + Countries.get(i).getName());
+                System.out.println("Population : " + String.format("%,d", Countries.get(i).getPopulation()));
             }
 
             // Terminate connection to the database.
