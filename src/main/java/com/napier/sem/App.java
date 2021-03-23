@@ -223,6 +223,37 @@ import java.util.ArrayList;
             return tempCountry;
         }
 
+        public ArrayList<Country> GetCountryPopulations(int count)
+        {
+            int i = 0;
+            ArrayList<Country> Countries = new ArrayList<Country>();
+            String query = "SELECT Population, Name "
+                    +"FROM country "
+                    +"ORDER BY Population DESC";
+
+            try
+            {
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery(query);
+
+                while(rset.next() && i < count)
+                {
+                    Country tempCountry = new Country();
+                    tempCountry.setPopulation(rset.getInt("Population"));
+                    tempCountry.setName(rset.getString("Name"));
+                    Countries.add(tempCountry);
+                    i++;
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Error retrieving population data for top populated countries.");
+            }
+
+            return Countries;
+        }
+
 
         public static void main(String[] args)
         {
@@ -251,9 +282,15 @@ import java.util.ArrayList;
             // Print report of a specified country (Use Case 07)
             System.out.println("\n----- COUNTRY REPORT - Use Case 07 -----");
             System.out.println("\nCountry report of the country 'Denmark' : ");
+
             // Calls the GetCountryReport method which returns a country object. Then it calls
             // the toString method of the Country class which returns a text output.
             System.out.println(a.GetCountryReport("Denmark").toString());
+
+            System.out.println("\n----- COUNTRY POPULATION BY NUMBER - USE CASE 2 -----");
+            System.out.println("\nTop 10 most populated countries : ");
+
+            System.out.println(a.GetCountryPopulations(10).toString());
 
             // Terminate connection to the database.
             a.Disconnect();
