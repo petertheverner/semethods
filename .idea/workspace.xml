@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Re-implemented code cov reporter">
+    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Fixed method getcityreport output error">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +89,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1616580081475</updated>
-      <workItem from="1616580082546" duration="7154000" />
+      <workItem from="1616580082546" duration="7872000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed errors">
       <created>1616580236230</created>
@@ -181,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616586458401</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fixed method getcityreport output error">
+      <created>1616587263357</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1616587263357</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,7 +217,8 @@
     <MESSAGE value="Rebuilt updated project" />
     <MESSAGE value="Updated entrypoint for Dockerfile" />
     <MESSAGE value="Re-implemented code cov reporter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Re-implemented code cov reporter" />
+    <MESSAGE value="Fixed method getcityreport output error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed method getcityreport output error" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/seMethods$Tests.ic" NAME="Tests Coverage Results" MODIFIED="1616581514282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
