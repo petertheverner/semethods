@@ -23,25 +23,23 @@ jobs:
     - stage: unit tests
       install: skip
       jdk: oraclejdk15
-      script: mvn test -Dtest=com.napier.sem.Tests
+      script: mvn test -Dtest=com.napier.sem.Test
 
     - stage: integration tests
       jdk: oraclejdk15
-      script: mvn test -Dtest=com.napier.sem.IntegrationTests
+      script: mvn test -Dtest=com.napier.sem.IntegrationTest
 
     - stage: deploy
       install: skip
       jdk: oraclejdk15
       script:
-        - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
+        - mvn package -Dskiptests=true -Dmaven.javadoc.skip=true
         - docker-compose up --abort-on-container-exit
-
 
   stages:
     - unit tests
     - integration tests
-    - name: deploy
-      if branch = master
+    - deploy
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
