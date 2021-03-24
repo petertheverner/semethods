@@ -226,7 +226,7 @@ import java.util.ArrayList;
         {
 <span class="nc" id="L227">            City tempCity = new City();</span>
 <span class="nc" id="L228">            int CityNameSearch = 0;</span>
-<span class="nc" id="L229">            String query = &quot;SELECT Cityname, Citypopulation, Citydistrict, Citycountry &quot;</span>
+<span class="nc" id="L229">            String query = &quot;SELECT Name, Population, District, CountryCode &quot;</span>
                     +&quot;FROM city &quot;
                     +&quot;WHERE Cityname = '&quot; + city + &quot;'&quot;;
             try
@@ -432,40 +432,39 @@ import java.util.ArrayList;
             // the toString method of the Country class which returns a text output.
 <span class="nc" id="L433">            System.out.println(a.GetCityReport(&quot;Edinburgh&quot;).toString());</span>
 
-
             // Print N most populated countries in the world (Use Case 02).
-<span class="nc" id="L437">            System.out.println(&quot;\n----- COUNTRY POPULATION BY NUMBER - USE CASE 2 -----&quot;);</span>
-<span class="nc" id="L438">            System.out.println(&quot;\nTop 10 most populated countries : &quot;);</span>
+<span class="nc" id="L436">            System.out.println(&quot;\n----- COUNTRY POPULATION BY NUMBER - USE CASE 2 -----&quot;);</span>
+<span class="nc" id="L437">            System.out.println(&quot;\nTop 10 most populated countries : &quot;);</span>
             // Init array for output
-<span class="nc" id="L440">            ArrayList &lt;Country&gt; Countries = new ArrayList&lt;Country&gt;();</span>
+<span class="nc" id="L439">            ArrayList &lt;Country&gt; Countries = new ArrayList&lt;Country&gt;();</span>
             // Retrieve array
-<span class="nc" id="L442">            Countries = a.GetCountryPopulations(10);</span>
+<span class="nc" id="L441">            Countries = a.GetCountryPopulations(10);</span>
             // Output
-<span class="nc" id="L444">            System.out.println(&quot;TOP 10 MOST POPULATED COUNTRIES : &quot;);</span>
-<span class="nc bnc" id="L445" title="All 2 branches missed.">            for(int i = 0; i &lt; 10; i++)</span>
-<span class="nc" id="L446">            { System.out.println(&quot;Country &quot; +  &quot; : &quot; + Countries.get(i).getName());</span>
-<span class="nc" id="L447">                System.out.println(&quot;Population : &quot; + String.format(&quot;%,d&quot;, Countries.get(i).getPopulation()));</span>
+<span class="nc" id="L443">            System.out.println(&quot;TOP 10 MOST POPULATED COUNTRIES : &quot;);</span>
+<span class="nc bnc" id="L444" title="All 2 branches missed.">            for(int i = 0; i &lt; 10; i++)</span>
+<span class="nc" id="L445">            { System.out.println(&quot;Country &quot; +  &quot; : &quot; + Countries.get(i).getName());</span>
+<span class="nc" id="L446">                System.out.println(&quot;Population : &quot; + String.format(&quot;%,d&quot;, Countries.get(i).getPopulation()));</span>
             }
 
             // Print N most populated city's in the world (Use Case 14).
-<span class="nc" id="L451">            System.out.println(&quot;\n----- CITY POPULATION BY NUMBER - USE CASE 14 -----&quot;);</span>
-<span class="nc" id="L452">            System.out.println(&quot;\nTop 10 most populated City's : &quot;);</span>
+<span class="nc" id="L450">            System.out.println(&quot;\n----- CITY POPULATION BY NUMBER - USE CASE 14 -----&quot;);</span>
+<span class="nc" id="L451">            System.out.println(&quot;\nTop 10 most populated City's : &quot;);</span>
             // Init array for output
-<span class="nc" id="L454">            ArrayList &lt;City&gt; Citys = new ArrayList&lt;City&gt;();</span>
+<span class="nc" id="L453">            ArrayList &lt;City&gt; Citys = new ArrayList&lt;City&gt;();</span>
             // Retrieve array
-<span class="nc" id="L456">            Citys = a.GetCityPopulations(10);</span>
+<span class="nc" id="L455">            Citys = a.GetCityPopulations(10);</span>
             // Output
-<span class="nc" id="L458">            System.out.println(&quot;TOP 10 MOST POPULATED CITY'S : &quot;);</span>
-<span class="nc bnc" id="L459" title="All 2 branches missed.">            for(int i = 0; i &lt; 10; i++)</span>
-<span class="nc" id="L460">            { System.out.println(&quot;City Name&quot; +  &quot; : &quot; + Citys.get(i).getCityName());</span>
-<span class="nc" id="L461">                System.out.println(&quot; City Population : &quot; + String.format(&quot;%,d&quot;, Citys.get(i).getCityPopulation()));</span>
+<span class="nc" id="L457">            System.out.println(&quot;TOP 10 MOST POPULATED CITY'S : &quot;);</span>
+<span class="nc bnc" id="L458" title="All 2 branches missed.">            for(int i = 0; i &lt; 10; i++)</span>
+<span class="nc" id="L459">            { System.out.println(&quot;City Name&quot; +  &quot; : &quot; + Citys.get(i).getCityName());</span>
+<span class="nc" id="L460">                System.out.println(&quot; City Population : &quot; + String.format(&quot;%,d&quot;, Citys.get(i).getCityPopulation()));</span>
             }
 
             // Terminate connection to the database.
-<span class="nc" id="L465">            a.Disconnect();</span>
+<span class="nc" id="L464">            a.Disconnect();</span>
 
 
 
-<span class="nc" id="L469">        }</span>
+<span class="nc" id="L468">        }</span>
     }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
