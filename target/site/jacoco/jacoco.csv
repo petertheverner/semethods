@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+seMethods,com.napier.sem,App,730,54,33,8,150,18,25,6,4,4
+seMethods,com.napier.sem,CapitalCity,17,0,0,0,5,0,5,0,5,0
+seMethods,com.napier.sem,City,58,0,0,0,9,0,8,0,8,0
+seMethods,com.napier.sem,Country,69,10,0,0,9,3,8,3,8,3
+seMethods,com.napier.sem,Region,17,0,0,0,5,0,5,0,5,0
+seMethods,com.napier.sem,Languages,38,0,0,0,11,0,11,0,11,0
+seMethods,com.napier.sem,Continent,17,0,0,0,5,0,5,0,5,0

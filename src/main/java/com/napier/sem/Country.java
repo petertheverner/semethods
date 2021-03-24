@@ -23,6 +23,7 @@ public class Country
     // Getters
     public String getName() { return this.name; }
     public int getPopulation() { return this.population; }
+    public String getContinent() {return this.continent; }
 
     // toString output method.
     @Override

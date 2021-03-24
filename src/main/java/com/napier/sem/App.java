@@ -18,7 +18,7 @@ import java.util.ArrayList;
          * Method that attempts to connect to the database container. Will
          * Make up to 10 attempts until returning an error.
          */
-        public void Connect() {
+        public void Connect(String location) {
 
             try
             {
@@ -38,7 +38,7 @@ import java.util.ArrayList;
                 try
                 {
                     Thread.sleep(30000);
-                    con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                    con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
                     System.out.println("Successful connection to the database.");
                     System.out.println("--------------------------------------------------");
                     break;
@@ -91,6 +91,12 @@ import java.util.ArrayList;
             // Total stored as long to be able to output extremely large population numbers, such
             // as worldwide population
             long total = 0;
+
+            if(searchType  > 1 && (search == "" || search == null))
+            {
+                System.out.println("Error: search type provided was greater than 1, but no search given");
+                return -1;
+            }
             String query;
 
             // Switch statement takes in the search type and uses it to determine what population search
@@ -232,7 +238,16 @@ import java.util.ArrayList;
          */
         public Country GetCountryReport(String country)
         {
+            // init country
             Country tempCountry = new Country();
+
+            // Check if input is null or empty
+            if(country == null || country == "")
+            {
+                System.out.println("Error: country input is empty.");
+                tempCountry.setPopulation(-1);
+                return tempCountry;
+            }
             int capitalSearch = 0;
             String query = "SELECT Code, Name, Continent, Region, Population, Capital "
                     +"FROM country "
@@ -287,10 +302,18 @@ import java.util.ArrayList;
          */
         public ArrayList<Country> GetCountryPopulations(int count)
         {
+            // init array list
+            ArrayList<Country> Countries = new ArrayList<Country>();
+
+            // Check if count input is negative or 0
+            if(count <= 0)
+            {
+                System.out.println("Error: count was either 0 or negative.");
+                return Countries;
+            }
             // i used to check count
             int i = 0;
-            // Init arraylist and query
-            ArrayList<Country> Countries = new ArrayList<Country>();
+            // Init query
             String query = "SELECT Population, Name "
                     +"FROM country "
                     +"ORDER BY Population DESC";
@@ -326,8 +349,16 @@ import java.util.ArrayList;
         {
             // Initialise the application
             App a = new App();
+
             // Connect to the database
-            a.Connect();
+            if(args.length < 1)
+            {
+                a.Connect("localhost:3306");
+            }
+            else
+            {
+                a.Connect(args[0]);
+            };
 
             // Print populations of regions (Use Case 04)
             System.out.println("----- POPULATIONS - Use Case 04 -----");

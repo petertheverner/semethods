@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>App.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">seMethods</a> &gt; <a href="index.source.html" class="el_package">com.napier.sem</a> &gt; <span class="el_source">App.java</span></div><h1>App.java</h1><pre class="source lang-java linenums">/* Authors:
+           Liam Blair - 40437578
+           Peter Verner - 40488882
+
+   Last modified: 24/02/2020
+*/
+package com.napier.sem;
+// Imports all SQL methods.
+import java.sql.*;
+import java.util.ArrayList;
+
+<span class="fc" id="L12">    public class App</span>
+    {
+        // Connection object initialised as null.
+<span class="fc" id="L15">        private Connection con = null;</span>
+
+        /**
+         * Method that attempts to connect to the database container. Will
+         * Make up to 10 attempts until returning an error.
+         */
+        public void Connect(String location) {
+
+            try
+            {
+<span class="nc" id="L25">                Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</span>
+            }
+<span class="nc" id="L27">            catch (ClassNotFoundException e)</span>
+            {
+<span class="nc" id="L29">                System.out.println(&quot;SQL driver could not be loaded.&quot;);</span>
+<span class="nc" id="L30">                System.exit(-1);</span>
+<span class="nc" id="L31">            }</span>
+
+<span class="nc" id="L33">            int tries = 10;</span>
+
+<span class="nc bnc" id="L35" title="All 2 branches missed.">            for (int i = 0; i &lt; tries; i++) {</span>
+<span class="nc" id="L36">                System.out.println(&quot;Connecting to database...&quot;);</span>
+
+                try
+                {
+<span class="nc" id="L40">                    Thread.sleep(30000);</span>
+<span class="nc" id="L41">                    con = DriverManager.getConnection(&quot;jdbc:mysql://&quot; + location + &quot;/world?allowPublicKeyRetrieval=true&amp;useSSL=false&quot;, &quot;root&quot;, &quot;example&quot;);</span>
+<span class="nc" id="L42">                    System.out.println(&quot;Successful connection to the database.&quot;);</span>
+<span class="nc" id="L43">                    System.out.println(&quot;--------------------------------------------------&quot;);</span>
+<span class="nc" id="L44">                    break;</span>
+                }
+
+<span class="nc" id="L47">                catch (SQLException e)</span>
+                {
+<span class="nc" id="L49">                    System.out.println(&quot;Failed to connect to database on attempt number&quot; + i);</span>
+<span class="nc" id="L50">                    System.out.println(e.getMessage());</span>
+                }
+
+<span class="nc" id="L53">                catch (InterruptedException e)</span>
+                {
+<span class="nc" id="L55">                    System.out.println(&quot;System interrupted&quot;);</span>
+<span class="nc" id="L56">                }</span>
+            }
+<span class="nc" id="L58">        }</span>
+
+
+        /**
+         * Method that attempts to sever the connection to a connected database.
+         */
+        public void Disconnect()
+        {
+<span class="nc bnc" id="L66" title="All 2 branches missed.">            if (con != null)</span>
+            {
+                try
+                {
+<span class="nc" id="L70">                    con.close();</span>
+<span class="nc" id="L71">                    System.out.println(&quot;--------------------------------------------------&quot;);</span>
+<span class="nc" id="L72">                    System.out.println(&quot;Successfully terminated connection to the database&quot;);</span>
+                }
+<span class="nc" id="L74">                catch (Exception e)</span>
+                {
+<span class="nc" id="L76">                    System.out.println(&quot;Error terminating connection to the database.&quot;);</span>
+<span class="nc" id="L77">                }</span>
+            }
+<span class="nc" id="L79">        }</span>
+
+
+        /**
+         * This is the method that searches for the total population of a specific place or area.
+         *
+         * @param searchType int The type of search being done (Country, City, etc).
+         * @param search String The name of the location used in the search.
+         * @return long The total population of the search.
+         */
+        public long GetPopulation(int searchType, String search)
+        {
+            // Total stored as long to be able to output extremely large population numbers, such
+            // as worldwide population
+<span class="fc" id="L93">            long total = 0;</span>
+
+<span class="pc bpc" id="L95" title="3 of 6 branches missed.">            if(searchType  &gt; 1 &amp;&amp; (search == &quot;&quot; || search == null))</span>
+            {
+<span class="fc" id="L97">                System.out.println(&quot;Error: search type provided was greater than 1, but no search given&quot;);</span>
+<span class="fc" id="L98">                return -1;</span>
+            }
+            String query;
+
+            // Switch statement takes in the search type and uses it to determine what population search
+            // is being done. For example, inputting a searchType of 2 means that a query will be built for
+            // searching for continent population data.
+<span class="pc bpc" id="L105" title="6 of 7 branches missed.">            switch (searchType)</span>
+            {
+                // World Population
+                case 1:
+<span class="nc" id="L109">                    query = &quot;SELECT Population FROM country&quot;;</span>
+<span class="nc" id="L110">                    break;</span>
+
+                // Continent Population
+                case 2:
+<span class="nc" id="L114">                    query = &quot;SELECT Population &quot;</span>
+                            +&quot;FROM country &quot;
+                            +&quot;WHERE Continent = '&quot; + search + &quot;'&quot;;
+<span class="nc" id="L117">                    break;</span>
+
+                // Region Population
+                case 3:
+<span class="nc" id="L121">                    query = &quot;SELECT Population &quot;</span>
+                            +&quot;FROM country &quot;
+                            +&quot;WHERE Region = '&quot; + search + &quot;'&quot;;
+<span class="nc" id="L124">                    break;</span>
+
+                // Country Population
+                case 4:
+<span class="nc" id="L128">                    query = &quot;SELECT Population &quot;</span>
+                            +&quot;FROM country &quot;
+                            +&quot;WHERE Name = '&quot; + search + &quot;'&quot;;
+<span class="nc" id="L131">                    break;</span>
+
+                // District Population
+                case 5:
+<span class="nc" id="L135">                    query = &quot;SELECT Population &quot;</span>
+                            +&quot;FROM city &quot;
+                            +&quot;WHERE District = '&quot; + search + &quot;'&quot;;
+<span class="nc" id="L138">                    break;</span>
+
+                // City Population
+                case 6:
+<span class="nc" id="L142">                    query =&quot;SELECT Population &quot;</span>
+                            +&quot;FROM city &quot;
+                            +&quot;WHERE Name = '&quot; + search + &quot;'&quot;;
+<span class="nc" id="L145">                    break;</span>
+
+                default:
+<span class="fc" id="L148">                    System.out.println(&quot;Error: Incorrect search type provided.&quot;);</span>
+<span class="fc" id="L149">                    return -1;</span>
+            }
+
+            try
+            {
+                // After query is built, it is executed
+<span class="nc" id="L155">                Statement stmt = con.createStatement();</span>
+<span class="nc" id="L156">                ResultSet rset = stmt.executeQuery(query);</span>
+
+                // Loops through all retrieved rows.
+<span class="nc bnc" id="L159" title="All 2 branches missed.">                while(rset.next())</span>
+                {
+                    // Population is added to the total
+<span class="nc" id="L162">                    total += rset.getInt(&quot;Population&quot;);</span>
+                }
+            }
+            // Catches any errors that occur during the query execution and returns an appropriate
+            // error message.
+<span class="nc" id="L167">            catch(Exception e)</span>
+            {
+<span class="nc" id="L169">                System.out.println(e.getMessage());</span>
+<span class="nc" id="L170">                System.out.println(&quot;Error retrieving population data for:&quot; + search);</span>
+<span class="nc" id="L171">            }</span>
+            // Total is returned if no errors are found and the query is successfully executed.
+<span class="nc" id="L173">            return total;</span>
+        }
+
+        /** This method instantiates a City object and populates it with data relating to
+         * the input City.
+         *
+         * @param city String The name of the city used as an input for the search
+         * @return City A city object with relevant information to it's city.
+         */
+
+        public City GetCityReport(String city)
+        {
+<span class="nc" id="L185">            City tempCity = new City();</span>
+<span class="nc" id="L186">            int CityNameSearch = 0;</span>
+<span class="nc" id="L187">            String query = &quot;SELECT Cityname, Citypopulation, Citydistrict, Citycountry &quot;</span>
+                    +&quot;FROM city &quot;
+                    +&quot;WHERE Cityname = '&quot; + city + &quot;'&quot;;
+            try
+            {
+<span class="nc" id="L192">                Statement stmt = con.createStatement();</span>
+<span class="nc" id="L193">                ResultSet rset = stmt.executeQuery(query);</span>
+
+<span class="nc bnc" id="L195" title="All 2 branches missed.">                if(rset.next())</span>
+                {
+<span class="nc" id="L197">                    CityNameSearch = rset.getInt(&quot;City's Region&quot;);</span>
+<span class="nc" id="L198">                    tempCity.setCityName(rset.getString(&quot;City's Name&quot;));</span>
+<span class="nc" id="L199">                    tempCity.setCitypopulation(rset.getInt(&quot;City's Population&quot;));</span>
+<span class="nc" id="L200">                    tempCity.setCitydistrict(rset.getString(&quot;City's District&quot;));</span>
+<span class="nc" id="L201">                    tempCity.setCityCountry(rset.getString(&quot;Country&quot;));</span>
+
+                }
+            }
+<span class="nc" id="L205">            catch(Exception e)</span>
+            {
+<span class="nc" id="L207">                System.out.println(e.getMessage());</span>
+<span class="nc" id="L208">                System.out.println(&quot;Error retrieving the report for the city &quot; + city);</span>
+<span class="nc" id="L209">                return null;</span>
+<span class="nc" id="L210">            }</span>
+
+
+            try
+            {
+<span class="nc" id="L215">                Statement stmt = con.createStatement();</span>
+<span class="nc" id="L216">                ResultSet rset = stmt.executeQuery(&quot;SELECT Name FROM city WHERE id = '&quot; + CityNameSearch + &quot;'&quot;);</span>
+<span class="nc bnc" id="L217" title="All 2 branches missed.">                if(rset.next())</span>
+                {
+<span class="nc" id="L219">                    tempCity.setCityName(rset.getString(&quot;Name&quot;));</span>
+                }
+            }
+<span class="nc" id="L222">            catch(Exception e)</span>
+            {
+<span class="nc" id="L224">                System.out.println(e.getMessage());</span>
+<span class="nc" id="L225">                System.out.println(&quot;Error retrieving the City Name from the list &quot; + city);</span>
+<span class="nc" id="L226">                return null;</span>
+<span class="nc" id="L227">            }</span>
+<span class="nc" id="L228">            return tempCity;</span>
+        }
+
+
+
+        /** This method instantiates a country object and populates it with relating to
+         * the input country.
+         *
+         * @param country String The name of the country used as an input for the search
+         * @return Country A country object with relevant information to it's country.
+         */
+        public Country GetCountryReport(String country)
+        {
+            // init country
+<span class="fc" id="L242">            Country tempCountry = new Country();</span>
+
+            // Check if input is null or empty
+<span class="pc bpc" id="L245" title="1 of 4 branches missed.">            if(country == null || country == &quot;&quot;)</span>
+            {
+<span class="fc" id="L247">                System.out.println(&quot;Error: country input is empty.&quot;);</span>
+<span class="fc" id="L248">                tempCountry.setPopulation(-1);</span>
+<span class="fc" id="L249">                return tempCountry;</span>
+            }
+<span class="nc" id="L251">            int capitalSearch = 0;</span>
+<span class="nc" id="L252">            String query = &quot;SELECT Code, Name, Continent, Region, Population, Capital &quot;</span>
+                    +&quot;FROM country &quot;
+                    +&quot;WHERE Name = '&quot; + country + &quot;'&quot;;
+
+            try
+            {
+<span class="nc" id="L258">                Statement stmt = con.createStatement();</span>
+<span class="nc" id="L259">                ResultSet rset = stmt.executeQuery(query);</span>
+
+<span class="nc bnc" id="L261" title="All 2 branches missed.">                if(rset.next())</span>
+                {
+<span class="nc" id="L263">                    tempCountry.setName(rset.getString(&quot;Name&quot;));</span>
+<span class="nc" id="L264">                    tempCountry.setCode(rset.getString(&quot;Code&quot;));</span>
+<span class="nc" id="L265">                    tempCountry.setContinent(rset.getString(&quot;Continent&quot;));</span>
+<span class="nc" id="L266">                    tempCountry.setRegion(rset.getString(&quot;Region&quot;));</span>
+<span class="nc" id="L267">                    capitalSearch = rset.getInt(&quot;Capital&quot;);</span>
+<span class="nc" id="L268">                    tempCountry.setPopulation(rset.getInt(&quot;Population&quot;));</span>
+                }
+            }
+<span class="nc" id="L271">            catch(Exception e)</span>
+            {
+<span class="nc" id="L273">                System.out.println(e.getMessage());</span>
+<span class="nc" id="L274">                System.out.println(&quot;Error retrieving the report for the country &quot; + country);</span>
+<span class="nc" id="L275">                return null;</span>
+<span class="nc" id="L276">            }</span>
+
+
+            try
+            {
+<span class="nc" id="L281">                Statement stmt = con.createStatement();</span>
+<span class="nc" id="L282">                ResultSet rset = stmt.executeQuery(&quot;SELECT Name FROM city WHERE id = '&quot; + capitalSearch + &quot;'&quot;);</span>
+<span class="nc bnc" id="L283" title="All 2 branches missed.">                if(rset.next())</span>
+                {
+<span class="nc" id="L285">                    tempCountry.setCapital(rset.getString(&quot;Name&quot;));</span>
+                }
+            }
+<span class="nc" id="L288">            catch(Exception e)</span>
+            {
+<span class="nc" id="L290">                System.out.println(e.getMessage());</span>
+<span class="nc" id="L291">                System.out.println(&quot;Error retrieving the capital city from the country &quot; + country);</span>
+<span class="nc" id="L292">                return null;</span>
+<span class="nc" id="L293">            }</span>
+<span class="nc" id="L294">            return tempCountry;</span>
+        }
+
+        /** This method instantiates a country arraylist and adds countries equal to the count
+         * provided by the user. Only logs country names and populations.
+         *
+         * @param count int The number of countries to output
+         * @return Countries An arraylist of countries, stores country objects for output.
+         */
+        public ArrayList&lt;Country&gt; GetCountryPopulations(int count)
+        {
+            // init array list
+<span class="fc" id="L306">            ArrayList&lt;Country&gt; Countries = new ArrayList&lt;Country&gt;();</span>
+
+            // Check if count input is negative or 0
+<span class="pc bpc" id="L309" title="1 of 2 branches missed.">            if(count &lt;= 0)</span>
+            {
+<span class="fc" id="L311">                System.out.println(&quot;Error: count was either 0 or negative.&quot;);</span>
+<span class="fc" id="L312">                return Countries;</span>
+            }
+            // i used to check count
+<span class="nc" id="L315">            int i = 0;</span>
+            // Init query
+<span class="nc" id="L317">            String query = &quot;SELECT Population, Name &quot;</span>
+                    +&quot;FROM country &quot;
+                    +&quot;ORDER BY Population DESC&quot;;
+
+            try
+            {
+                // Execute statement
+<span class="nc" id="L324">                Statement stmt = con.createStatement();</span>
+<span class="nc" id="L325">                ResultSet rset = stmt.executeQuery(query);</span>
+
+                // Keep adding country objects until either the entire country table has been searched or the count limited
+                // is reached.
+<span class="nc bnc" id="L329" title="All 4 branches missed.">                while(rset.next() &amp;&amp; i &lt; count)</span>
+                {
+<span class="nc" id="L331">                    Country tempCountry = new Country();</span>
+<span class="nc" id="L332">                    tempCountry.setPopulation(rset.getInt(&quot;Population&quot;));</span>
+<span class="nc" id="L333">                    tempCountry.setName(rset.getString(&quot;Name&quot;));</span>
+<span class="nc" id="L334">                    Countries.add(tempCountry);</span>
+<span class="nc" id="L335">                    i++;</span>
+<span class="nc" id="L336">                }</span>
+            }
+<span class="nc" id="L338">            catch(Exception e)</span>
+            {
+<span class="nc" id="L340">                System.out.println(e.getMessage());</span>
+<span class="nc" id="L341">                System.out.println(&quot;Error retrieving population data for top populated countries.&quot;);</span>
+<span class="nc" id="L342">            }</span>
+
+<span class="nc" id="L344">            return Countries;</span>
+        }
+
+
+        public static void main(String[] args)
+        {
+            // Initialise the application
+<span class="nc" id="L351">            App a = new App();</span>
+
+            // Connect to the database
+<span class="nc bnc" id="L354" title="All 2 branches missed.">            if(args.length &lt; 1)</span>
+            {
+<span class="nc" id="L356">                a.Connect(&quot;localhost:3306&quot;);</span>
+            }
+            else
+            {
+<span class="nc" id="L360">                a.Connect(args[0]);</span>
+            };
+
+            // Print populations of regions (Use Case 04)
+<span class="nc" id="L364">            System.out.println(&quot;----- POPULATIONS - Use Case 04 -----&quot;);</span>
+
+<span class="nc" id="L366">            System.out.println(&quot;\nPopulation of the world&quot;);</span>
+<span class="nc" id="L367">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;,a.GetPopulation(1, &quot;&quot;)) + &quot; &lt;&lt;&quot;);</span>
+<span class="nc" id="L368">            System.out.println(&quot;Population of a continent (Europe)&quot;);</span>
+<span class="nc" id="L369">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;, a.GetPopulation(2, &quot;Europe&quot;)) + &quot; &lt;&lt;&quot;);</span>
+<span class="nc" id="L370">            System.out.println(&quot;Population of a region (British Islands)&quot;);</span>
+<span class="nc" id="L371">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;, a.GetPopulation(3, &quot;British Islands&quot;)) + &quot; &lt;&lt;&quot;);</span>
+<span class="nc" id="L372">            System.out.println(&quot;Population of a country (Great Britain)&quot;);</span>
+<span class="nc" id="L373">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;, a.GetPopulation(4, &quot;United Kingdom&quot;)) + &quot; &lt;&lt;&quot;);</span>
+<span class="nc" id="L374">            System.out.println(&quot;Population of a district (Scotland)&quot;);</span>
+<span class="nc" id="L375">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;, a.GetPopulation(5, &quot;Scotland&quot;)) + &quot; &lt;&lt;&quot;);</span>
+<span class="nc" id="L376">            System.out.println(&quot;Population of a city (Edinburgh)&quot;);</span>
+<span class="nc" id="L377">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;, a.GetPopulation(6, &quot;Edinburgh&quot;)) + &quot; &lt;&lt;&quot;);</span>
+
+            // Print report of a specified country (Use Case 07)
+<span class="nc" id="L380">            System.out.println(&quot;\n----- COUNTRY REPORT - Use Case 07 -----&quot;);</span>
+<span class="nc" id="L381">            System.out.println(&quot;\n Country report of the country 'Denmark' : &quot;);</span>
+            // Calls the GetCountryReport method which returns a country object. Then it calls
+            // the toString method of the Country class which returns a text output.
+<span class="nc" id="L384">            System.out.println(a.GetCountryReport(&quot;Denmark&quot;).toString());</span>
+
+            // Print report of a specified country (Use Case 08)
+<span class="nc" id="L387">            System.out.println(&quot;\n----- CITY REPORT - Use Case 08 -----&quot;);</span>
+<span class="nc" id="L388">            System.out.println(&quot;\n City report of the city 'Edinburgh' : &quot;);</span>
+            // Calls the GetCountryReport method which returns a country object. Then it calls
+            // the toString method of the Country class which returns a text output.
+<span class="nc" id="L391">            System.out.println(a.GetCityReport(&quot;Edinburgh&quot;).toString());</span>
+
+
+            // Print N most populated countries in the world (Use Case 02).
+<span class="nc" id="L395">            System.out.println(&quot;\n----- COUNTRY POPULATION BY NUMBER - USE CASE 2 -----&quot;);</span>
+<span class="nc" id="L396">            System.out.println(&quot;\nTop 10 most populated countries : &quot;);</span>
+            // Init array for output
+<span class="nc" id="L398">            ArrayList &lt;Country&gt; Countries = new ArrayList&lt;Country&gt;();</span>
+            // Retrieve array
+<span class="nc" id="L400">            Countries = a.GetCountryPopulations(10);</span>
+
+            // Output
+<span class="nc" id="L403">            System.out.println(&quot;TOP 10 MOST POPULATED COUNTRIES : &quot;);</span>
+<span class="nc bnc" id="L404" title="All 2 branches missed.">            for(int i = 0; i &lt; 10; i++)</span>
+<span class="nc" id="L405">            { System.out.println(&quot;Country &quot; +  &quot; : &quot; + Countries.get(i).getName());</span>
+<span class="nc" id="L406">                System.out.println(&quot;Population : &quot; + String.format(&quot;%,d&quot;, Countries.get(i).getPopulation()));</span>
+            }
+
+            // Terminate connection to the database.
+<span class="nc" id="L410">            a.Disconnect();</span>
+
+
+
+<span class="nc" id="L414">        }</span>
+    }
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
