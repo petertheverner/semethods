@@ -184,7 +184,7 @@ import java.util.ArrayList;
             // i used to check count
             int i = 0;
             // Init arraylist and query
-            ArrayList<City> Citys = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<City>();
             String query = "SELECT CityPopulation, CityName "
                     +"FROM city "
                     +"ORDER BY CityPopulation DESC";
@@ -202,7 +202,7 @@ import java.util.ArrayList;
                     City tempCity = new City();
                     tempCity.setCitypopulation(rset.getInt("City Population"));
                     tempCity.setCityName(rset.getString("City Name"));
-                    Citys.add(tempCity);
+                    cities.add(tempCity);
                     i++;
                 }
             }
@@ -212,7 +212,7 @@ import java.util.ArrayList;
                 System.out.println("Error retrieving population data for top populated city's.");
             }
 
-            return Citys;
+            return cities;
         }
 
         /** This method instantiates a City object and populates it with data relating to
