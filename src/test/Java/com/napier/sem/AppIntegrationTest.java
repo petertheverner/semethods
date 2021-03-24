@@ -6,7 +6,7 @@ import org.junit.jupiter.api.TestInstance;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class IntegrationTests {
+public class AppIntegrationTest {
     // init app
     static App a;
 
