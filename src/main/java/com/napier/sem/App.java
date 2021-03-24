@@ -167,6 +167,62 @@ import java.util.ArrayList;
             return total;
         }
 
+        /** This method instantiates a City object and populates it with data relating to
+         * the input City.
+         *
+         * @param city String The name of the city used as an input for the search
+         * @return City A city object with relevant information to it's city.
+         */
+
+        public City GetCityReport(String city)
+        {
+            City tempCity = new City();
+            int CityNameSearch = 0;
+            String query = "SELECT Cityname, Citypopulation, Citydistrict, Citycountry "
+                    +"FROM city "
+                    +"WHERE Cityname = '" + city + "'";
+            try
+            {
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery(query);
+
+                if(rset.next())
+                {
+                    CityNameSearch = rset.getInt("City's Region");
+                    tempCity.setCityName(rset.getString("City's Name"));
+                    tempCity.setCitypopulation(rset.getInt("City's Population"));
+                    tempCity.setCitydistrict(rset.getString("City's District"));
+                    tempCity.setCityCountry(rset.getString("Country"));
+
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Error retrieving the report for the city " + city);
+                return null;
+            }
+
+
+            try
+            {
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery("SELECT Name FROM city WHERE id = '" + CityNameSearch + "'");
+                if(rset.next())
+                {
+                    tempCity.setCityName(rset.getString("Name"));
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Error retrieving the City Name from the list " + city);
+                return null;
+            }
+            return tempCity;
+        }
+
+
 
         /** This method instantiates a country object and populates it with relating to
          * the input country.
@@ -289,14 +345,20 @@ import java.util.ArrayList;
             System.out.println("Population of a city (Edinburgh)");
             System.out.println(">> " + String.format("%,d", a.GetPopulation(6, "Edinburgh")) + " <<");
 
-
             // Print report of a specified country (Use Case 07)
             System.out.println("\n----- COUNTRY REPORT - Use Case 07 -----");
-            System.out.println("\nCountry report of the country 'Denmark' : ");
-
+            System.out.println("\n Country report of the country 'Denmark' : ");
             // Calls the GetCountryReport method which returns a country object. Then it calls
             // the toString method of the Country class which returns a text output.
             System.out.println(a.GetCountryReport("Denmark").toString());
+
+            // Print report of a specified country (Use Case 08)
+            System.out.println("\n----- CITY REPORT - Use Case 08 -----");
+            System.out.println("\n City report of the city 'Edinburgh' : ");
+            // Calls the GetCountryReport method which returns a country object. Then it calls
+            // the toString method of the Country class which returns a text output.
+            System.out.println(a.GetCityReport("Edinburgh").toString());
+
 
             // Print N most populated countries in the world (Use Case 02).
             System.out.println("\n----- COUNTRY POPULATION BY NUMBER - USE CASE 2 -----");
@@ -315,6 +377,8 @@ import java.util.ArrayList;
 
             // Terminate connection to the database.
             a.Disconnect();
+
+
 
         }
     }
