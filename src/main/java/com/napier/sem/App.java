@@ -430,8 +430,8 @@ import java.util.ArrayList;
             System.out.println("\n City report of the city 'Edinburgh' : ");
             // Calls the GetCountryReport method which returns a country object. Then it calls
             // the toString method of the Country class which returns a text output.
-            System.out.println(a.GetCityReport("Edinburgh").toString());
-
+            System.out.println(a.GetCityReport("Edinburgh").getCityName());
+            System.out.println(a.GetCityReport("Edinburgh").getCityPopulation());
 
             // Print N most populated countries in the world (Use Case 02).
             System.out.println("\n----- COUNTRY POPULATION BY NUMBER - USE CASE 2 -----");
