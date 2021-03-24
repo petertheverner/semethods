@@ -22,31 +22,31 @@ import java.util.ArrayList;
 
             try
             {
-<span class="nc" id="L25">                Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</span>
+<span class="fc" id="L25">                Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</span>
             }
 <span class="nc" id="L27">            catch (ClassNotFoundException e)</span>
             {
 <span class="nc" id="L29">                System.out.println(&quot;SQL driver could not be loaded.&quot;);</span>
 <span class="nc" id="L30">                System.exit(-1);</span>
-<span class="nc" id="L31">            }</span>
+<span class="fc" id="L31">            }</span>
 
-<span class="nc" id="L33">            int tries = 10;</span>
+<span class="fc" id="L33">            int tries = 10;</span>
 
-<span class="nc bnc" id="L35" title="All 2 branches missed.">            for (int i = 0; i &lt; tries; i++) {</span>
-<span class="nc" id="L36">                System.out.println(&quot;Connecting to database...&quot;);</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">            for (int i = 0; i &lt; tries; i++) {</span>
+<span class="fc" id="L36">                System.out.println(&quot;Connecting to database...&quot;);</span>
 
                 try
                 {
-<span class="nc" id="L40">                    Thread.sleep(30000);</span>
-<span class="nc" id="L41">                    con = DriverManager.getConnection(&quot;jdbc:mysql://&quot; + location + &quot;/world?allowPublicKeyRetrieval=true&amp;useSSL=false&quot;, &quot;root&quot;, &quot;example&quot;);</span>
-<span class="nc" id="L42">                    System.out.println(&quot;Successful connection to the database.&quot;);</span>
-<span class="nc" id="L43">                    System.out.println(&quot;--------------------------------------------------&quot;);</span>
-<span class="nc" id="L44">                    break;</span>
+<span class="fc" id="L40">                    Thread.sleep(30000);</span>
+<span class="fc" id="L41">                    con = DriverManager.getConnection(&quot;jdbc:mysql://&quot; + location + &quot;/world?allowPublicKeyRetrieval=true&amp;useSSL=false&quot;, &quot;root&quot;, &quot;example&quot;);</span>
+<span class="fc" id="L42">                    System.out.println(&quot;Successful connection to the database.&quot;);</span>
+<span class="fc" id="L43">                    System.out.println(&quot;--------------------------------------------------&quot;);</span>
+<span class="fc" id="L44">                    break;</span>
                 }
 
 <span class="nc" id="L47">                catch (SQLException e)</span>
                 {
-<span class="nc" id="L49">                    System.out.println(&quot;Failed to connect to database on attempt number&quot; + i);</span>
+<span class="nc" id="L49">                    System.out.println(&quot;Failed to connect to database on attempt number &quot; + i);</span>
 <span class="nc" id="L50">                    System.out.println(e.getMessage());</span>
                 }
 
@@ -55,7 +55,7 @@ import java.util.ArrayList;
 <span class="nc" id="L55">                    System.out.println(&quot;System interrupted&quot;);</span>
 <span class="nc" id="L56">                }</span>
             }
-<span class="nc" id="L58">        }</span>
+<span class="fc" id="L58">        }</span>
 
 
         /**
@@ -92,7 +92,7 @@ import java.util.ArrayList;
             // as worldwide population
 <span class="fc" id="L93">            long total = 0;</span>
 
-<span class="pc bpc" id="L95" title="3 of 6 branches missed.">            if(searchType  &gt; 1 &amp;&amp; (search == &quot;&quot; || search == null))</span>
+<span class="pc bpc" id="L95" title="1 of 6 branches missed.">            if(searchType  &gt; 1 &amp;&amp; (search == &quot;&quot; || search == null))</span>
             {
 <span class="fc" id="L97">                System.out.println(&quot;Error: search type provided was greater than 1, but no search given&quot;);</span>
 <span class="fc" id="L98">                return -1;</span>
@@ -102,7 +102,7 @@ import java.util.ArrayList;
             // Switch statement takes in the search type and uses it to determine what population search
             // is being done. For example, inputting a searchType of 2 means that a query will be built for
             // searching for continent population data.
-<span class="pc bpc" id="L105" title="6 of 7 branches missed.">            switch (searchType)</span>
+<span class="pc bpc" id="L105" title="3 of 7 branches missed.">            switch (searchType)</span>
             {
                 // World Population
                 case 1:
@@ -111,10 +111,10 @@ import java.util.ArrayList;
 
                 // Continent Population
                 case 2:
-<span class="nc" id="L114">                    query = &quot;SELECT Population &quot;</span>
+<span class="fc" id="L114">                    query = &quot;SELECT Population &quot;</span>
                             +&quot;FROM country &quot;
                             +&quot;WHERE Continent = '&quot; + search + &quot;'&quot;;
-<span class="nc" id="L117">                    break;</span>
+<span class="fc" id="L117">                    break;</span>
 
                 // Region Population
                 case 3:
@@ -125,10 +125,10 @@ import java.util.ArrayList;
 
                 // Country Population
                 case 4:
-<span class="nc" id="L128">                    query = &quot;SELECT Population &quot;</span>
+<span class="fc" id="L128">                    query = &quot;SELECT Population &quot;</span>
                             +&quot;FROM country &quot;
                             +&quot;WHERE Name = '&quot; + search + &quot;'&quot;;
-<span class="nc" id="L131">                    break;</span>
+<span class="fc" id="L131">                    break;</span>
 
                 // District Population
                 case 5:
@@ -139,10 +139,10 @@ import java.util.ArrayList;
 
                 // City Population
                 case 6:
-<span class="nc" id="L142">                    query =&quot;SELECT Population &quot;</span>
+<span class="fc" id="L142">                    query =&quot;SELECT Population &quot;</span>
                             +&quot;FROM city &quot;
                             +&quot;WHERE Name = '&quot; + search + &quot;'&quot;;
-<span class="nc" id="L145">                    break;</span>
+<span class="fc" id="L145">                    break;</span>
 
                 default:
 <span class="fc" id="L148">                    System.out.println(&quot;Error: Incorrect search type provided.&quot;);</span>
@@ -152,14 +152,14 @@ import java.util.ArrayList;
             try
             {
                 // After query is built, it is executed
-<span class="nc" id="L155">                Statement stmt = con.createStatement();</span>
-<span class="nc" id="L156">                ResultSet rset = stmt.executeQuery(query);</span>
+<span class="fc" id="L155">                Statement stmt = con.createStatement();</span>
+<span class="fc" id="L156">                ResultSet rset = stmt.executeQuery(query);</span>
 
                 // Loops through all retrieved rows.
-<span class="nc bnc" id="L159" title="All 2 branches missed.">                while(rset.next())</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">                while(rset.next())</span>
                 {
                     // Population is added to the total
-<span class="nc" id="L162">                    total += rset.getInt(&quot;Population&quot;);</span>
+<span class="fc" id="L162">                    total += rset.getInt(&quot;Population&quot;);</span>
                 }
             }
             // Catches any errors that occur during the query execution and returns an appropriate
@@ -168,9 +168,9 @@ import java.util.ArrayList;
             {
 <span class="nc" id="L169">                System.out.println(e.getMessage());</span>
 <span class="nc" id="L170">                System.out.println(&quot;Error retrieving population data for:&quot; + search);</span>
-<span class="nc" id="L171">            }</span>
+<span class="fc" id="L171">            }</span>
             // Total is returned if no errors are found and the query is successfully executed.
-<span class="nc" id="L173">            return total;</span>
+<span class="fc" id="L173">            return total;</span>
         }
 
         /** This method instantiates a country arraylist and adds countries equal to the count
@@ -184,7 +184,7 @@ import java.util.ArrayList;
             // i used to check count
 <span class="nc" id="L185">            int i = 0;</span>
             // Init arraylist and query
-<span class="nc" id="L187">            ArrayList&lt;City&gt; Citys = new ArrayList&lt;City&gt;();</span>
+<span class="nc" id="L187">            ArrayList&lt;City&gt; cities = new ArrayList&lt;City&gt;();</span>
 <span class="nc" id="L188">            String query = &quot;SELECT CityPopulation, CityName &quot;</span>
                     +&quot;FROM city &quot;
                     +&quot;ORDER BY CityPopulation DESC&quot;;
@@ -202,7 +202,7 @@ import java.util.ArrayList;
 <span class="nc" id="L202">                    City tempCity = new City();</span>
 <span class="nc" id="L203">                    tempCity.setCitypopulation(rset.getInt(&quot;City Population&quot;));</span>
 <span class="nc" id="L204">                    tempCity.setCityName(rset.getString(&quot;City Name&quot;));</span>
-<span class="nc" id="L205">                    Citys.add(tempCity);</span>
+<span class="nc" id="L205">                    cities.add(tempCity);</span>
 <span class="nc" id="L206">                    i++;</span>
 <span class="nc" id="L207">                }</span>
             }
@@ -212,7 +212,7 @@ import java.util.ArrayList;
 <span class="nc" id="L212">                System.out.println(&quot;Error retrieving population data for top populated city's.&quot;);</span>
 <span class="nc" id="L213">            }</span>
 
-<span class="nc" id="L215">            return Citys;</span>
+<span class="nc" id="L215">            return cities;</span>
         }
 
         /** This method instantiates a City object and populates it with data relating to
@@ -284,30 +284,30 @@ import java.util.ArrayList;
 <span class="fc" id="L284">            Country tempCountry = new Country();</span>
 
             // Check if input is null or empty
-<span class="pc bpc" id="L287" title="1 of 4 branches missed.">            if(country == null || country == &quot;&quot;)</span>
+<span class="fc bfc" id="L287" title="All 4 branches covered.">            if(country == null || country == &quot;&quot;)</span>
             {
 <span class="fc" id="L289">                System.out.println(&quot;Error: country input is empty.&quot;);</span>
 <span class="fc" id="L290">                tempCountry.setPopulation(-1);</span>
 <span class="fc" id="L291">                return tempCountry;</span>
             }
-<span class="nc" id="L293">            int capitalSearch = 0;</span>
-<span class="nc" id="L294">            String query = &quot;SELECT Code, Name, Continent, Region, Population, Capital &quot;</span>
+<span class="fc" id="L293">            int capitalSearch = 0;</span>
+<span class="fc" id="L294">            String query = &quot;SELECT Code, Name, Continent, Region, Population, Capital &quot;</span>
                     +&quot;FROM country &quot;
                     +&quot;WHERE Name = '&quot; + country + &quot;'&quot;;
 
             try
             {
-<span class="nc" id="L300">                Statement stmt = con.createStatement();</span>
-<span class="nc" id="L301">                ResultSet rset = stmt.executeQuery(query);</span>
+<span class="fc" id="L300">                Statement stmt = con.createStatement();</span>
+<span class="fc" id="L301">                ResultSet rset = stmt.executeQuery(query);</span>
 
-<span class="nc bnc" id="L303" title="All 2 branches missed.">                if(rset.next())</span>
+<span class="pc bpc" id="L303" title="1 of 2 branches missed.">                if(rset.next())</span>
                 {
-<span class="nc" id="L305">                    tempCountry.setName(rset.getString(&quot;Name&quot;));</span>
-<span class="nc" id="L306">                    tempCountry.setCode(rset.getString(&quot;Code&quot;));</span>
-<span class="nc" id="L307">                    tempCountry.setContinent(rset.getString(&quot;Continent&quot;));</span>
-<span class="nc" id="L308">                    tempCountry.setRegion(rset.getString(&quot;Region&quot;));</span>
-<span class="nc" id="L309">                    capitalSearch = rset.getInt(&quot;Capital&quot;);</span>
-<span class="nc" id="L310">                    tempCountry.setPopulation(rset.getInt(&quot;Population&quot;));</span>
+<span class="fc" id="L305">                    tempCountry.setName(rset.getString(&quot;Name&quot;));</span>
+<span class="fc" id="L306">                    tempCountry.setCode(rset.getString(&quot;Code&quot;));</span>
+<span class="fc" id="L307">                    tempCountry.setContinent(rset.getString(&quot;Continent&quot;));</span>
+<span class="fc" id="L308">                    tempCountry.setRegion(rset.getString(&quot;Region&quot;));</span>
+<span class="fc" id="L309">                    capitalSearch = rset.getInt(&quot;Capital&quot;);</span>
+<span class="fc" id="L310">                    tempCountry.setPopulation(rset.getInt(&quot;Population&quot;));</span>
                 }
             }
 <span class="nc" id="L313">            catch(Exception e)</span>
@@ -315,16 +315,16 @@ import java.util.ArrayList;
 <span class="nc" id="L315">                System.out.println(e.getMessage());</span>
 <span class="nc" id="L316">                System.out.println(&quot;Error retrieving the report for the country &quot; + country);</span>
 <span class="nc" id="L317">                return null;</span>
-<span class="nc" id="L318">            }</span>
+<span class="fc" id="L318">            }</span>
 
 
             try
             {
-<span class="nc" id="L323">                Statement stmt = con.createStatement();</span>
-<span class="nc" id="L324">                ResultSet rset = stmt.executeQuery(&quot;SELECT Name FROM city WHERE id = '&quot; + capitalSearch + &quot;'&quot;);</span>
-<span class="nc bnc" id="L325" title="All 2 branches missed.">                if(rset.next())</span>
+<span class="fc" id="L323">                Statement stmt = con.createStatement();</span>
+<span class="fc" id="L324">                ResultSet rset = stmt.executeQuery(&quot;SELECT Name FROM city WHERE id = '&quot; + capitalSearch + &quot;'&quot;);</span>
+<span class="pc bpc" id="L325" title="1 of 2 branches missed.">                if(rset.next())</span>
                 {
-<span class="nc" id="L327">                    tempCountry.setCapital(rset.getString(&quot;Name&quot;));</span>
+<span class="fc" id="L327">                    tempCountry.setCapital(rset.getString(&quot;Name&quot;));</span>
                 }
             }
 <span class="nc" id="L330">            catch(Exception e)</span>
@@ -332,8 +332,8 @@ import java.util.ArrayList;
 <span class="nc" id="L332">                System.out.println(e.getMessage());</span>
 <span class="nc" id="L333">                System.out.println(&quot;Error retrieving the capital city from the country &quot; + country);</span>
 <span class="nc" id="L334">                return null;</span>
-<span class="nc" id="L335">            }</span>
-<span class="nc" id="L336">            return tempCountry;</span>
+<span class="fc" id="L335">            }</span>
+<span class="fc" id="L336">            return tempCountry;</span>
         }
 
         /** This method instantiates a country arraylist and adds countries equal to the count
@@ -348,42 +348,42 @@ import java.util.ArrayList;
 <span class="fc" id="L348">            ArrayList&lt;Country&gt; Countries = new ArrayList&lt;Country&gt;();</span>
 
             // Check if count input is negative or 0
-<span class="pc bpc" id="L351" title="1 of 2 branches missed.">            if(count &lt;= 0)</span>
+<span class="fc bfc" id="L351" title="All 2 branches covered.">            if(count &lt;= 0)</span>
             {
 <span class="fc" id="L353">                System.out.println(&quot;Error: count was either 0 or negative.&quot;);</span>
 <span class="fc" id="L354">                return Countries;</span>
             }
             // i used to check count
-<span class="nc" id="L357">            int i = 0;</span>
+<span class="fc" id="L357">            int i = 0;</span>
             // Init query
-<span class="nc" id="L359">            String query = &quot;SELECT Population, Name &quot;</span>
+<span class="fc" id="L359">            String query = &quot;SELECT Population, Name &quot;</span>
                     +&quot;FROM country &quot;
                     +&quot;ORDER BY Population DESC&quot;;
 
             try
             {
                 // Execute statement
-<span class="nc" id="L366">                Statement stmt = con.createStatement();</span>
-<span class="nc" id="L367">                ResultSet rset = stmt.executeQuery(query);</span>
+<span class="fc" id="L366">                Statement stmt = con.createStatement();</span>
+<span class="fc" id="L367">                ResultSet rset = stmt.executeQuery(query);</span>
 
                 // Keep adding country objects until either the entire country table has been searched or the count limited
                 // is reached.
-<span class="nc bnc" id="L371" title="All 4 branches missed.">                while(rset.next() &amp;&amp; i &lt; count)</span>
+<span class="pc bpc" id="L371" title="1 of 4 branches missed.">                while(rset.next() &amp;&amp; i &lt; count)</span>
                 {
-<span class="nc" id="L373">                    Country tempCountry = new Country();</span>
-<span class="nc" id="L374">                    tempCountry.setPopulation(rset.getInt(&quot;Population&quot;));</span>
-<span class="nc" id="L375">                    tempCountry.setName(rset.getString(&quot;Name&quot;));</span>
-<span class="nc" id="L376">                    Countries.add(tempCountry);</span>
-<span class="nc" id="L377">                    i++;</span>
-<span class="nc" id="L378">                }</span>
+<span class="fc" id="L373">                    Country tempCountry = new Country();</span>
+<span class="fc" id="L374">                    tempCountry.setPopulation(rset.getInt(&quot;Population&quot;));</span>
+<span class="fc" id="L375">                    tempCountry.setName(rset.getString(&quot;Name&quot;));</span>
+<span class="fc" id="L376">                    Countries.add(tempCountry);</span>
+<span class="fc" id="L377">                    i++;</span>
+<span class="fc" id="L378">                }</span>
             }
 <span class="nc" id="L380">            catch(Exception e)</span>
             {
 <span class="nc" id="L382">                System.out.println(e.getMessage());</span>
 <span class="nc" id="L383">                System.out.println(&quot;Error retrieving population data for top populated countries.&quot;);</span>
-<span class="nc" id="L384">            }</span>
+<span class="fc" id="L384">            }</span>
 
-<span class="nc" id="L386">            return Countries;</span>
+<span class="fc" id="L386">            return Countries;</span>
         }
 
 

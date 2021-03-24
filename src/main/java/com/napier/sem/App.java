@@ -46,7 +46,7 @@ import java.util.ArrayList;
 
                 catch (SQLException e)
                 {
-                    System.out.println("Failed to connect to database on attempt number" + i);
+                    System.out.println("Failed to connect to database on attempt number " + i);
                     System.out.println(e.getMessage());
                 }
 
