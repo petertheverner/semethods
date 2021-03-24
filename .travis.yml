@@ -32,14 +32,14 @@ jobs:
     - stage: deploy
       install: skip
       jdk: oraclejdk15
-      script:
-        - mvn package -Dskiptests=true -Dmaven.javadoc.skip=true
-        - docker-compose up --abort-on-container-exit
+      script: echo "Deploy"
+
 
   stages:
     - unit tests
     - integration tests
-    - deploy
+    - name: deploy
+      if branch = master
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
