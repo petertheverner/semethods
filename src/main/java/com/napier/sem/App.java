@@ -173,6 +173,48 @@ import java.util.ArrayList;
             return total;
         }
 
+        /** This method instantiates a country arraylist and adds countries equal to the count
+         * provided by the user. Only logs country names and populations.
+         *
+         * @param count int The number of countries to output
+         * @return Countries An arraylist of countries, stores country objects for output.
+         */
+        public ArrayList<City> GetCityPopulations(int count)
+        {
+            // i used to check count
+            int i = 0;
+            // Init arraylist and query
+            ArrayList<City> Citys = new ArrayList<City>();
+            String query = "SELECT CityPopulation, CityName "
+                    +"FROM city "
+                    +"ORDER BY CityPopulation DESC";
+
+            try
+            {
+                // Execute statement
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery(query);
+
+                // Keep adding country objects until either the entire country table has been searched or the count limited
+                // is reached.
+                while(rset.next() && i < count)
+                {
+                    City tempCity = new City();
+                    tempCity.setCitypopulation(rset.getInt("City Population"));
+                    tempCity.setCityName(rset.getString("City Name"));
+                    Citys.add(tempCity);
+                    i++;
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Error retrieving population data for top populated city's.");
+            }
+
+            return Citys;
+        }
+
         /** This method instantiates a City object and populates it with data relating to
          * the input City.
          *
@@ -398,12 +440,25 @@ import java.util.ArrayList;
             ArrayList <Country> Countries = new ArrayList<Country>();
             // Retrieve array
             Countries = a.GetCountryPopulations(10);
-
             // Output
             System.out.println("TOP 10 MOST POPULATED COUNTRIES : ");
             for(int i = 0; i < 10; i++)
             { System.out.println("Country " +  " : " + Countries.get(i).getName());
                 System.out.println("Population : " + String.format("%,d", Countries.get(i).getPopulation()));
+            }
+
+            // Print N most populated city's in the world (Use Case 14).
+            System.out.println("\n----- CITY POPULATION BY NUMBER - USE CASE 14 -----");
+            System.out.println("\nTop 10 most populated City's : ");
+            // Init array for output
+            ArrayList <City> Citys = new ArrayList<City>();
+            // Retrieve array
+            Citys = a.GetCityPopulations(10);
+            // Output
+            System.out.println("TOP 10 MOST POPULATED CITY'S : ");
+            for(int i = 0; i < 10; i++)
+            { System.out.println("City Name" +  " : " + Citys.get(i).getCityName());
+                System.out.println(" City Population : " + String.format("%,d", Citys.get(i).getCityPopulation()));
             }
 
             // Terminate connection to the database.
