@@ -236,7 +236,6 @@ import java.util.ArrayList;
 
                 if(rset.next())
                 {
-                    CityNameSearch = rset.getInt("Capital");
                     tempCity.setCityName(rset.getString("Name"));
                     tempCity.setCitypopulation(rset.getInt("Population"));
                     tempCity.setCitydistrict(rset.getString("District"));
@@ -248,23 +247,6 @@ import java.util.ArrayList;
             {
                 System.out.println(e.getMessage());
                 System.out.println("Error retrieving the report for the city " + city);
-                return null;
-            }
-
-
-            try
-            {
-                Statement stmt = con.createStatement();
-                ResultSet rset = stmt.executeQuery("SELECT Name FROM city WHERE id = '" + CityNameSearch + "'");
-                if(rset.next())
-                {
-                    tempCity.setCityName(rset.getString("Name"));
-                }
-            }
-            catch(Exception e)
-            {
-                System.out.println(e.getMessage());
-                System.out.println("Error retrieving the City Name from the list " + city);
                 return null;
             }
             return tempCity;
