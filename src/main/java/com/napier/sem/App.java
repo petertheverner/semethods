@@ -200,8 +200,8 @@ import java.util.ArrayList;
                 while(rset.next() && i < count)
                 {
                     City tempCity = new City();
-                    tempCity.setCitypopulation(rset.getInt("City Population"));
-                    tempCity.setCityName(rset.getString("City Name"));
+                    tempCity.setCitypopulation(rset.getInt("CityPopulation"));
+                    tempCity.setCityName(rset.getString("CityName"));
                     cities.add(tempCity);
                     i++;
                 }
@@ -422,7 +422,6 @@ import java.util.ArrayList;
             // Retrieve array
             Countries = a.GetCountryPopulations(10);
             // Output
-            System.out.println("TOP 10 MOST POPULATED COUNTRIES : ");
             for(int i = 0; i < 10; i++)
             { System.out.println("Country " +  " : " + Countries.get(i).getName());
                 System.out.println("Population : " + String.format("%,d", Countries.get(i).getPopulation()));

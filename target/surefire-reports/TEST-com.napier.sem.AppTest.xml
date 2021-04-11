@@ -58,8 +58,8 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="TestGetPopulationEmpty" classname="com.napier.sem.AppTest" time="0.001"/>
-  <testcase name="TestGetPopulationRange" classname="com.napier.sem.AppTest" time="0"/>
+  <testcase name="TestGetPopulationEmpty" classname="com.napier.sem.AppTest" time="0"/>
+  <testcase name="TestGetPopulationRange" classname="com.napier.sem.AppTest" time="0.001"/>
   <testcase name="TestGetCountryReportEmpty" classname="com.napier.sem.AppTest" time="0"/>
   <testcase name="TestGetCountryPopulationsNegative" classname="com.napier.sem.AppTest" time="0"/>
   <testcase name="TestGetCountryPopulationsZero" classname="com.napier.sem.AppTest" time="0"/>
