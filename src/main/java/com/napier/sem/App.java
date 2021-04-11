@@ -185,9 +185,9 @@ import java.util.ArrayList;
             int i = 0;
             // Init arraylist and query
             ArrayList<City> cities = new ArrayList<City>();
-            String query = "SELECT CityPopulation, CityName "
+            String query = "SELECT Population, Name "
                     +"FROM city "
-                    +"ORDER BY CityPopulation DESC";
+                    +"ORDER BY Population DESC";
 
             try
             {
@@ -200,8 +200,8 @@ import java.util.ArrayList;
                 while(rset.next() && i < count)
                 {
                     City tempCity = new City();
-                    tempCity.setCitypopulation(rset.getInt("CityPopulation"));
-                    tempCity.setCityName(rset.getString("CityName"));
+                    tempCity.setCitypopulation(rset.getInt("Population"));
+                    tempCity.setCityName(rset.getString("Name"));
                     cities.add(tempCity);
                     i++;
                 }

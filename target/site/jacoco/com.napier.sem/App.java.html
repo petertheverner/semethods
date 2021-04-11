@@ -185,9 +185,9 @@ import java.util.ArrayList;
 <span class="nc" id="L185">            int i = 0;</span>
             // Init arraylist and query
 <span class="nc" id="L187">            ArrayList&lt;City&gt; cities = new ArrayList&lt;City&gt;();</span>
-<span class="nc" id="L188">            String query = &quot;SELECT CityPopulation, CityName &quot;</span>
+<span class="nc" id="L188">            String query = &quot;SELECT Population, Name &quot;</span>
                     +&quot;FROM city &quot;
-                    +&quot;ORDER BY CityPopulation DESC&quot;;
+                    +&quot;ORDER BY Population DESC&quot;;
 
             try
             {
@@ -200,8 +200,8 @@ import java.util.ArrayList;
 <span class="nc bnc" id="L200" title="All 4 branches missed.">                while(rset.next() &amp;&amp; i &lt; count)</span>
                 {
 <span class="nc" id="L202">                    City tempCity = new City();</span>
-<span class="nc" id="L203">                    tempCity.setCitypopulation(rset.getInt(&quot;CityPopulation&quot;));</span>
-<span class="nc" id="L204">                    tempCity.setCityName(rset.getString(&quot;CityName&quot;));</span>
+<span class="nc" id="L203">                    tempCity.setCitypopulation(rset.getInt(&quot;Population&quot;));</span>
+<span class="nc" id="L204">                    tempCity.setCityName(rset.getString(&quot;Name&quot;));</span>
 <span class="nc" id="L205">                    cities.add(tempCity);</span>
 <span class="nc" id="L206">                    i++;</span>
 <span class="nc" id="L207">                }</span>
