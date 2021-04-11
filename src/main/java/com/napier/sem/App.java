@@ -236,11 +236,11 @@ import java.util.ArrayList;
 
                 if(rset.next())
                 {
-                    CityNameSearch = rset.getInt("City's Region");
-                    tempCity.setCityName(rset.getString("City's Name"));
-                    tempCity.setCitypopulation(rset.getInt("City's Population"));
-                    tempCity.setCitydistrict(rset.getString("City's District"));
-                    tempCity.setCityCountry(rset.getString("Country"));
+                    CityNameSearch = rset.getInt("Capital");
+                    tempCity.setCityName(rset.getString("Name"));
+                    tempCity.setCitypopulation(rset.getInt("Population"));
+                    tempCity.setCitydistrict(rset.getString("District"));
+                    tempCity.setCityCountry(rset.getString("CountryCode"));
 
                 }
             }
