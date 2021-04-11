@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.napier.sem.AppIntegrationTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 31.13 sec - in com.napier.sem.AppIntegrationTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 33.509 sec - in com.napier.sem.AppIntegrationTest
