@@ -228,7 +228,7 @@ import java.util.ArrayList;
 <span class="nc" id="L228">            int CityNameSearch = 0;</span>
 <span class="nc" id="L229">            String query = &quot;SELECT Name, Population, District, CountryCode &quot;</span>
                     +&quot;FROM city &quot;
-                    +&quot;WHERE CityName = '&quot; + city + &quot;'&quot;;
+                    +&quot;WHERE Name = '&quot; + city + &quot;'&quot;;
             try
             {
 <span class="nc" id="L234">                Statement stmt = con.createStatement();</span>

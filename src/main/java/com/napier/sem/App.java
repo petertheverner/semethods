@@ -228,7 +228,7 @@ import java.util.ArrayList;
             int CityNameSearch = 0;
             String query = "SELECT Name, Population, District, CountryCode "
                     +"FROM city "
-                    +"WHERE CityName = '" + city + "'";
+                    +"WHERE Name = '" + city + "'";
             try
             {
                 Statement stmt = con.createStatement();
