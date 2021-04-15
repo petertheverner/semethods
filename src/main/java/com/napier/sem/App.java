@@ -377,7 +377,7 @@ public class App
             // As the cities table does not record any information on cities being capital, all capital city
             // codes need to be recorded from the Country table.
             String query = "SELECT Capital "
-                           +"FROM Country ";
+                           +"FROM country ";
             ArrayList<Integer> CapitalCodes = new ArrayList<Integer>();
 
             try
@@ -387,14 +387,45 @@ public class App
 
                 while(rset.next())
                 {
+                    // Record each capital code, since every country has a capital, no validation checking is needed.
                     CapitalCodes.add(rset.getInt("Capital"));
                 }
             }
             catch (Exception e)
             {
                 System.out.println(e.getMessage());
-                System.out.println("Unable to retrieve country capital coes.");
+                System.out.println("Unable to retrieve country capital cites.");
             }
+
+            for(int i = 0; i < CapitalCodes.size(); i++)
+            {
+                query = "SELECT Name, Population "
+                        +"FROM city "
+                        +"WHERE ID = " + CapitalCodes.get(i);
+
+                try
+                {
+                    Statement stmt = con.createStatement();
+                    ResultSet rset = stmt.executeQuery(query);
+
+                    if(rset.next())
+                    {
+                        City tempCity = new City();
+                        tempCity.setCitypopulation(rset.getInt("Population"));
+                        tempCity.setCityName(rset.getString("Name"));
+
+                        Cities.add(tempCity);
+                    }
+                }
+
+                catch(Exception e)
+                {
+                    System.out.println(e.getMessage());
+                    System.out.println("Unable to retrieve and/or record capital city names and populations.");
+                }
+            }
+
+
             return Cities;
         }
 
