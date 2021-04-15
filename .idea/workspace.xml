@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Temporary change to run deploy stage first and without master branch requirement for error testing.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/napier/sem/AppIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/napier/sem/AppIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/napier/sem/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/napier/sem/AppTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/App.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/CapitalCity.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/City.class" beforeDir="false" />
@@ -24,7 +20,7 @@
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/seMethods-0.1.0.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/seMethods-0.1.0.6.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/seMethods.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/App.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/App.java.html" beforeDir="false" />
@@ -103,17 +99,6 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunManager" selected="Docker.docker-compose.yml.db: Compose Deployment">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="AppIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="seMethods" />
       <extension name="coverage">
@@ -198,6 +183,7 @@
       <workItem from="1618179374960" duration="5029000" />
       <workItem from="1618498996046" duration="623000" />
       <workItem from="1618499669640" duration="4726000" />
+      <workItem from="1618511343130" duration="46000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed errors">
       <created>1616580236230</created>

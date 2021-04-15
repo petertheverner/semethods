@@ -525,7 +525,7 @@ public class App
             for(int i = 0; i < CitiesPopulations.size(); i++)
             {
                 System.out.println("City " + (i+1) + ": " + CitiesPopulations.get(i).getCityName());
-                System.out.println("Population : " + String.format("%,d", CitiesPopulations.get(i).getCityPopulation() + "\n"));
+                System.out.println("Population : " + CitiesPopulations.get(i).getCityPopulation() + "\n");
             }
 
 
