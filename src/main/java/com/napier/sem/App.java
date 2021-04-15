@@ -8,8 +8,10 @@ package com.napier.sem;
 // Imports all SQL methods.
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
-    public class App
+public class App
     {
         // Connection object initialised as null.
         private Connection con = null;
@@ -440,6 +442,19 @@ import java.util.ArrayList;
             { System.out.println("City Name" +  " : " + Citys.get(i).getCityName());
                 System.out.println(" City Population : " + String.format("%,d", Citys.get(i).getCityPopulation()));
             }
+
+            // Print all capital cities by population (Use Case 03).
+            System.out.println("\n----- CAPITAL CITIES BY POPULATION - USE CASE 03 -----");
+            ArrayList<City> CitiesPopulations = new ArrayList<City>();
+            CitiesPopulations = a.GetCapitalCities();
+            CitiesPopulations.sort(Comparator.comparing(City::getCityPopulation));
+            System.out.println("POPULATION OF CAPITAL CITIES IN DESCENDING ORDER: ");
+            for(int i = 0; i < CitiesPopulations.size(); i++)
+            {
+                System.out.println("City " + i + ": " + CitiesPopulations.get(i).getCityName());
+                System.out.println("Population : " + CitiesPopulations.get(i).getCityPopulation() + "\n");
+            }
+
 
             // Terminate connection to the database.
             a.Disconnect();
