@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Base method created; Retrieves capital codes used to identify which cities are capitals.">
+    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Repackaged project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +37,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="JUnit.AppIntegrationTest">
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -79,8 +79,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="JUnit.AppTest" />
       </list>
     </recent_temporary>
@@ -100,7 +109,7 @@
       <workItem from="1618178038667" duration="930000" />
       <workItem from="1618179374960" duration="5029000" />
       <workItem from="1618498996046" duration="623000" />
-      <workItem from="1618499669640" duration="1667000" />
+      <workItem from="1618499669640" duration="2202000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed errors">
       <created>1616580236230</created>
@@ -270,7 +279,21 @@
       <option name="project" value="LOCAL" />
       <updated>1618500918341</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="GetCapitalCities method fully completed functionally.">
+      <created>1618501368754</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1618501368754</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Repackaged project">
+      <created>1618501597261</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1618501597261</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,14 +324,15 @@
     <MESSAGE value="Re-implemented code cov reporter" />
     <MESSAGE value="Fixed method getcityreport output error" />
     <MESSAGE value="Fixed query typo in GetCityReport" />
-    <MESSAGE value="Repackaged project" />
     <MESSAGE value="Fixed typo in a query preventing GetCityReport from returning a city object." />
     <MESSAGE value="Removed redundant code preventing the GetCityReports method from running correctly" />
     <MESSAGE value="Corrected variable names in the GetCityPopulations method." />
     <MESSAGE value="Corrected variable names in the query for the GetCityPopulations method." />
     <MESSAGE value="Base output code created for capital cities output (use case 03)" />
     <MESSAGE value="Base method created; Retrieves capital codes used to identify which cities are capitals." />
-    <option name="LAST_COMMIT_MESSAGE" value="Base method created; Retrieves capital codes used to identify which cities are capitals." />
+    <MESSAGE value="GetCapitalCities method fully completed functionally." />
+    <MESSAGE value="Repackaged project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Repackaged project" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/seMethods$Tests.ic" NAME="Tests Coverage Results" MODIFIED="1616581514282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
