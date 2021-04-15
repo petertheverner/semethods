@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Corrected variable names in the query for the GetCityPopulations method.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Base output code created for capital cities output (use case 03)">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -14,6 +13,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1qCOPWXYvEbOajfZXvCl9kT4cGk" />
@@ -95,7 +99,7 @@
       <workItem from="1618178038667" duration="930000" />
       <workItem from="1618179374960" duration="5029000" />
       <workItem from="1618498996046" duration="623000" />
-      <workItem from="1618499669640" duration="789000" />
+      <workItem from="1618499669640" duration="1216000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed errors">
       <created>1616580236230</created>
@@ -251,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618184780976</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Base output code created for capital cities output (use case 03)">
+      <created>1618500544941</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1618500544941</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,7 +298,8 @@
     <MESSAGE value="Removed redundant code preventing the GetCityReports method from running correctly" />
     <MESSAGE value="Corrected variable names in the GetCityPopulations method." />
     <MESSAGE value="Corrected variable names in the query for the GetCityPopulations method." />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrected variable names in the query for the GetCityPopulations method." />
+    <MESSAGE value="Base output code created for capital cities output (use case 03)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Base output code created for capital cities output (use case 03)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/seMethods$Tests.ic" NAME="Tests Coverage Results" MODIFIED="1616581514282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

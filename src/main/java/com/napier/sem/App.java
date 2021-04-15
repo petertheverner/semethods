@@ -370,6 +370,34 @@ public class App
             return Countries;
         }
 
+        public ArrayList<City> GetCapitalCities()
+        {
+            ArrayList<City> Cities = new ArrayList<City>();
+
+            // As the cities table does not record any information on cities being capital, all capital city
+            // codes need to be recorded from the Country table.
+            String query = "SELECT Capital "
+                           +"FROM Country ";
+            ArrayList<Integer> CapitalCodes = new ArrayList<Integer>();
+
+            try
+            {
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery(query);
+
+                while(rset.next())
+                {
+                    CapitalCodes.add(rset.getInt("Capital"));
+                }
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Unable to retrieve country capital coes.");
+            }
+            return Cities;
+        }
+
 
         public static void main(String[] args)
         {
