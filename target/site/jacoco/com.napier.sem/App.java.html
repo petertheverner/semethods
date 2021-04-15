@@ -372,154 +372,168 @@ import java.util.Comparator;
 
         public ArrayList&lt;City&gt; GetCapitalCities()
         {
-<span class="nc" id="L375">            ArrayList&lt;City&gt; Cities = new ArrayList&lt;City&gt;();</span>
+<span class="fc" id="L375">            ArrayList&lt;City&gt; Cities = new ArrayList&lt;City&gt;();</span>
 
             // As the cities table does not record any information on cities being capital, all capital city
             // codes need to be recorded from the Country table.
-<span class="nc" id="L379">            String query = &quot;SELECT Capital &quot;</span>
+<span class="fc" id="L379">            String query = &quot;SELECT Capital &quot;</span>
                            +&quot;FROM country &quot;;
-<span class="nc" id="L381">            ArrayList&lt;Integer&gt; CapitalCodes = new ArrayList&lt;Integer&gt;();</span>
+<span class="fc" id="L381">            ArrayList&lt;Integer&gt; CapitalCodes = new ArrayList&lt;Integer&gt;();</span>
 
             try
             {
-<span class="nc" id="L385">                Statement stmt = con.createStatement();</span>
-<span class="nc" id="L386">                ResultSet rset = stmt.executeQuery(query);</span>
+<span class="fc" id="L385">                Statement stmt = con.createStatement();</span>
+<span class="fc" id="L386">                ResultSet rset = stmt.executeQuery(query);</span>
 
-<span class="nc bnc" id="L388" title="All 2 branches missed.">                while(rset.next())</span>
+<span class="fc bfc" id="L388" title="All 2 branches covered.">                while(rset.next())</span>
                 {
                     // Record each capital code, since every country has a capital, no validation checking is needed.
-<span class="nc" id="L391">                    CapitalCodes.add(rset.getInt(&quot;Capital&quot;));</span>
+<span class="fc" id="L391">                    CapitalCodes.add(rset.getInt(&quot;Capital&quot;));</span>
                 }
             }
-<span class="nc" id="L394">            catch (Exception e)</span>
-            {
-<span class="nc" id="L396">                System.out.println(e.getMessage());</span>
-<span class="nc" id="L397">                System.out.println(&quot;Unable to retrieve country capital cites.&quot;);</span>
-<span class="nc" id="L398">            }</span>
 
-<span class="nc bnc" id="L400" title="All 2 branches missed.">            for(int i = 0; i &lt; CapitalCodes.size(); i++)</span>
+<span class="nc" id="L395">            catch (Exception e)</span>
             {
-<span class="nc" id="L402">                query = &quot;SELECT Name, Population &quot;</span>
+<span class="nc" id="L397">                System.out.println(e.getMessage());</span>
+<span class="nc" id="L398">                System.out.println(&quot;Unable to retrieve country capital cites.&quot;);</span>
+<span class="fc" id="L399">            }</span>
+
+            // For each capital city code found, execute a query to find the city with that code
+            // in the city table.
+<span class="fc bfc" id="L403" title="All 2 branches covered.">            for(int i = 0; i &lt; CapitalCodes.size(); i++)</span>
+            {
+<span class="fc" id="L405">                query = &quot;SELECT Name, Population &quot;</span>
                         +&quot;FROM city &quot;
-<span class="nc" id="L404">                        +&quot;WHERE ID = &quot; + CapitalCodes.get(i);</span>
+<span class="fc" id="L407">                        +&quot;WHERE ID = &quot; + CapitalCodes.get(i);</span>
 
                 try
                 {
-<span class="nc" id="L408">                    Statement stmt = con.createStatement();</span>
-<span class="nc" id="L409">                    ResultSet rset = stmt.executeQuery(query);</span>
+<span class="fc" id="L411">                    Statement stmt = con.createStatement();</span>
+<span class="fc" id="L412">                    ResultSet rset = stmt.executeQuery(query);</span>
 
-<span class="nc bnc" id="L411" title="All 2 branches missed.">                    if(rset.next())</span>
+                    // If statement used as theres only 1 ID per capital city. Once the city is found,
+                    // it will proceed to the next iteration of the for loop.
+<span class="fc bfc" id="L416" title="All 2 branches covered.">                    if(rset.next())</span>
                     {
-<span class="nc" id="L413">                        City tempCity = new City();</span>
-<span class="nc" id="L414">                        tempCity.setCitypopulation(rset.getInt(&quot;Population&quot;));</span>
-<span class="nc" id="L415">                        tempCity.setCityName(rset.getString(&quot;Name&quot;));</span>
+<span class="fc" id="L418">                        City tempCity = new City();</span>
+<span class="fc" id="L419">                        tempCity.setCitypopulation(rset.getInt(&quot;Population&quot;));</span>
+<span class="fc" id="L420">                        tempCity.setCityName(rset.getString(&quot;Name&quot;));</span>
 
-<span class="nc" id="L417">                        Cities.add(tempCity);</span>
+<span class="fc" id="L422">                        Cities.add(tempCity);</span>
                     }
                 }
 
-<span class="nc" id="L421">                catch(Exception e)</span>
+<span class="nc" id="L426">                catch(Exception e)</span>
                 {
-<span class="nc" id="L423">                    System.out.println(e.getMessage());</span>
-<span class="nc" id="L424">                    System.out.println(&quot;Unable to retrieve and/or record capital city names and populations.&quot;);</span>
-<span class="nc" id="L425">                }</span>
+<span class="nc" id="L428">                    System.out.println(e.getMessage());</span>
+<span class="nc" id="L429">                    System.out.println(&quot;Unable to retrieve and/or record capital city names and populations.&quot;);</span>
+<span class="fc" id="L430">                }</span>
             }
 
-
-<span class="nc" id="L429">            return Cities;</span>
+<span class="fc" id="L433">            return Cities;</span>
         }
 
 
         public static void main(String[] args)
         {
             // Initialise the application
-<span class="nc" id="L436">            App a = new App();</span>
+<span class="nc" id="L440">            App a = new App();</span>
 
             // Connect to the database
-<span class="nc bnc" id="L439" title="All 2 branches missed.">            if(args.length &lt; 1)</span>
+<span class="nc bnc" id="L443" title="All 2 branches missed.">            if(args.length &lt; 1)</span>
             {
-<span class="nc" id="L441">                a.Connect(&quot;localhost:3306&quot;);</span>
+<span class="nc" id="L445">                a.Connect(&quot;localhost:3306&quot;);</span>
             }
             else
             {
-<span class="nc" id="L445">                a.Connect(args[0]);</span>
+<span class="nc" id="L449">                a.Connect(args[0]);</span>
             };
 
             // Print populations of regions (Use Case 04)
-<span class="nc" id="L449">            System.out.println(&quot;----- POPULATIONS - Use Case 04 -----&quot;);</span>
+<span class="nc" id="L453">            System.out.println(&quot;----- POPULATIONS - Use Case 04 -----&quot;);</span>
 
-<span class="nc" id="L451">            System.out.println(&quot;\nPopulation of the world&quot;);</span>
-<span class="nc" id="L452">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;,a.GetPopulation(1, &quot;&quot;)) + &quot; &lt;&lt;&quot;);</span>
-<span class="nc" id="L453">            System.out.println(&quot;Population of a continent (Europe)&quot;);</span>
-<span class="nc" id="L454">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;, a.GetPopulation(2, &quot;Europe&quot;)) + &quot; &lt;&lt;&quot;);</span>
-<span class="nc" id="L455">            System.out.println(&quot;Population of a region (British Islands)&quot;);</span>
-<span class="nc" id="L456">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;, a.GetPopulation(3, &quot;British Islands&quot;)) + &quot; &lt;&lt;&quot;);</span>
-<span class="nc" id="L457">            System.out.println(&quot;Population of a country (Great Britain)&quot;);</span>
-<span class="nc" id="L458">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;, a.GetPopulation(4, &quot;United Kingdom&quot;)) + &quot; &lt;&lt;&quot;);</span>
-<span class="nc" id="L459">            System.out.println(&quot;Population of a district (Scotland)&quot;);</span>
-<span class="nc" id="L460">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;, a.GetPopulation(5, &quot;Scotland&quot;)) + &quot; &lt;&lt;&quot;);</span>
-<span class="nc" id="L461">            System.out.println(&quot;Population of a city (Edinburgh)&quot;);</span>
-<span class="nc" id="L462">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;, a.GetPopulation(6, &quot;Edinburgh&quot;)) + &quot; &lt;&lt;&quot;);</span>
+<span class="nc" id="L455">            System.out.println(&quot;\nPopulation of the world&quot;);</span>
+<span class="nc" id="L456">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;,a.GetPopulation(1, &quot;&quot;)) + &quot; &lt;&lt;&quot;);</span>
+<span class="nc" id="L457">            System.out.println(&quot;Population of a continent (Europe)&quot;);</span>
+<span class="nc" id="L458">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;, a.GetPopulation(2, &quot;Europe&quot;)) + &quot; &lt;&lt;&quot;);</span>
+<span class="nc" id="L459">            System.out.println(&quot;Population of a region (British Islands)&quot;);</span>
+<span class="nc" id="L460">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;, a.GetPopulation(3, &quot;British Islands&quot;)) + &quot; &lt;&lt;&quot;);</span>
+<span class="nc" id="L461">            System.out.println(&quot;Population of a country (Great Britain)&quot;);</span>
+<span class="nc" id="L462">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;, a.GetPopulation(4, &quot;United Kingdom&quot;)) + &quot; &lt;&lt;&quot;);</span>
+<span class="nc" id="L463">            System.out.println(&quot;Population of a district (Scotland)&quot;);</span>
+<span class="nc" id="L464">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;, a.GetPopulation(5, &quot;Scotland&quot;)) + &quot; &lt;&lt;&quot;);</span>
+<span class="nc" id="L465">            System.out.println(&quot;Population of a city (Edinburgh)&quot;);</span>
+<span class="nc" id="L466">            System.out.println(&quot;&gt;&gt; &quot; + String.format(&quot;%,d&quot;, a.GetPopulation(6, &quot;Edinburgh&quot;)) + &quot; &lt;&lt;&quot;);</span>
+
 
             // Print report of a specified country (Use Case 07)
-<span class="nc" id="L465">            System.out.println(&quot;\n----- COUNTRY REPORT - Use Case 07 -----&quot;);</span>
-<span class="nc" id="L466">            System.out.println(&quot;\n Country report of the country 'Denmark' : &quot;);</span>
+<span class="nc" id="L470">            System.out.println(&quot;\n----- COUNTRY REPORT - Use Case 07 -----&quot;);</span>
+<span class="nc" id="L471">            System.out.println(&quot;\n Country report of the country 'Denmark' : &quot;);</span>
             // Calls the GetCountryReport method which returns a country object. Then it calls
             // the toString method of the Country class which returns a text output.
-<span class="nc" id="L469">            System.out.println(a.GetCountryReport(&quot;Denmark&quot;).toString());</span>
+<span class="nc" id="L474">            System.out.println(a.GetCountryReport(&quot;Denmark&quot;).toString());</span>
+
 
             // Print report of a specified country (Use Case 08)
-<span class="nc" id="L472">            System.out.println(&quot;\n----- CITY REPORT - Use Case 08 -----&quot;);</span>
-<span class="nc" id="L473">            System.out.println(&quot;\n City report of the city 'Edinburgh' : &quot;);</span>
+<span class="nc" id="L478">            System.out.println(&quot;\n----- CITY REPORT - Use Case 08 -----&quot;);</span>
+<span class="nc" id="L479">            System.out.println(&quot;\n City report of the city 'Edinburgh' : &quot;);</span>
             // Calls the GetCountryReport method which returns a country object. Then it calls
             // the toString method of the Country class which returns a text output.
-<span class="nc" id="L476">            System.out.println(a.GetCityReport(&quot;Edinburgh&quot;).toString());</span>
+<span class="nc" id="L482">            System.out.println(a.GetCityReport(&quot;Edinburgh&quot;).toString());</span>
+
 
             // Print N most populated countries in the world (Use Case 02).
-<span class="nc" id="L479">            System.out.println(&quot;\n----- COUNTRY POPULATION BY NUMBER - USE CASE 2 -----&quot;);</span>
-<span class="nc" id="L480">            System.out.println(&quot;\nTop 10 most populated countries : &quot;);</span>
+<span class="nc" id="L486">            System.out.println(&quot;\n----- COUNTRY POPULATION BY NUMBER - USE CASE 2 -----&quot;);</span>
+<span class="nc" id="L487">            System.out.println(&quot;\nTop 10 most populated countries : &quot;);</span>
             // Init array for output
-<span class="nc" id="L482">            ArrayList &lt;Country&gt; Countries = new ArrayList&lt;Country&gt;();</span>
+<span class="nc" id="L489">            ArrayList &lt;Country&gt; Countries = new ArrayList&lt;Country&gt;();</span>
             // Retrieve array
-<span class="nc" id="L484">            Countries = a.GetCountryPopulations(10);</span>
+<span class="nc" id="L491">            Countries = a.GetCountryPopulations(10);</span>
             // Output
-<span class="nc bnc" id="L486" title="All 2 branches missed.">            for(int i = 0; i &lt; 10; i++)</span>
-<span class="nc" id="L487">            { System.out.println(&quot;Country &quot; +  &quot; : &quot; + Countries.get(i).getName());</span>
-<span class="nc" id="L488">                System.out.println(&quot;Population : &quot; + String.format(&quot;%,d&quot;, Countries.get(i).getPopulation()));</span>
+<span class="nc bnc" id="L493" title="All 2 branches missed.">            for(int i = 0; i &lt; 10; i++)</span>
+<span class="nc" id="L494">            { System.out.println(&quot;Country &quot; +  &quot; : &quot; + Countries.get(i).getName());</span>
+<span class="nc" id="L495">                System.out.println(&quot;Population : &quot; + String.format(&quot;%,d&quot;, Countries.get(i).getPopulation()));</span>
             }
+
 
             // Print N most populated city's in the world (Use Case 14).
-<span class="nc" id="L492">            System.out.println(&quot;\n----- CITY POPULATION BY NUMBER - USE CASE 14 -----&quot;);</span>
-<span class="nc" id="L493">            System.out.println(&quot;\nTop 10 most populated City's : &quot;);</span>
+<span class="nc" id="L500">            System.out.println(&quot;\n----- CITY POPULATION BY NUMBER - USE CASE 14 -----&quot;);</span>
+<span class="nc" id="L501">            System.out.println(&quot;\nTop 10 most populated City's : &quot;);</span>
             // Init array for output
-<span class="nc" id="L495">            ArrayList &lt;City&gt; Citys = new ArrayList&lt;City&gt;();</span>
+<span class="nc" id="L503">            ArrayList &lt;City&gt; Citys = new ArrayList&lt;City&gt;();</span>
             // Retrieve array
-<span class="nc" id="L497">            Citys = a.GetCityPopulations(10);</span>
+<span class="nc" id="L505">            Citys = a.GetCityPopulations(10);</span>
             // Output
-<span class="nc" id="L499">            System.out.println(&quot;TOP 10 MOST POPULATED CITY'S : &quot;);</span>
-<span class="nc bnc" id="L500" title="All 2 branches missed.">            for(int i = 0; i &lt; 10; i++)</span>
-<span class="nc" id="L501">            { System.out.println(&quot;City Name&quot; +  &quot; : &quot; + Citys.get(i).getCityName());</span>
-<span class="nc" id="L502">                System.out.println(&quot; City Population : &quot; + String.format(&quot;%,d&quot;, Citys.get(i).getCityPopulation()));</span>
+<span class="nc" id="L507">            System.out.println(&quot;TOP 10 MOST POPULATED CITY'S : &quot;);</span>
+<span class="nc bnc" id="L508" title="All 2 branches missed.">            for(int i = 0; i &lt; 10; i++)</span>
+<span class="nc" id="L509">            { System.out.println(&quot;City Name&quot; +  &quot; : &quot; + Citys.get(i).getCityName());</span>
+<span class="nc" id="L510">                System.out.println(&quot; City Population : &quot; + String.format(&quot;%,d&quot;, Citys.get(i).getCityPopulation()));</span>
             }
 
+
             // Print all capital cities by population (Use Case 03).
-<span class="nc" id="L506">            System.out.println(&quot;\n----- CAPITAL CITIES BY POPULATION - USE CASE 03 -----&quot;);</span>
-<span class="nc" id="L507">            ArrayList&lt;City&gt; CitiesPopulations = new ArrayList&lt;City&gt;();</span>
-<span class="nc" id="L508">            CitiesPopulations = a.GetCapitalCities();</span>
-<span class="nc" id="L509">            CitiesPopulations.sort(Comparator.comparing(City::getCityPopulation));</span>
-<span class="nc" id="L510">            System.out.println(&quot;POPULATION OF CAPITAL CITIES IN DESCENDING ORDER: &quot;);</span>
-<span class="nc bnc" id="L511" title="All 2 branches missed.">            for(int i = 0; i &lt; CitiesPopulations.size(); i++)</span>
+<span class="nc" id="L515">            System.out.println(&quot;\n----- CAPITAL CITIES BY POPULATION - USE CASE 03 -----&quot;);</span>
+<span class="nc" id="L516">            ArrayList&lt;City&gt; CitiesPopulations = new ArrayList&lt;City&gt;();</span>
+            // Populate arraylist
+<span class="nc" id="L518">            CitiesPopulations = a.GetCapitalCities();</span>
+
+            // Sort arraylist in ascending order
+<span class="nc" id="L521">            CitiesPopulations.sort(Comparator.comparing(City::getCityPopulation));</span>
+<span class="nc" id="L522">            System.out.println(&quot;POPULATION OF CAPITAL CITIES IN ASCENDING ORDER: &quot;);</span>
+
+            // Output cities and populations
+<span class="nc bnc" id="L525" title="All 2 branches missed.">            for(int i = 0; i &lt; CitiesPopulations.size(); i++)</span>
             {
-<span class="nc" id="L513">                System.out.println(&quot;City &quot; + i + &quot;: &quot; + CitiesPopulations.get(i).getCityName());</span>
-<span class="nc" id="L514">                System.out.println(&quot;Population : &quot; + CitiesPopulations.get(i).getCityPopulation() + &quot;\n&quot;);</span>
+<span class="nc" id="L527">                System.out.println(&quot;City &quot; + (i+1) + &quot;: &quot; + CitiesPopulations.get(i).getCityName());</span>
+<span class="nc" id="L528">                System.out.println(&quot;Population : &quot; + String.format(&quot;%,d&quot;, CitiesPopulations.get(i).getCityPopulation() + &quot;\n&quot;));</span>
             }
 
 
             // Terminate connection to the database.
-<span class="nc" id="L519">            a.Disconnect();</span>
+<span class="nc" id="L533">            a.Disconnect();</span>
 
 
 
-<span class="nc" id="L523">        }</span>
+<span class="nc" id="L537">        }</span>
     }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -77,4 +77,8 @@ public class AppTest {
         int arraySize = a.GetCountryPopulations(-20).size();
         assertEquals(0, arraySize);
     }
+
+    // No unit tests can be done for the method GetCapitalCities as no matter what, the user cannot
+    // affect the output; No inputs are given.
+
 }

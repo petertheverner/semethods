@@ -391,12 +391,15 @@ public class App
                     CapitalCodes.add(rset.getInt("Capital"));
                 }
             }
+
             catch (Exception e)
             {
                 System.out.println(e.getMessage());
                 System.out.println("Unable to retrieve country capital cites.");
             }
 
+            // For each capital city code found, execute a query to find the city with that code
+            // in the city table.
             for(int i = 0; i < CapitalCodes.size(); i++)
             {
                 query = "SELECT Name, Population "
@@ -408,6 +411,8 @@ public class App
                     Statement stmt = con.createStatement();
                     ResultSet rset = stmt.executeQuery(query);
 
+                    // If statement used as theres only 1 ID per capital city. Once the city is found,
+                    // it will proceed to the next iteration of the for loop.
                     if(rset.next())
                     {
                         City tempCity = new City();
@@ -424,7 +429,6 @@ public class App
                     System.out.println("Unable to retrieve and/or record capital city names and populations.");
                 }
             }
-
 
             return Cities;
         }
@@ -461,6 +465,7 @@ public class App
             System.out.println("Population of a city (Edinburgh)");
             System.out.println(">> " + String.format("%,d", a.GetPopulation(6, "Edinburgh")) + " <<");
 
+
             // Print report of a specified country (Use Case 07)
             System.out.println("\n----- COUNTRY REPORT - Use Case 07 -----");
             System.out.println("\n Country report of the country 'Denmark' : ");
@@ -468,12 +473,14 @@ public class App
             // the toString method of the Country class which returns a text output.
             System.out.println(a.GetCountryReport("Denmark").toString());
 
+
             // Print report of a specified country (Use Case 08)
             System.out.println("\n----- CITY REPORT - Use Case 08 -----");
             System.out.println("\n City report of the city 'Edinburgh' : ");
             // Calls the GetCountryReport method which returns a country object. Then it calls
             // the toString method of the Country class which returns a text output.
             System.out.println(a.GetCityReport("Edinburgh").toString());
+
 
             // Print N most populated countries in the world (Use Case 02).
             System.out.println("\n----- COUNTRY POPULATION BY NUMBER - USE CASE 2 -----");
@@ -487,6 +494,7 @@ public class App
             { System.out.println("Country " +  " : " + Countries.get(i).getName());
                 System.out.println("Population : " + String.format("%,d", Countries.get(i).getPopulation()));
             }
+
 
             // Print N most populated city's in the world (Use Case 14).
             System.out.println("\n----- CITY POPULATION BY NUMBER - USE CASE 14 -----");
@@ -502,16 +510,22 @@ public class App
                 System.out.println(" City Population : " + String.format("%,d", Citys.get(i).getCityPopulation()));
             }
 
+
             // Print all capital cities by population (Use Case 03).
             System.out.println("\n----- CAPITAL CITIES BY POPULATION - USE CASE 03 -----");
             ArrayList<City> CitiesPopulations = new ArrayList<City>();
+            // Populate arraylist
             CitiesPopulations = a.GetCapitalCities();
+
+            // Sort arraylist in ascending order
             CitiesPopulations.sort(Comparator.comparing(City::getCityPopulation));
-            System.out.println("POPULATION OF CAPITAL CITIES IN DESCENDING ORDER: ");
+            System.out.println("POPULATION OF CAPITAL CITIES IN ASCENDING ORDER: ");
+
+            // Output cities and populations
             for(int i = 0; i < CitiesPopulations.size(); i++)
             {
-                System.out.println("City " + i + ": " + CitiesPopulations.get(i).getCityName());
-                System.out.println("Population : " + CitiesPopulations.get(i).getCityPopulation() + "\n");
+                System.out.println("City " + (i+1) + ": " + CitiesPopulations.get(i).getCityName());
+                System.out.println("Population : " + String.format("%,d", CitiesPopulations.get(i).getCityPopulation() + "\n"));
             }
 
 

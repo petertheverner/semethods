@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import java.util.ArrayList;
+import java.util.Comparator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AppIntegrationTest {
@@ -17,6 +19,7 @@ public class AppIntegrationTest {
         a = new App();
         a.Connect("localhost:33060");
     }
+
 
     // Tests for GetPopulation(int searchType, string search)
 
@@ -58,6 +61,7 @@ public class AppIntegrationTest {
         assertEquals("Europe", count.getContinent());
     }
 
+
     // Tests for the method : GetCountryPopulations(int count)
 
     @Test
@@ -74,8 +78,22 @@ public class AppIntegrationTest {
         assertEquals(278357000, Countries.get(2).getPopulation());
         assertEquals(212107000, Countries.get(3).getPopulation());
         assertEquals(170115000, Countries.get(4).getPopulation());
+    }
 
 
+    // Tests for the method : GetCapitalCities()
+    @Test
+    void TestGetCapitalCities()
+    {
+        ArrayList<City> Cities = new ArrayList<City>();
+        Cities = a.GetCapitalCities();
+        Cities.sort(Comparator.comparing(City::getCityPopulation));
+
+        assertEquals("Adamstown", Cities.get(0).getCityName());
+        assertEquals(42, Cities.get(0).getCityPopulation());
+
+        assertEquals("Seoul", Cities.get(Cities.size()-1).getCityName());
+        assertEquals(9981619, Cities.get(Cities.size()-1).getCityPopulation());
     }
 
 }
