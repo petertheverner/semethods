@@ -78,6 +78,24 @@ public class AppTest {
         assertEquals(0, arraySize);
     }
 
+    // Tests for the method getCapitalCityReport(String city)
+
+    // Test by passing in an empty city input string
+    @Test
+    void TestGetCapitalCityEmptyString()
+    {
+        City tempCity = a.getCapitalCityReport("");
+        assertEquals(null, tempCity);
+    }
+
+    // Test by passing in a null input
+    @Test
+    void TestGetCapitalCityNull()
+    {
+        City tempCity = a.getCapitalCityReport(null);
+        assertEquals(null, tempCity);
+    }
+
     // No unit tests can be done for the method GetCapitalCities as no matter what, the user cannot
     // affect the output; No inputs are given.
 

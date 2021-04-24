@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>City.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">seMethods</a> &gt; <a href="index.source.html" class="el_package">com.napier.sem</a> &gt; <span class="el_source">City.java</span></div><h1>City.java</h1><pre class="source lang-java linenums">package com.napier.sem;
+
+<span class="fc" id="L3">public class City {</span>
+
+    //variables for City
+    private String Cityname;
+    private int Citypopulation;
+    private String Citycountry;
+    private String Citydistrict;
+
+
+    //Setters
+<span class="fc" id="L13">    public void setCitypopulation(int CityPopulation) { this.Citypopulation =  CityPopulation; }</span>
+<span class="fc" id="L14">    public void setCityName(String CityName) { this.Cityname = CityName; }</span>
+<span class="nc" id="L15">    public void setCityCountry(String cityCountry) {this.Citycountry = cityCountry; }</span>
+<span class="nc" id="L16">    public void setCitydistrict(String citydistrict) {this.Citydistrict = citydistrict;}</span>
+    //Getters
+<span class="fc" id="L18">    public int getCityPopulation() { return this.Citypopulation; }</span>
+<span class="fc" id="L19">    public String getCityName() { return this.Cityname; }</span>
+
+    // toString output method.
+    @Override
+    public String toString()
+    {
+<span class="nc" id="L25">        return &quot;City Name : &quot; + this.Cityname +</span>
+<span class="nc" id="L26">                &quot;\nCity Population : &quot; + String.format(&quot;%,d&quot;,this.Citypopulation) +</span>
+                &quot;\nCity District : &quot; + this.Citydistrict +
+                &quot;\nCity Country : &quot; + this.Citycountry;
+
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -439,7 +439,14 @@ public class App
             // Init variables to populate city object
             int cityID = -1;
             int countryCode = -1;
-            City TempCity = null;
+            City TempCity = new City();
+
+            // Check that a correct is input is given
+            if(city == null || city == "" )
+            {
+                System.out.println("Error: Invalid city provided!");
+                return null;
+            }
 
             // Setup initial query to get simple city data
             String query = "SELECT Name, District, Population, CountryCode "
