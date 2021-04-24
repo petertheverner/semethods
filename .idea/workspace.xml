@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Fixed error in deployment script">
-      <change afterPath="$PROJECT_DIR$/.github/CODE_OF_CONDUCT.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug_report.md" afterDir="false" />
+    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Readded code of conduct, and added bug report template.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +27,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -46,13 +46,15 @@
     </key>
   </component>
   <component name="RunManager" selected="Docker.Docker Image (1)">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -136,6 +138,7 @@
       <workItem from="1618845195301" duration="2635000" />
       <workItem from="1618992997875" duration="1964000" />
       <workItem from="1618995502391" duration="4753000" />
+      <workItem from="1619277929733" duration="4812000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed errors">
       <created>1616580236230</created>
@@ -375,7 +378,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618999690661</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Readded code of conduct, and added bug report template.">
+      <created>1619031214148</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1619031214148</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,7 +404,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed errors" />
     <MESSAGE value="Fixed target" />
     <MESSAGE value="Fixed travis file" />
     <MESSAGE value="Added workspace file" />
@@ -419,7 +428,8 @@
     <MESSAGE value="Added deployment" />
     <MESSAGE value="Fixed typo preventing unit tests from running and typo in the deployment script," />
     <MESSAGE value="Fixed error in deployment script" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed error in deployment script" />
+    <MESSAGE value="Readded code of conduct, and added bug report template." />
+    <option name="LAST_COMMIT_MESSAGE" value="Readded code of conduct, and added bug report template." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/seMethods$Tests.ic" NAME="Tests Coverage Results" MODIFIED="1616581514282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

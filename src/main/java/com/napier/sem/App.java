@@ -6,6 +6,8 @@
 */
 package com.napier.sem;
 // Imports all SQL methods.
+import org.graalvm.compiler.lir.LIRInstruction;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -433,6 +435,71 @@ public class App
             return Cities;
         }
 
+        public City getCapitalCityReport(String city)
+        {
+            // Init variables to populate city object
+            int cityID = -1;
+            int countryCode = -1;
+            City TempCity = null;
+
+            // Setup initial query to get simple city data
+            String query = "SELECT Name, District, Population, CountryCode "
+                    +"FROM city "
+                    +"WHERE Name='" + city + "'";
+
+            try
+            {
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery(query);
+
+                // Set city's population and district. Also record the city ID and country code for future use.
+                if(rset.next())
+                {
+                 TempCity.setCityName(city);
+                 cityID = rset.getInt("ID");
+                 TempCity.setCitydistrict(rset.getString("District"));
+                 TempCity.setCitypopulation(rset.getInt("Population"));
+                 countryCode = rset.getInt("CountryCode");
+                }
+
+                else
+                {
+                    System.out.println("Error! City not found!");
+                }
+            }
+
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+
+            query = "SELECT Capital "
+                    +"FROM country "
+                    +"WHERE Capital='" + cityID + "'";
+
+            try
+            {
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery(query);
+                if(rset.next())
+                {
+                    if(cityID == rset.getInt(("Capital")))
+                    {
+                        return TempCity;
+                    }
+                    else
+                    {
+                        System.out.println("Error! Input city is not a capital city!");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+            return TempCity;
+        }
+
 
         public static void main(String[] args)
         {
@@ -447,7 +514,7 @@ public class App
             else
             {
                 a.Connect(args[0]);
-            };
+            }
 
             // Print populations of regions (Use Case 04)
             System.out.println("----- POPULATIONS - Use Case 04 -----");
@@ -528,10 +595,13 @@ public class App
                 System.out.println("Population : " + CitiesPopulations.get(i).getCityPopulation() + "\n");
             }
 
+            // Print information on a specific capital city (Use Case 09)
+            System.out.println("\n----- CAPITAL CITY REPORT - USE CASE 09 -----");
+            City ACity = new City();
+            ACity = a.getCapitalCityReport("Edinburgh");
 
             // Terminate connection to the database.
             a.Disconnect();
-
 
 
         }
