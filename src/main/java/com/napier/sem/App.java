@@ -462,9 +462,11 @@ public class App
                  countryCode = rset.getInt("CountryCode");
                 }
 
+                // Error message generated if city not found.
                 else
                 {
                     System.out.println("Error! City not found!");
+                    return null;
                 }
             }
 
@@ -473,23 +475,29 @@ public class App
                 System.out.println(e.getMessage());
             }
 
-            query = "SELECT Capital "
+            // Generate 2nd query, to confirm that the input city is a capital by comparing the cityID to capital city IDs of all countries.
+            query = "SELECT Capital, Code "
                     +"FROM country "
-                    +"WHERE Capital='" + cityID + "'";
+                    +"WHERE Capital='" + cityID + "' "
+                    +"AND Code='" + countryCode + "'";
 
             try
             {
                 Statement stmt = con.createStatement();
                 ResultSet rset = stmt.executeQuery(query);
+                // If cityID matches and Country Code matches, populate the rest of the city object and return it.
                 if(rset.next())
                 {
                     if(cityID == rset.getInt(("Capital")))
                     {
+                        TempCity.setCityCountry("Code");
                         return TempCity;
                     }
+                    // Return appropriate error if there is no matches, AKA the city is not a capital city.
                     else
                     {
                         System.out.println("Error! Input city is not a capital city!");
+                        return null;
                     }
                 }
             }
@@ -497,6 +505,7 @@ public class App
             {
                 System.out.println(e.getMessage());
             }
+
             return TempCity;
         }
 
@@ -599,6 +608,7 @@ public class App
             System.out.println("\n----- CAPITAL CITY REPORT - USE CASE 09 -----");
             City ACity = new City();
             ACity = a.getCapitalCityReport("Edinburgh");
+            System.out.println(ACity.toString());
 
             // Terminate connection to the database.
             a.Disconnect();

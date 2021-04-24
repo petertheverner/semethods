@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Readded code of conduct, and added bug report template.">
+    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Made most of the function, created the output">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" afterDir="false" />
     </list>
@@ -138,7 +138,7 @@
       <workItem from="1618845195301" duration="2635000" />
       <workItem from="1618992997875" duration="1964000" />
       <workItem from="1618995502391" duration="4753000" />
-      <workItem from="1619277929733" duration="4812000" />
+      <workItem from="1619277929733" duration="6234000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed errors">
       <created>1616580236230</created>
@@ -385,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619031214148</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Made most of the function, created the output">
+      <created>1619299908590</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1619299908590</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,7 +411,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed target" />
     <MESSAGE value="Fixed travis file" />
     <MESSAGE value="Added workspace file" />
     <MESSAGE value="Indented stages" />
@@ -429,7 +435,8 @@
     <MESSAGE value="Fixed typo preventing unit tests from running and typo in the deployment script," />
     <MESSAGE value="Fixed error in deployment script" />
     <MESSAGE value="Readded code of conduct, and added bug report template." />
-    <option name="LAST_COMMIT_MESSAGE" value="Readded code of conduct, and added bug report template." />
+    <MESSAGE value="Made most of the function, created the output" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made most of the function, created the output" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/seMethods$Tests.ic" NAME="Tests Coverage Results" MODIFIED="1616581514282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
