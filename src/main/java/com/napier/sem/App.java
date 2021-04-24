@@ -6,7 +6,6 @@
 */
 package com.napier.sem;
 // Imports all SQL methods.
-import org.graalvm.compiler.lir.LIRInstruction;
 
 import java.sql.*;
 import java.util.ArrayList;
