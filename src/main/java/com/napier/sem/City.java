@@ -17,6 +17,8 @@ public class City {
     //Getters
     public int getCityPopulation() { return this.Citypopulation; }
     public String getCityName() { return this.Cityname; }
+    public String getCityCountry() { return this.Citycountry; }
+    public String getCityDistrict() { return this.Citydistrict; }
 
     // toString output method.
     @Override

@@ -436,7 +436,7 @@ public class App
 
         public City getCapitalCityReport(String city)
         {
-            // Init variables to populate city object
+            // Init variables to retrieve country code and the ID of the city
             int cityID = -1;
             int countryCode = -1;
             City TempCity = new City();
@@ -449,7 +449,7 @@ public class App
             }
 
             // Setup initial query to get simple city data
-            String query = "SELECT Name, District, Population, CountryCode "
+            String query = "SELECT ID, Name, District, Population, CountryCode "
                     +"FROM city "
                     +"WHERE Name='" + city + "'";
 
@@ -465,14 +465,12 @@ public class App
                  cityID = rset.getInt("ID");
                  TempCity.setCitydistrict(rset.getString("District"));
                  TempCity.setCitypopulation(rset.getInt("Population"));
-                 countryCode = rset.getInt("CountryCode");
                 }
 
                 // Error message generated if city not found.
                 else
                 {
                     System.out.println("Error! City not found!");
-                    return null;
                 }
             }
 
@@ -482,10 +480,9 @@ public class App
             }
 
             // Generate 2nd query, to confirm that the input city is a capital by comparing the cityID to capital city IDs of all countries.
-            query = "SELECT Capital, Code "
+            query = "SELECT Capital, Code, Name "
                     +"FROM country "
-                    +"WHERE Capital='" + cityID + "' "
-                    +"AND Code='" + countryCode + "'";
+                    +"WHERE Capital='" + cityID + "'";
 
             try
             {
@@ -496,14 +493,13 @@ public class App
                 {
                     if(cityID == rset.getInt(("Capital")))
                     {
-                        TempCity.setCityCountry("Code");
+                        TempCity.setCityCountry(rset.getString("Name"));
                         return TempCity;
                     }
                     // Return appropriate error if there is no matches, AKA the city is not a capital city.
                     else
                     {
                         System.out.println("Error! Input city is not a capital city!");
-                        return null;
                     }
                 }
             }
@@ -511,8 +507,7 @@ public class App
             {
                 System.out.println(e.getMessage());
             }
-
-            return TempCity;
+            return null;
         }
 
 
@@ -613,7 +608,7 @@ public class App
             // Print information on a specific capital city (Use Case 09)
             System.out.println("\n----- CAPITAL CITY REPORT - USE CASE 09 -----");
             City ACity = new City();
-            ACity = a.getCapitalCityReport("Edinburgh");
+            ACity = a.getCapitalCityReport("London");
             System.out.println(ACity.toString());
 
             // Terminate connection to the database.

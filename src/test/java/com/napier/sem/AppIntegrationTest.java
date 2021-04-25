@@ -96,4 +96,27 @@ public class AppIntegrationTest {
         assertEquals(9981619, Cities.get(Cities.size()-1).getCityPopulation());
     }
 
+    // Tests for the method: GetCapitalCityReport(String city)
+
+    // Test inputting a city that is not a capital city
+    @Test
+    void TestGetCapitalCityReportNonCapital()
+    {
+        City tempCity = a.getCapitalCityReport("Breda");
+        assertEquals(null, tempCity);
+    }
+
+    // Test to ensure that the method returns a correct value.
+    @Test
+    void TestGetCapitalCityReport()
+    {
+        City tempCity = a.getCapitalCityReport("London");
+        City Edinburgh = new City();
+
+        assertEquals("London", tempCity.getCityName());
+        assertEquals(7285000, tempCity.getCityPopulation());
+        assertEquals("England", tempCity.getCityDistrict());
+        assertEquals("United Kingdom", tempCity.getCityCountry());
+    }
+
 }

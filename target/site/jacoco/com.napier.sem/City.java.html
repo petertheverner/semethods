@@ -13,17 +13,19 @@
 <span class="fc" id="L13">    public void setCitypopulation(int CityPopulation) { this.Citypopulation =  CityPopulation; }</span>
 <span class="fc" id="L14">    public void setCityName(String CityName) { this.Cityname = CityName; }</span>
 <span class="nc" id="L15">    public void setCityCountry(String cityCountry) {this.Citycountry = cityCountry; }</span>
-<span class="nc" id="L16">    public void setCitydistrict(String citydistrict) {this.Citydistrict = citydistrict;}</span>
+<span class="fc" id="L16">    public void setCitydistrict(String citydistrict) {this.Citydistrict = citydistrict;}</span>
     //Getters
 <span class="fc" id="L18">    public int getCityPopulation() { return this.Citypopulation; }</span>
 <span class="fc" id="L19">    public String getCityName() { return this.Cityname; }</span>
+<span class="nc" id="L20">    public String getCityCountry() { return this.Citycountry; }</span>
+<span class="fc" id="L21">    public String getCityDistrict() { return this.Citydistrict; }</span>
 
     // toString output method.
     @Override
     public String toString()
     {
-<span class="nc" id="L25">        return &quot;City Name : &quot; + this.Cityname +</span>
-<span class="nc" id="L26">                &quot;\nCity Population : &quot; + String.format(&quot;%,d&quot;,this.Citypopulation) +</span>
+<span class="nc" id="L27">        return &quot;City Name : &quot; + this.Cityname +</span>
+<span class="nc" id="L28">                &quot;\nCity Population : &quot; + String.format(&quot;%,d&quot;,this.Citypopulation) +</span>
                 &quot;\nCity District : &quot; + this.Citydistrict +
                 &quot;\nCity Country : &quot; + this.Citycountry;
 
