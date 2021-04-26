@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Restructured GetAllCityPopulations method to be far more efficient than before.">
+    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Method fully implemented.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/napier/sem/AppIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/napier/sem/AppIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/napier/sem/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/napier/sem/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/napier/sem/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/napier/sem/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/napier/sem/AppTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.Docker Image (2)" />
         <item itemvalue="JUnit.AppIntegrationTest" />
+        <item itemvalue="JUnit.AppTest" />
+        <item itemvalue="Docker.Docker Image (2)" />
         <item itemvalue="Application.App" />
         <item itemvalue="JUnit.AppIntegrationTest.TestGetCapitalCityReport" />
-        <item itemvalue="JUnit.AppTest" />
       </list>
     </recent_temporary>
   </component>
@@ -163,7 +167,7 @@
       <workItem from="1619277929733" duration="16596000" />
       <workItem from="1619437899524" duration="266000" />
       <workItem from="1619438269926" duration="2856000" />
-      <workItem from="1619468424546" duration="2345000" />
+      <workItem from="1619468424546" duration="3913000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed errors">
       <created>1616580236230</created>
@@ -473,7 +477,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619470021408</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Method fully implemented.">
+      <created>1619470821395</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1619470821395</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -492,7 +503,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Re-implemented code cov reporter" />
     <MESSAGE value="Fixed method getcityreport output error" />
     <MESSAGE value="Fixed query typo in GetCityReport" />
     <MESSAGE value="Fixed typo in a query preventing GetCityReport from returning a city object." />
@@ -517,7 +527,18 @@
     <MESSAGE value="Created initial structure of GetAllCityPopulations, and initial structure of the output" />
     <MESSAGE value="First case statement completed for GetAllCityPopulations" />
     <MESSAGE value="Restructured GetAllCityPopulations method to be far more efficient than before." />
-    <option name="LAST_COMMIT_MESSAGE" value="Restructured GetAllCityPopulations method to be far more efficient than before." />
+    <MESSAGE value="Method fully implemented." />
+    <option name="LAST_COMMIT_MESSAGE" value="Method fully implemented." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassNotFoundException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/seMethods$AppIntegrationTest_TestGetCapitalCityReport.ic" NAME="AppIntegrationTest.TestGetCapitalCityReport Coverage Results" MODIFIED="1619308429551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

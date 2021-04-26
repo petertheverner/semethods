@@ -100,6 +100,13 @@ public class AppTest {
     // affect the output; No inputs are given.
 
 
-    // Tests for the method
+    // Tests for the method GetAllCityPopulations(int searchType, String area)
+
+    // Test passing in an invalid search type value ( < 1 or > 3)
+    @Test
+    void TestCityPopulationsInvalidType()
+    {
+        long tempNumber = a.GetAllCityPopulations(10, "United Kingdom");
+    }
 
 }

@@ -7,6 +7,8 @@
 package com.napier.sem;
 // Imports all SQL methods.
 
+import org.apache.commons.lang.ObjectUtils;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -515,12 +517,18 @@ public class App
         {
             String query;
             // Variables: cityPops stores collective population. Countries stores names of country codes.
-            long cityPops = 0;
+            long cityPops = -1;
             ArrayList<String> Countries = new ArrayList<>();
+            if(searchType < 1 || searchType > 3)
+            {
+                System.out.println("Error! searchType out of range!");
+                return -1;
+            }
 
+            // Create initial structure of the query.
             query = "SELECT Code "
                     +"FROM country "
-                    +"WHERE";
+                    +"WHERE ";
 
             // Assemble end of query by searchType. 1 = continent, 2 = country, 3 = region.
             // Used to collect all cities within these areas to then get city populations.

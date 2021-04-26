@@ -96,6 +96,7 @@ public class AppIntegrationTest {
         assertEquals(9981619, Cities.get(Cities.size()-1).getCityPopulation());
     }
 
+
     // Tests for the method: GetCapitalCityReport(String city)
 
     // Test inputting a city that is not a capital city
@@ -119,4 +120,30 @@ public class AppIntegrationTest {
         assertEquals("United Kingdom", tempCity.getCityCountry());
     }
 
+
+    // Tests for the method GetAllCityPopulations(int searchType, String area)
+
+    // Test that an error is returned if an invalid location is provided
+    @Test
+    void TestCityPopulationsInvalidArea()
+    {
+        long tempNumber = a.GetAllCityPopulations(2, "asdf");
+        assertEquals(-1, tempNumber);
+    }
+
+    // Test by giving a valid location but the wrong location type (in this case, United Kingdom being interpreted as a continent)
+    @Test
+    void TestCityPopulationsWrongArea()
+    {
+        long tempNumber = a.GetAllCityPopulations(1, "United Kingdom");
+        assertEquals(-1, tempNumber);
+    }
+
+    // Normal test to ensure that the output is correct.
+    @Test
+    void TestCityPopulations()
+    {
+        long tempNumber = a.GetAllCityPopulations(2, "United Kingdom");
+        assertEquals(22436672, tempNumber);
+    }
 }
