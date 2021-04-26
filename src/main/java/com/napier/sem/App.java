@@ -515,71 +515,22 @@ public class App
         {
             String query;
             // Variables: cityPops stores collective population. Countries stores names of country codes.
-            int cityPops = 0;
+            long cityPops = 0;
             ArrayList<String> Countries = new ArrayList<>();
 
+            query = "SELECT Code "
+                    +"FROM country "
+                    +"WHERE";
 
+            // Assemble end of query by searchType. 1 = continent, 2 = country, 3 = region.
+            // Used to collect all cities within these areas to then get city populations.
             switch (searchType)
             {
-                // Continent - Get all countries in continent and find all cities in said countries
-                case 1:
-                    // Assemble query to find countries in the continent
-                    query = "SELECT Name "
-                            +"FROM country "
-                            +"WHERE Content='" + area + "'";
-                    try
-                    {
-                        Statement stmt = con.createStatement();
-                        ResultSet rset = stmt.executeQuery(query);
-                        while(rset.next())
-                        {
-                            // Add all found countries to the array list for use later
-                            Countries.add(rset.getString("Code"));
-                        }
-                    }
-
-                    catch (Exception e)
-                    {
-                        System.out.println("Error! Continent not found!");
-                        return -1;
-                    }
-                    // For each country code found, find all the cities in each country and add their populations to cityPops
-                    for(int i = 0; i < Countries.size(); i++)
-                    {
-                        query = "SELECT Population "
-                                +"FROM country "
-                                +"WHERE CountryCode='" + Countries.get(i) + "'";
-                        try
-                        {
-                            Statement stmt = con.createStatement();
-                            ResultSet rset = stmt.executeQuery(query);
-                            while(rset.next())
-                            {
-                                cityPops += rset.getInt("Population");
-                            }
-                        }
-                        catch(Exception e)
-                        {
-                            System.out.println("Error! Could not read country data!");
-                            return -1;
-                        }
-                    }
-                    break;
-
-                // Country - Get all cities inside the country
-                case 2:
-                    query;
-                    break;
-
-                // Region - Get all countries inside the region, find cities in said countries
-                case 3:
-                    query;
-                    break;
-
-                default:
-                    System.out.println("Error! Input search type invalid (Must be between 1 and 3");
-                    return -1;
+                case 1: query += "Continent='" + area + "'"; break;
+                case 2: query += "Name='" + area + "'"; break;
+                case 3: query+= "Region='" + area + "'"; break;
             }
+
         }
 
 
