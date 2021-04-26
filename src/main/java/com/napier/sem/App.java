@@ -371,6 +371,90 @@ public class App
             return Countries;
         }
 
+        /** This method instantiates a country object and populates it with relating to
+         * the input country.
+         *
+         * @param region String The name of the region used as an input for the search
+         * @return Region An object with relevant information to it's region.
+         */
+        public Region GetRegionReport(String region)
+        {
+            Region tempRegion = new Region();
+            int RegionNameSearch = 0;
+            String query = "SELECT Name, Population, CountryCode "
+                    +"FROM region "
+                    +"WHERE Name = '" + region + "'";
+            try
+            {
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery(query);
+
+                if(rset.next())
+                {
+                    tempRegion.setRegionName(rset.getString("Name"));
+                    tempRegion.setRPopulation(rset.getInt("Population"));
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Error retrieving the report for the region " + region);
+                return null;
+            }
+            return tempRegion;
+        }
+
+        /** This method instantiates a country arraylist and adds countries equal to the count
+         * provided by the user. Only logs country names and populations.
+         *
+         * @param count int The number of regions to output
+         * @return Regions An arraylist of regions, stores region objects for output.
+         */
+        public ArrayList<Region> GetRegionPopulations(int count)
+        {
+            // init array list
+            ArrayList<Region> Regions = new ArrayList<Region>();
+
+            // Check if count input is negative or 0
+            if(count <= 0)
+            {
+                System.out.println("Error: count was either 0 or negative.");
+                return Regions;
+            }
+            // i used to check count
+            int i = 0;
+            // Init query
+            String query = "SELECT Population, Name "
+                    +"FROM Region "
+                    +"ORDER BY Population DESC";
+
+            try
+            {
+                // Execute statement
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery(query);
+
+                // Keep adding Regions objects until either the entire country table has been searched or the count limited
+                // is reached.
+                while(rset.next() && i < count)
+                {
+                    Region tempRegion = new Region();
+                    tempRegion.setRPopulation(rset.getInt("Population"));
+                    tempRegion.setRegionName(rset.getString("Name"));
+                    Regions.add(tempRegion);
+                    i++;
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Error retrieving population data for top populated countries.");
+            }
+
+            return Regions;
+        }
+
+
         public ArrayList<City> GetCapitalCities()
         {
             ArrayList<City> Cities = new ArrayList<City>();
