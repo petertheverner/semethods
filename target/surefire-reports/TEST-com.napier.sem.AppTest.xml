@@ -59,13 +59,13 @@
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
   <testcase name="TestGetPopulationEmpty" classname="com.napier.sem.AppTest" time="0"/>
-  <testcase name="TestGetPopulationRange" classname="com.napier.sem.AppTest" time="0.001"/>
-  <testcase name="TestGetCapitalCityNull" classname="com.napier.sem.AppTest" time="0"/>
+  <testcase name="TestGetPopulationRange" classname="com.napier.sem.AppTest" time="0"/>
+  <testcase name="TestGetCapitalCityNull" classname="com.napier.sem.AppTest" time="0.001"/>
   <testcase name="TestGetCountryReportEmpty" classname="com.napier.sem.AppTest" time="0"/>
   <testcase name="TestGetCapitalCityEmptyString" classname="com.napier.sem.AppTest" time="0"/>
   <testcase name="TestGetCountryPopulationsNegative" classname="com.napier.sem.AppTest" time="0"/>
   <testcase name="TestCityPopulationsInvalidType" classname="com.napier.sem.AppTest" time="0"/>
   <testcase name="TestGetCountryPopulationsZero" classname="com.napier.sem.AppTest" time="0"/>
-  <testcase name="TestGetPopulationNull" classname="com.napier.sem.AppTest" time="0"/>
-  <testcase name="TestGetCountryReportNull" classname="com.napier.sem.AppTest" time="0.001"/>
+  <testcase name="TestGetPopulationNull" classname="com.napier.sem.AppTest" time="0.001"/>
+  <testcase name="TestGetCountryReportNull" classname="com.napier.sem.AppTest" time="0"/>
 </testsuite>

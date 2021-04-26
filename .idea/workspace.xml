@@ -4,13 +4,70 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Method fully implemented.">
+    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="GetCityPopulations method functioning with unit and integration testing.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/napier/sem/AppIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/napier/sem/AppIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/napier/sem/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/napier/sem/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/napier/sem/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/napier/sem/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/napier/sem/AppTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/CapitalCity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/City.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/Continent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/Country.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/Languages.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/Region.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/jacoco.exec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/seMethods-0.1.0.7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/seMethods.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/App.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/App.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/CapitalCity.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/CapitalCity.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/City.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/City.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/Continent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/Continent.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/Country.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/Country.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/Languages.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/Languages.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/Region.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/Region.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/index.source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/branchfc.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/branchnc.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/branchpc.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/bundle.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/class.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/down.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/greenbar.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/group.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/method.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/package.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/prettify.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/prettify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/redbar.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/report.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/report.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/session.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/sort.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/sort.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/source.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-resources/up.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.napier.sem.AppIntegrationTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.napier.sem.AppTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.napier.sem.AppIntegrationTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.napier.sem.AppTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/napier/sem/AppIntegrationTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/napier/sem/AppTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,20 +108,7 @@
       <recent name="C:\Users\blair\IdeaProjects\semethods" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AppIntegrationTest">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.napier.sem.App" />
-      <module name="seMethods" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.napier.sem.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -87,22 +131,6 @@
       <option name="PACKAGE_NAME" value="com.napier.sem" />
       <option name="MAIN_CLASS_NAME" value="com.napier.sem.AppIntegrationTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppIntegrationTest.TestGetCapitalCityReport" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="seMethods" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.napier.sem.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.napier.sem" />
-      <option name="MAIN_CLASS_NAME" value="com.napier.sem.AppIntegrationTest" />
-      <option name="METHOD_NAME" value="TestGetCapitalCityReport" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -134,13 +162,29 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="JUnit.AppIntegrationTest" />
         <item itemvalue="JUnit.AppTest" />
         <item itemvalue="Docker.Docker Image (2)" />
-        <item itemvalue="Application.App" />
-        <item itemvalue="JUnit.AppIntegrationTest.TestGetCapitalCityReport" />
       </list>
     </recent_temporary>
   </component>
@@ -167,7 +211,7 @@
       <workItem from="1619277929733" duration="16596000" />
       <workItem from="1619437899524" duration="266000" />
       <workItem from="1619438269926" duration="2856000" />
-      <workItem from="1619468424546" duration="3913000" />
+      <workItem from="1619468424546" duration="9828000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed errors">
       <created>1616580236230</created>
@@ -484,7 +528,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619470821395</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="GetCityPopulations method functioning with unit and integration testing.">
+      <created>1619472439078</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1619472439078</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,7 +554,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed method getcityreport output error" />
     <MESSAGE value="Fixed query typo in GetCityReport" />
     <MESSAGE value="Fixed typo in a query preventing GetCityReport from returning a city object." />
     <MESSAGE value="Removed redundant code preventing the GetCityReports method from running correctly" />
@@ -528,7 +578,8 @@
     <MESSAGE value="First case statement completed for GetAllCityPopulations" />
     <MESSAGE value="Restructured GetAllCityPopulations method to be far more efficient than before." />
     <MESSAGE value="Method fully implemented." />
-    <option name="LAST_COMMIT_MESSAGE" value="Method fully implemented." />
+    <MESSAGE value="GetCityPopulations method functioning with unit and integration testing." />
+    <option name="LAST_COMMIT_MESSAGE" value="GetCityPopulations method functioning with unit and integration testing." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

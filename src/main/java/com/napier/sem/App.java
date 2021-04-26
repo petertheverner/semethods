@@ -573,12 +573,10 @@ public class App
                 catch(Exception e)
                 {
                     System.out.println("Error retrieving population for a city!");
-                    return -1;
                 }
             }
             return cityPops;
         }
-
 
 
 
@@ -682,15 +680,38 @@ public class App
             ACity = a.getCapitalCityReport("London");
             System.out.println(ACity.toString());
 
-            // Print population of people not living in cities in a specific area (Use Cases 11 and 12)
+            // Print population of people not living in cities in all continents (Use Case 11)
             System.out.println("\n----- PEOPLE NOT LIVING IN CITIES - USE CASES 11 AND 12");
-            // Get population of an area, in this case the population of the UK
-            long UKPop = a.GetPopulation(4, "United Kingdom");
-            // Get combined populations of cities
-            long UkCiyPop = a.GetAllCityPopulations(2, "United Kingdom");
+            // Initialise arrays to store populations, and to store continent data so a for loop can be used.
+            // Also initalises a percentage variable to calculate % of population living in a city for the output.
+            String[] continents = {"Asia", "Europe", "North America", "Africa", "Oceania",
+                    "Antarctica", "South America"};
+            long[] continentPops = {0, 0, 0, 0, 0, 0, 0};
+            long[] cityPops = {0, 0, 0, 0, 0, 0, 0,};
+            double percent;
+            // For each iteration, get a continent's population, find the collective city populations
+            // inside the continent, and then find the number of people not living in cities, and percentage.
+            for(int i = 0; i < 7; i++)
+            {
+                // If statement used exclusively for Antarctica, which has no cities and a population of 0.
+                if(i == 5)
+                {
+                    System.out.println(continents[i] + " : ");
+                    System.out.println("No cities in Antarctica!");
+                    System.out.println("Nobody lives in Antarctica!");
+                }
+                else {
+                    continentPops[i] = a.GetPopulation(2, continents[i]);
+                    cityPops[i] = a.GetAllCityPopulations(1, continents[i]);
+                    percent = cityPops[i] * 100 / continentPops[i];
+                    System.out.println(continents[i] + " : ");
+                    System.out.println("People living in the continent : " + String.format("%,d", continentPops[i]));
+                    System.out.println("People living in cities : " + String.format("%,d", cityPops[i]));
+                    System.out.println("People not living in cities : " + String.format("%,d", (continentPops[i] - cityPops[i]))
+                            + " ( " + percent + "% )");
+                }
 
-
-
+            }
             // Terminate connection to the database.
             a.Disconnect();
 
