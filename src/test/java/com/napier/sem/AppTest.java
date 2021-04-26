@@ -99,4 +99,7 @@ public class AppTest {
     // No unit tests can be done for the method GetCapitalCities as no matter what, the user cannot
     // affect the output; No inputs are given.
 
+
+    // Tests for the method
+
 }

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="First case statement completed for GetAllCityPopulations">
+    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Restructured GetAllCityPopulations method to be far more efficient than before.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" afterDir="false" />
     </list>
@@ -34,9 +34,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="Docker" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -55,6 +57,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -119,11 +132,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.Docker Image (2)" />
         <item itemvalue="JUnit.AppIntegrationTest" />
         <item itemvalue="Application.App" />
         <item itemvalue="JUnit.AppIntegrationTest.TestGetCapitalCityReport" />
         <item itemvalue="JUnit.AppTest" />
-        <item itemvalue="Docker.Docker Image (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -150,7 +163,7 @@
       <workItem from="1619277929733" duration="16596000" />
       <workItem from="1619437899524" duration="266000" />
       <workItem from="1619438269926" duration="2856000" />
-      <workItem from="1619468424546" duration="1535000" />
+      <workItem from="1619468424546" duration="2345000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed errors">
       <created>1616580236230</created>
@@ -453,7 +466,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619469367218</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Restructured GetAllCityPopulations method to be far more efficient than before.">
+      <created>1619470021408</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1619470021408</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -472,7 +492,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated entrypoint for Dockerfile" />
     <MESSAGE value="Re-implemented code cov reporter" />
     <MESSAGE value="Fixed method getcityreport output error" />
     <MESSAGE value="Fixed query typo in GetCityReport" />
@@ -497,7 +516,8 @@
     <MESSAGE value="Repackaged project and updated version number" />
     <MESSAGE value="Created initial structure of GetAllCityPopulations, and initial structure of the output" />
     <MESSAGE value="First case statement completed for GetAllCityPopulations" />
-    <option name="LAST_COMMIT_MESSAGE" value="First case statement completed for GetAllCityPopulations" />
+    <MESSAGE value="Restructured GetAllCityPopulations method to be far more efficient than before." />
+    <option name="LAST_COMMIT_MESSAGE" value="Restructured GetAllCityPopulations method to be far more efficient than before." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/seMethods$AppIntegrationTest_TestGetCapitalCityReport.ic" NAME="AppIntegrationTest.TestGetCapitalCityReport Coverage Results" MODIFIED="1619308429551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

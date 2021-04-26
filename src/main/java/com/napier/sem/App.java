@@ -531,6 +531,44 @@ public class App
                 case 3: query+= "Region='" + area + "'"; break;
             }
 
+            try
+            {
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery(query);
+
+                while(rset.next())
+                {
+                    Countries.add(rset.getString("Code"));
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println("Error assembling list of countries!");
+                return -1;
+            }
+
+            for(int i = 0; i < Countries.size(); i++)
+            {
+                query = "SELECT Population "
+                        +"FROM city "
+                        +"WHERE CountryCode ='" + Countries.get(i) + "'";
+                try
+                {
+                    Statement stmt = con.createStatement();
+                    ResultSet rset = stmt.executeQuery(query);
+
+                    while(rset.next())
+                    {
+                        cityPops += rset.getInt("Population");
+                    }
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error retrieving population for a city!");
+                    return -1;
+                }
+            }
+            return cityPops;
         }
 
 
