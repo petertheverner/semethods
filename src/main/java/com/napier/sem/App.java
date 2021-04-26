@@ -514,11 +514,56 @@ public class App
         long GetAllCityPopulations(int searchType, String area)
         {
             String query;
+            // Variables: cityPops stores collective population. Countries stores names of country codes.
+            int cityPops = 0;
+            ArrayList<String> Countries = new ArrayList<>();
+
+
             switch (searchType)
             {
                 // Continent - Get all countries in continent and find all cities in said countries
                 case 1:
-                    query;
+                    // Assemble query to find countries in the continent
+                    query = "SELECT Name "
+                            +"FROM country "
+                            +"WHERE Content='" + area + "'";
+                    try
+                    {
+                        Statement stmt = con.createStatement();
+                        ResultSet rset = stmt.executeQuery(query);
+                        while(rset.next())
+                        {
+                            // Add all found countries to the array list for use later
+                            Countries.add(rset.getString("Code"));
+                        }
+                    }
+
+                    catch (Exception e)
+                    {
+                        System.out.println("Error! Continent not found!");
+                        return -1;
+                    }
+                    // For each country code found, find all the cities in each country and add their populations to cityPops
+                    for(int i = 0; i < Countries.size(); i++)
+                    {
+                        query = "SELECT Population "
+                                +"FROM country "
+                                +"WHERE CountryCode='" + Countries.get(i) + "'";
+                        try
+                        {
+                            Statement stmt = con.createStatement();
+                            ResultSet rset = stmt.executeQuery(query);
+                            while(rset.next())
+                            {
+                                cityPops += rset.getInt("Population");
+                            }
+                        }
+                        catch(Exception e)
+                        {
+                            System.out.println("Error! Could not read country data!");
+                            return -1;
+                        }
+                    }
                     break;
 
                 // Country - Get all cities inside the country

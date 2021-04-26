@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Repackaged project and updated version number">
+    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Created initial structure of GetAllCityPopulations, and initial structure of the output">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/target/jacoco.exec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.napier.sem.AppIntegrationTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.napier.sem.AppIntegrationTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.napier.sem.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.napier.sem.AppTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.napier.sem.AppIntegrationTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.napier.sem.AppIntegrationTest.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +149,8 @@
       <workItem from="1618995502391" duration="4753000" />
       <workItem from="1619277929733" duration="16596000" />
       <workItem from="1619437899524" duration="266000" />
-      <workItem from="1619438269926" duration="2775000" />
+      <workItem from="1619438269926" duration="2856000" />
+      <workItem from="1619468424546" duration="916000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed errors">
       <created>1616580236230</created>
@@ -444,7 +439,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619311538415</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Created initial structure of GetAllCityPopulations, and initial structure of the output">
+      <created>1619442017831</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1619442017831</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -463,7 +465,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Renamed test folder" />
     <MESSAGE value="Rebuilt updated project" />
     <MESSAGE value="Updated entrypoint for Dockerfile" />
     <MESSAGE value="Re-implemented code cov reporter" />
@@ -488,7 +489,8 @@
     <MESSAGE value="Project correctly packaged and unit tests added." />
     <MESSAGE value="Added integration tests for GetCapitalCityReport" />
     <MESSAGE value="Repackaged project and updated version number" />
-    <option name="LAST_COMMIT_MESSAGE" value="Repackaged project and updated version number" />
+    <MESSAGE value="Created initial structure of GetAllCityPopulations, and initial structure of the output" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created initial structure of GetAllCityPopulations, and initial structure of the output" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/seMethods$AppIntegrationTest_TestGetCapitalCityReport.ic" NAME="AppIntegrationTest.TestGetCapitalCityReport Coverage Results" MODIFIED="1619308429551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
