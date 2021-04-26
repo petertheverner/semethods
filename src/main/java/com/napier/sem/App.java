@@ -511,6 +511,35 @@ public class App
         }
 
 
+        long GetAllCityPopulations(int searchType, String area)
+        {
+            String query;
+            switch (searchType)
+            {
+                // Continent - Get all countries in continent and find all cities in said countries
+                case 1:
+                    query;
+                    break;
+
+                // Country - Get all cities inside the country
+                case 2:
+                    query;
+                    break;
+
+                // Region - Get all countries inside the region, find cities in said countries
+                case 3:
+                    query;
+                    break;
+
+                default:
+                    System.out.println("Error! Input search type invalid (Must be between 1 and 3");
+                    return -1;
+            }
+        }
+
+
+
+
         public static void main(String[] args)
         {
             // Initialise the application
@@ -610,6 +639,15 @@ public class App
             City ACity = new City();
             ACity = a.getCapitalCityReport("London");
             System.out.println(ACity.toString());
+
+            // Print population of people not living in cities in a specific area (Use Cases 11 and 12)
+            System.out.println("\n----- PEOPLE NOT LIVING IN CITIES - USE CASES 11 AND 12");
+            // Get population of an area, in this case the population of the UK
+            long UKPop = a.GetPopulation(4, "United Kingdom");
+            // Get combined populations of cities
+            long UkCiyPop = a.GetAllCityPopulations(2, "United Kingdom");
+
+
 
             // Terminate connection to the database.
             a.Disconnect();

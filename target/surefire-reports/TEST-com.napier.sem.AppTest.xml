@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.napier.sem.AppTest" time="0.003" tests="9" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="idea.version" value="2020.3.2"/>
+    <property name="idea.version" value="2020.3.3"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="15.0.2+7-27"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-15.0.2\bin"/>
@@ -43,7 +43,7 @@
     <property name="java.class.path" value="D:\Intellij\IntelliJ IDEA 2020.3.2\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;D:\Intellij\IntelliJ IDEA 2020.3.2\plugins\maven\lib\maven3\boot\plexus-classworlds.license"/>
     <property name="java.vm.specification.version" value="15"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2020.3.2 package"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2020.3.3 test"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-15.0.2"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -63,8 +63,8 @@
   <testcase name="TestGetCapitalCityNull" classname="com.napier.sem.AppTest" time="0.001"/>
   <testcase name="TestGetCountryReportEmpty" classname="com.napier.sem.AppTest" time="0"/>
   <testcase name="TestGetCapitalCityEmptyString" classname="com.napier.sem.AppTest" time="0"/>
-  <testcase name="TestGetCountryPopulationsNegative" classname="com.napier.sem.AppTest" time="0"/>
+  <testcase name="TestGetCountryPopulationsNegative" classname="com.napier.sem.AppTest" time="0.001"/>
   <testcase name="TestGetCountryPopulationsZero" classname="com.napier.sem.AppTest" time="0"/>
   <testcase name="TestGetPopulationNull" classname="com.napier.sem.AppTest" time="0"/>
-  <testcase name="TestGetCountryReportNull" classname="com.napier.sem.AppTest" time="0.001"/>
+  <testcase name="TestGetCountryReportNull" classname="com.napier.sem.AppTest" time="0"/>
 </testsuite>
