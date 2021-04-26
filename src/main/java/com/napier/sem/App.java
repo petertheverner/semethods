@@ -518,6 +518,67 @@ public class App
             return Cities;
         }
 
+        public Languages GetLanguageReport(String languages)
+        {
+            // init language with a country code to find a country and how many langauges there are there/ the most spoken
+            int countryCode = -1;
+            Languages tempLanguage = new Languages();
+
+            // Check if input is null or empty
+            if(languages == null || languages == "")
+            {
+                System.out.println("Error: language input is empty.");
+                tempLanguage.setLanguage_Speakers(-1);
+                return tempLanguage;
+            }
+            int languageSearch = 0;
+            String query = "SELECT Code, Name, Continent, Region, Population, Capital "
+                    +"FROM language "
+                    +"WHERE Name = '" + languages + "'";
+
+            try
+            {
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery(query);
+
+
+                if(rset.next())
+                {
+                    tempLanguage.setArabic(rset.getString("Name"));
+                    tempLanguage.setEnglish(rset.getString("Code"));
+                    tempLanguage.setChinese(rset.getString("Continent"));
+                    tempLanguage.setSpanish(rset.getString("Region"));
+                    tempLanguage.setHindi(rset.getString("Population"));
+                    languageSearch = rset.getInt("Capital");
+
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Error retrieving the report for the languages Spoken " + languages);
+                return null;
+            }
+
+
+            try
+            {
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery("SELECT Name FROM Language id = '" + languageSearch + "'");
+                if(rset.next())
+                {
+                    tempLanguage.setLanguage_Speakers(rset.getInt("Number of Language Speakers"));
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Unable to retrieve country language statistics ");
+                return null;
+            }
+            return tempLanguage;
+        }
+
         public City getCapitalCityReport(String city)
         {
             // Init variables to retrieve country code and the ID of the city
