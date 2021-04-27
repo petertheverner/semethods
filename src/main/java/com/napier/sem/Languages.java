@@ -3,29 +3,20 @@ package com.napier.sem;
 public class Languages {
 
     //variables for world languages
-    private String Hindi;
-    private String English;
-    private String Chinese;
-    private String Arabic;
-    private String Spanish;
-    private int Language_Speakers;
-
+    private String Language_Name;
+    private int Percentage;
+    private String Isofficial;
+    private int LanguageCCODE;
     //Setters
-    public void setHindi(String Hindi) { this.Hindi = Hindi; }
-    public void setEnglish(String English) { this.English = English; }
-    public void setChinese(String Chinese) { this.Chinese = Chinese; }
-    public void setArabic(String Arabic) { this.Arabic = Arabic; }
-    public void setSpanish(String Spanish) { this.Spanish = Spanish; }
+    //getters
 
-    //no of language speakers
-    public void setLanguage_Speakers(int Language_Speakers){ this.Language_Speakers = Language_Speakers; }
+    public void setLanguage_Name(String Language_Name) { this.Language_Name = Language_Name; }
+    public void setPercentage(int Percentage) {this.Percentage = Percentage; }
+    public void setIsofficial(String  Isoffical) { this.Isofficial = Isoffical; }
+    public void setLanguageCCODE(int LanguageCcode) {this.LanguageCCODE = LanguageCcode; }
 
-    //Getters
-    public String getHindi() { return this.Hindi; }
-    public String getEnglish() { return this.English; }
-    public String getChinese() { return this.Chinese; }
-    public String getArabic() { return this.Arabic; }
-    public String getSpanish() { return this.Spanish; }
-    public int getLanguageSpeakers() {return this.Language_Speakers;}
+    public String getLanguage_Name() { return this.Language_Name; }
+    public int getPercentage() {return this.Percentage;}
+    public String getIsofficial() { return this.Isofficial; }
 
 }

@@ -518,7 +518,7 @@ public class App
             return Cities;
         }
 
-        public Languages GetLanguageReport(String languages)
+        public Languages GetLanguageReport(String languages) //(use case 13)
         {
             // init language with a country code to find a country and how many langauges there are there/ the most spoken
             int countryCode = -1;
@@ -528,12 +528,12 @@ public class App
             if(languages == null || languages == "")
             {
                 System.out.println("Error: language input is empty.");
-                tempLanguage.setLanguage_Speakers(-1);
+                tempLanguage.setPercentage(-1);
                 return tempLanguage;
             }
             int languageSearch = 0;
-            String query = "SELECT Code, Name, Continent, Region, Population, Capital "
-                    +"FROM language "
+            String query = "SELECT CountryCode , Language, IsOfficial, Percentage "
+                    +"FROM countrylanguage "
                     +"WHERE Name = '" + languages + "'";
 
             try
@@ -544,11 +544,10 @@ public class App
 
                 if(rset.next())
                 {
-                    tempLanguage.setArabic(rset.getString("Name"));
-                    tempLanguage.setEnglish(rset.getString("Code"));
-                    tempLanguage.setChinese(rset.getString("Continent"));
-                    tempLanguage.setSpanish(rset.getString("Region"));
-                    tempLanguage.setHindi(rset.getString("Population"));
+                    tempLanguage.setLanguageCCODE(rset.getInt("Code"));
+                    tempLanguage.setLanguage_Name(rset.getString("Language Name"));
+                    tempLanguage.setIsofficial(rset.getString("Official Language"));
+                    tempLanguage.setPercentage(rset.getInt("Percentage of speakers %"));
                     languageSearch = rset.getInt("Capital");
 
                 }
@@ -556,7 +555,7 @@ public class App
             catch(Exception e)
             {
                 System.out.println(e.getMessage());
-                System.out.println("Error retrieving the report for the languages Spoken " + languages);
+                System.out.println("Error retrieving the report for the language Spoken " + languages);
                 return null;
             }
 
@@ -564,10 +563,10 @@ public class App
             try
             {
                 Statement stmt = con.createStatement();
-                ResultSet rset = stmt.executeQuery("SELECT Name FROM Language id = '" + languageSearch + "'");
+                ResultSet rset = stmt.executeQuery("SELECT language FROM Language id = '" + languageSearch + "'");
                 if(rset.next())
                 {
-                    tempLanguage.setLanguage_Speakers(rset.getInt("Number of Language Speakers"));
+                    tempLanguage.setPercentage(rset.getInt("Number of Language Speakers"));
                 }
             }
             catch(Exception e)
@@ -577,6 +576,52 @@ public class App
                 return null;
             }
             return tempLanguage;
+        }
+
+
+        public ArrayList<Languages> GetLanguagePopulations(int count)
+        {
+            // init array list
+            ArrayList<Languages> Language = new ArrayList<Languages>();
+
+            // Check if count input is negative or 0
+            if(count <= 0)
+            {
+                System.out.println("Error: count was either 0 or negative.");
+                return Language;
+            }
+            // i used to check count
+            int i = 0;
+            // Init query
+            String query = "SELECT Language, Percentage, Isofficial "
+                    +"FROM countrylanguages "
+                    +"ORDER BY Percentage DESC";
+
+            try
+            {
+                // Execute statement
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery(query);
+
+                // Keep adding language objects until either the entire countrylanguage table has been searched or the count limited
+                // is reached.
+                while(rset.next() && i < count)
+                {
+                    Languages tempLanguage = new Languages();
+                    tempLanguage.setLanguage_Name(rset.getString("Name of Language"));
+                    tempLanguage.setPercentage(rset.getInt("Population of Language Speakers"));
+                    tempLanguage.setIsofficial(rset.getString("Country's  Official Language"));
+                    Language.add(tempLanguage);
+                    i++;
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Error retrieving population data for top populated countries.");
+            }
+
+            return Language;
         }
 
         public City getCapitalCityReport(String city)
@@ -717,6 +762,31 @@ public class App
                 System.out.println("Population : " + String.format("%,d", Countries.get(i).getPopulation()));
             }
 
+            //print the N most populated countries by each language (Use Case 06)
+            System.out.println("\n----- POPULATION BY LANGUAGE - USE CASE 6 -----");
+            System.out.println("\nTop languages by countries : ");
+            // Init array for output
+            ArrayList <Languages> Language = new ArrayList<Languages>();
+            // Retrieve array
+            Language = a.GetLanguagePopulations(10);
+            // Output
+            for(int i = 0; i < 10; i++)
+            {
+                System.out.println("Country " +  " : " + Countries.get(i).getName());
+                System.out.println("Language Speaking population " +  " : " + String.format("%,d",Language.get(i).getLanguageSpeakers()));
+                System.out.println("English Population : " + Language.get(i).getEnglish());
+                System.out.println("Hindi Population : " + Language.get(i).getHindi());
+                System.out.println("Spanish Population : " + Language.get(i).getSpanish());
+                System.out.println("Chinese Population : " + Language.get(i).getChinese());
+                System.out.println("Arabic Population : " + Language.get(i).getArabic());
+            }
+
+            // Print a Language Report for City's, country's and regions (Use Case 13)
+            System.out.println("\n----- LANGUAGE REPORT - Use Case 13 -----");
+            System.out.println("\n Language report for the English Language : ");
+            // Calls the GetCountryReport method which returns a country object. Then it calls
+            // the toString method of the Country class which returns a text output.
+            System.out.println(a.GetLanguageReport("English").toString());
 
             // Print N most populated city's in the world (Use Case 14).
             System.out.println("\n----- CITY POPULATION BY NUMBER - USE CASE 14 -----");
