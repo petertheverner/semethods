@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Improved efficiency of the overall program. Adjusted unit and integration tests to now include error messages">
+    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Repackaged project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/Languages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/Languages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/Region.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/App.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/CapitalCity.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/City.class" beforeDir="false" />
@@ -215,14 +213,7 @@
       <workItem from="1619277929733" duration="16596000" />
       <workItem from="1619437899524" duration="266000" />
       <workItem from="1619438269926" duration="2856000" />
-      <workItem from="1619468424546" duration="17193000" />
-    </task>
-    <task id="LOCAL-00001" summary="Fixed errors">
-      <created>1616580236230</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1616580236230</updated>
+      <workItem from="1619468424546" duration="17217000" />
     </task>
     <task id="LOCAL-00002" summary="Fixed target">
       <created>1616580659170</created>
@@ -560,7 +551,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619526965967</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Repackaged project">
+      <created>1619527301892</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1619527301893</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -592,7 +590,6 @@
     <MESSAGE value="Readded code of conduct, and added bug report template." />
     <MESSAGE value="Made most of the function, created the output" />
     <MESSAGE value="Finalised getCapitalCityReport method, including validation to ensure that the input city is a capital. Also added internal commentary." />
-    <MESSAGE value="Repackaged project" />
     <MESSAGE value="Project correctly packaged and unit tests added." />
     <MESSAGE value="Added integration tests for GetCapitalCityReport" />
     <MESSAGE value="Repackaged project and updated version number" />
@@ -604,7 +601,8 @@
     <MESSAGE value="Added output, use case 11 completed." />
     <MESSAGE value="Use case 12 implemented successfully." />
     <MESSAGE value="Improved efficiency of the overall program. Adjusted unit and integration tests to now include error messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved efficiency of the overall program. Adjusted unit and integration tests to now include error messages" />
+    <MESSAGE value="Repackaged project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Repackaged project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
