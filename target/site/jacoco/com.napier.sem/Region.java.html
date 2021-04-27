@@ -6,13 +6,20 @@
     private String RegionName;
     private int Regionpopulation;
 
-
     //Setters
-<span class="nc" id="L11">    public void setRPopulation(int RPopulation) { this.Regionpopulation = RPopulation; }</span>
-<span class="nc" id="L12">    public void setRegionName(String RegionName) { this.RegionName = RegionName; }</span>
+<span class="nc" id="L10">    public void setRPopulation(int RPopulation) { this.Regionpopulation = RPopulation; }</span>
+<span class="nc" id="L11">    public void setRegionName(String RegionName) { this.RegionName = RegionName; }</span>
 
     //Getters
-<span class="nc" id="L15">    public int getRegionpopulation() { return this.Regionpopulation; }</span>
-<span class="nc" id="L16">    public String getRegionName() { return this.RegionName; }</span>
+<span class="nc" id="L14">    public int getRegionpopulation() { return this.Regionpopulation; }</span>
+<span class="nc" id="L15">    public String getRegionName() { return this.RegionName; }</span>
+
+    // toString output method.
+    @Override
+    public String toString()
+    {
+<span class="nc" id="L21">        return  &quot;\nCountry Name : &quot; + this.RegionName +</span>
+<span class="nc" id="L22">                &quot;\nTotal Population : &quot; + String.format(&quot;%,d&quot;,this.Regionpopulation);</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
