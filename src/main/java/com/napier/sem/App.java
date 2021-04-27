@@ -570,8 +570,6 @@ public class App
             return cityPops;
         }
 
-
-
         public static void main(String[] args)
         {
             // Initialise the application
