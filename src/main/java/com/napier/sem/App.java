@@ -40,7 +40,7 @@ public class App
 
                 try
                 {
-                    Thread.sleep(30000);
+                    Thread.sleep(5000);
                     con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
                     System.out.println("Successful connection to the database.");
                     System.out.println("--------------------------------------------------");
@@ -95,7 +95,7 @@ public class App
             // as worldwide population
             long total = 0;
 
-            if(searchType  > 1 && (search == "" || search == null))
+            if((search == "" && searchType != 1) || search == null)
             {
                 System.out.println("Error: search type provided was greater than 1, but no search given");
                 return -1;
@@ -184,6 +184,11 @@ public class App
          */
         public ArrayList<City> GetCityPopulations(int count)
         {
+            if(count < 1)
+            {
+                System.out.println("Error! Invalid count provided.");
+                return null;
+            }
             // i used to check count
             int i = 0;
             // Init arraylist and query
@@ -595,7 +600,8 @@ public class App
             return null;
         }
 
-
+        //Currently unused
+        /*
         public Languages GetLanguageReport(String languages) //(use case 13)
         {
             // init language with a country code to find a country and how many langauges there are there/ the most spoken
@@ -701,7 +707,7 @@ public class App
 
             return Language;
         }
-
+    */
 
         long GetAllCityPopulations(int searchType, String area)
         {
@@ -831,6 +837,7 @@ public class App
                 System.out.println("Population : " + String.format("%,d", Countries.get(i).getPopulation()));
             }
 
+            /*
             //print the N most populated countries by each language (Use Case 06)
             System.out.println("\n----- POPULATION BY LANGUAGE - USE CASE 6 -----");
             System.out.println("\nTop languages by countries : ");
@@ -856,6 +863,8 @@ public class App
             // Calls the GetCountryReport method which returns a country object. Then it calls
             // the toString method of the Country class which returns a text output.
             System.out.println(a.GetLanguageReport("English").toString());
+            */
+
 
             // Print N most populated city's in the world (Use Case 14).
             System.out.println("\n----- CITY POPULATION BY NUMBER - USE CASE 14 -----");
@@ -922,27 +931,6 @@ public class App
             ACity = a.getCapitalCityReport("London");
             System.out.println(ACity.toString());
 
-
-            //print the N most populated countries by each language (Use Case 06)
-            System.out.println("\n----- POPULATION BY LANGUAGE - USE CASE 6 -----");
-            System.out.println("\nTop languages by countries : ");
-            // Init array for output
-            ArrayList <Languages> aLanguage = new ArrayList<Languages>();
-            // Retrieve array
-            aLanguage = a.GetLanguagePopulations(10);
-            // Output
-            for(int i = 0; i < 10; i++)
-            {
-                int temp;
-           //     System.out.println("Country " +  " : " + Countries.get(i).getName());
-           //     System.out.println("Language Speaking population " +  " : " + String.format("%,d",Language.get(i).getLanguageSpeakers()));
-           //     System.out.println("English Population : " + Language.get(i).getEnglish());
-           //     System.out.println("Hindi Population : " + Language.get(i).getHindi());
-           //     System.out.println("Spanish Population : " + Language.get(i).getSpanish());
-           //     System.out.println("Chinese Population : " + Language.get(i).getChinese());//    System.out.println("Arabic Population : " + Language.get(i).getArabic());
-            }
-
-
             // Print population of people not living in cities in a region or country (Use Case 12)
             System.out.println("\n----- PEOPLE NOT LIVING IN CITIES IN REGIONS OR COUNTRIES - USE CASE 12");
 
@@ -968,13 +956,6 @@ public class App
             System.out.println("People living in the British Islands in a city : " + String.format("%,d", CityPop) + " : " + percentInCity + "%");
             System.out.println("People living in the British Islands not in a city : " + String.format("%,d", RegionPop - CityPop) + " : " + percentNotInCity + "%");
 
-
-            // Print a Language Report for City's, country's and regions (Use Case 13)
-            System.out.println("\n----- LANGUAGE REPORT - Use Case 13 -----");
-            System.out.println("\n Language report for the English Language : ");
-            // Calls the GetCountryReport method which returns a country object. Then it calls
-            // the toString method of the Country class which returns a text output.
-            System.out.println(a.GetLanguageReport("English").toString());
 
             // Terminate connection to the database.
             a.Disconnect();

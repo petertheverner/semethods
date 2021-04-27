@@ -22,6 +22,14 @@ public class AppIntegrationTest {
 
     // Tests for GetPopulation(int searchType, string search)
 
+    // Test that the correct worldwide population is retrieved.
+    @Test
+    void TestGetPopulationWorld()
+    {
+        long worldPop = a.GetPopulation(1, "");
+        assertEquals(6078749450L, worldPop, "Error! Incorrect worldwide population!");
+    }
+
     // Test that the correct population of a continent is being retrieved.
     @Test
     void TestGetPopulationContinent()
@@ -30,12 +38,12 @@ public class AppIntegrationTest {
         assertEquals(345780000, continentPop, "Error! Incorrect population for the continent South America");
     }
 
-    // Test that the correct population of a city is being retrieved
+    // Test that the correct population of a region is being retrieved.
     @Test
-    void TestGetPopulationCity()
+    void TestGetPopulationRegion()
     {
-        long cityPop = a.GetPopulation(6, "Seto");
-        assertEquals(130470, cityPop, "Error! Incorrect population for the city Seto");
+        long regionPop = a.GetPopulation(3, "British Islands");
+        assertEquals(63398500, regionPop, "Error! Incorrect population for the region British Islands");
     }
 
     // Test that the correct population of a country is being retrieved
@@ -44,6 +52,22 @@ public class AppIntegrationTest {
     {
         long countryPop = a.GetPopulation(4, "United Kingdom");
         assertEquals(59623400, countryPop, "Error! Incorrect population for country United Kingdom");
+    }
+
+    // Test that the correct population of a district is being retrieved
+    @Test
+    void TestGetPopulationDistrict()
+    {
+        long districtPop = a.GetPopulation(5, "Scotland");
+        assertEquals(1429620, districtPop, "Error! Incorrect population for district Scotland");
+    }
+
+    // Test that the correct population of a city is being retrieved
+    @Test
+    void TestGetPopulationCity()
+    {
+        long cityPop = a.GetPopulation(6, "Seto");
+        assertEquals(130470, cityPop, "Error! Incorrect population for the city Seto");
     }
 
 
@@ -68,6 +92,39 @@ public class AppIntegrationTest {
         Countries = a.GetCountryPopulations(5);
         assertEquals(212107000, Countries.get(3).getPopulation(), "Error! Incorrect population for the 3rd most populated country");
     }
+
+
+    // Tests for the method GetCityPopulations(int count)
+
+    // General test
+    @Test
+    void TestGetCityPopulations()
+    {
+        ArrayList<City> Cities = a.GetCityPopulations(2);
+        assertEquals(9981619, Cities.get(1).getCityPopulation(), "Error! Invalid population for the 2nd most populated city");
+
+    }
+
+    // Test passing in an invalid value (in this case, 0).
+
+    @Test
+    void TestGetCityPopulationsNullCount()
+    {
+        ArrayList<City> Cities = a.GetCityPopulations(0);
+        assertEquals(null, Cities);
+    }
+
+
+    // Tests for the method GetCityReport(string city)
+
+    // General test
+    @Test
+    void TestGetCityReport()
+    {
+        City aCity = a.GetCityReport("Edinburgh");
+        assertEquals("Scotland", aCity.getCityDistrict(), "Error! Incorrect city information provided");
+    }
+
 
 
     // Tests for the method : GetCapitalCities()
@@ -125,5 +182,27 @@ public class AppIntegrationTest {
     {
         long tempNumber = a.GetAllCityPopulations(2, "United Kingdom");
         assertEquals(22436672, tempNumber, "Error! Wrong total city populations of the country!");
+    }
+
+
+    // Tests for the method Disconnect()
+
+    // Test disconnect method with a successful connection
+    @Test void TestDisconnect()
+    {
+        a.Disconnect();
+        // Re - establish connection for other tests
+        a.Connect("localhost:33060");
+    }
+
+    // Test disconnect method without a connection
+    @Test void TestDisconnectNullCon()
+    {
+        // Disonnecting currently running connection
+        a.Disconnect();
+        // Attempt to disconnect again.
+        a.Disconnect();
+        // Re - establish connection for other tests.
+        a.Connect("localhost:33060");
     }
 }
