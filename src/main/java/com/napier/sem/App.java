@@ -662,11 +662,9 @@ public class App
             ArrayList<City> CitiesPopulations = new ArrayList<City>();
             // Populate arraylist
             CitiesPopulations = a.GetCapitalCities();
-
             // Sort arraylist in ascending order
             CitiesPopulations.sort(Comparator.comparing(City::getCityPopulation));
             System.out.println("POPULATION OF CAPITAL CITIES IN ASCENDING ORDER: ");
-
             // Output cities and populations
             for(int i = 0; i < CitiesPopulations.size(); i++)
             {
@@ -680,38 +678,48 @@ public class App
             ACity = a.getCapitalCityReport("London");
             System.out.println(ACity.toString());
 
-            // Print population of people not living in cities in all continents (Use Case 11)
-            System.out.println("\n----- PEOPLE NOT LIVING IN CITIES - USE CASES 11 AND 12");
+            // Print population of people not living in cities in continents (Use Case 11)
+            System.out.println("\n----- PEOPLE NOT LIVING IN CITIES IN CONTINENTS - USE CASE 11");
             // Initialise arrays to store populations, and to store continent data so a for loop can be used.
-            // Also initalises a percentage variable to calculate % of population living in a city for the output.
-            String[] continents = {"Asia", "Europe", "North America", "Africa", "Oceania",
-                    "Antarctica", "South America"};
-            long[] continentPops = {0, 0, 0, 0, 0, 0, 0};
-            long[] cityPops = {0, 0, 0, 0, 0, 0, 0,};
-            double percent;
+            // Also initialises a percentage variable to calculate % of population living in a city for the output.
+            String[] continents = {"Asia", "Europe", "North America", "Africa"};
+            long[] continentPops = {0, 0, 0, 0};
+            long[] cityPops = {0, 0, 0, 0};
+            double percentInCity;
+            double percentNotInCity;
             // For each iteration, get a continent's population, find the collective city populations
             // inside the continent, and then find the number of people not living in cities, and percentage.
-            for(int i = 0; i < 7; i++)
+            for(int i = 0; i < 4; i++)
             {
-                // If statement used exclusively for Antarctica, which has no cities and a population of 0.
-                if(i == 5)
-                {
-                    System.out.println(continents[i] + " : ");
-                    System.out.println("No cities in Antarctica!");
-                    System.out.println("Nobody lives in Antarctica!");
-                }
-                else {
-                    continentPops[i] = a.GetPopulation(2, continents[i]);
-                    cityPops[i] = a.GetAllCityPopulations(1, continents[i]);
-                    percent = cityPops[i] * 100 / continentPops[i];
-                    System.out.println(continents[i] + " : ");
-                    System.out.println("People living in the continent : " + String.format("%,d", continentPops[i]));
-                    System.out.println("People living in cities : " + String.format("%,d", cityPops[i]));
-                    System.out.println("People not living in cities : " + String.format("%,d", (continentPops[i] - cityPops[i]))
-                            + " ( " + percent + "% )");
-                }
-
+                continentPops[i] = a.GetPopulation(2, continents[i]);
+                cityPops[i] = a.GetAllCityPopulations(1, continents[i]);
+                percentInCity = ((float)cityPops[i] / (float)continentPops[i]) * 100;
+                percentNotInCity = (((float)continentPops[i] - (float)cityPops[i]) / (float)continentPops[i]) * 100;
+                System.out.println(continents[i] + " : ");
+                System.out.println("People living in the continent : " + String.format("%,d", continentPops[i]));
+                System.out.println("People living in cities : " + String.format("%,d", cityPops[i]) + " ( " + percentInCity + "% )");
+                System.out.println("People not living in cities : " + String.format("%,d", (continentPops[i] - cityPops[i])) + " ( " + percentNotInCity + "% )");
             }
+
+            // Print population of people not living in cities in a region or country (Use Case 12)
+            System.out.println("\n----- PEOPLE NOT LIVING IN CITIES IN REGIONS OR COUNTRIES - USE CASE 12");
+            // Get population of a country, both in cities and not in cities, and find percentage of each
+            long CountryPop = a.GetPopulation(4, "United Kingdom");
+            long CityPop = a.GetAllCityPopulations(2, "United Kingdom");
+            percentInCity = ((float) CityPop / (float) CountryPop) * 100;
+            percentNotInCity = (((float) CountryPop - (float)CityPop) / (float) CountryPop) * 100;
+            System.out.println("People living in the UK : " + String.format("%,d", CountryPop));
+            System.out.println("People living in the UK in a city : " + String.format("%,d", CityPop) + " : " + percentInCity + "%");
+            System.out.println("People living in the UK not in a city : " + String.format("%,d", CountryPop - CityPop) + " : " + percentNotInCity + "%");
+            // Get population of a region, both in cities and not in cities, and find percentage of each
+            long RegionPop = a.GetPopulation(3, "British Islands");
+            CityPop = a.GetAllCityPopulations(3, "British Islands");
+            percentInCity = ((float) CityPop / (float) RegionPop) * 100;
+            percentNotInCity = (((float) RegionPop - (float)CityPop) / (float) RegionPop) * 100;
+            System.out.println("People living in the British Islands : " + String.format("%,d", RegionPop));
+            System.out.println("People living in the British Islands in a city : " + String.format("%,d", CityPop) + " : " + percentInCity + "%");
+            System.out.println("People living in the British Islands not in a city : " + String.format("%,d", RegionPop - CityPop) + " : " + percentNotInCity + "%");
+
             // Terminate connection to the database.
             a.Disconnect();
 

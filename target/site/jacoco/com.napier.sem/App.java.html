@@ -662,60 +662,68 @@ import java.util.Comparator;
 <span class="nc" id="L662">            ArrayList&lt;City&gt; CitiesPopulations = new ArrayList&lt;City&gt;();</span>
             // Populate arraylist
 <span class="nc" id="L664">            CitiesPopulations = a.GetCapitalCities();</span>
-
             // Sort arraylist in ascending order
-<span class="nc" id="L667">            CitiesPopulations.sort(Comparator.comparing(City::getCityPopulation));</span>
-<span class="nc" id="L668">            System.out.println(&quot;POPULATION OF CAPITAL CITIES IN ASCENDING ORDER: &quot;);</span>
-
+<span class="nc" id="L666">            CitiesPopulations.sort(Comparator.comparing(City::getCityPopulation));</span>
+<span class="nc" id="L667">            System.out.println(&quot;POPULATION OF CAPITAL CITIES IN ASCENDING ORDER: &quot;);</span>
             // Output cities and populations
-<span class="nc bnc" id="L671" title="All 2 branches missed.">            for(int i = 0; i &lt; CitiesPopulations.size(); i++)</span>
+<span class="nc bnc" id="L669" title="All 2 branches missed.">            for(int i = 0; i &lt; CitiesPopulations.size(); i++)</span>
             {
-<span class="nc" id="L673">                System.out.println(&quot;City &quot; + (i+1) + &quot;: &quot; + CitiesPopulations.get(i).getCityName());</span>
-<span class="nc" id="L674">                System.out.println(&quot;Population : &quot; + CitiesPopulations.get(i).getCityPopulation() + &quot;\n&quot;);</span>
+<span class="nc" id="L671">                System.out.println(&quot;City &quot; + (i+1) + &quot;: &quot; + CitiesPopulations.get(i).getCityName());</span>
+<span class="nc" id="L672">                System.out.println(&quot;Population : &quot; + CitiesPopulations.get(i).getCityPopulation() + &quot;\n&quot;);</span>
             }
 
             // Print information on a specific capital city (Use Case 09)
-<span class="nc" id="L678">            System.out.println(&quot;\n----- CAPITAL CITY REPORT - USE CASE 09 -----&quot;);</span>
-<span class="nc" id="L679">            City ACity = new City();</span>
-<span class="nc" id="L680">            ACity = a.getCapitalCityReport(&quot;London&quot;);</span>
-<span class="nc" id="L681">            System.out.println(ACity.toString());</span>
+<span class="nc" id="L676">            System.out.println(&quot;\n----- CAPITAL CITY REPORT - USE CASE 09 -----&quot;);</span>
+<span class="nc" id="L677">            City ACity = new City();</span>
+<span class="nc" id="L678">            ACity = a.getCapitalCityReport(&quot;London&quot;);</span>
+<span class="nc" id="L679">            System.out.println(ACity.toString());</span>
 
-            // Print population of people not living in cities in all continents (Use Case 11)
-<span class="nc" id="L684">            System.out.println(&quot;\n----- PEOPLE NOT LIVING IN CITIES - USE CASES 11 AND 12&quot;);</span>
+            // Print population of people not living in cities in continents (Use Case 11)
+<span class="nc" id="L682">            System.out.println(&quot;\n----- PEOPLE NOT LIVING IN CITIES IN CONTINENTS - USE CASE 11&quot;);</span>
             // Initialise arrays to store populations, and to store continent data so a for loop can be used.
-            // Also initalises a percentage variable to calculate % of population living in a city for the output.
-<span class="nc" id="L687">            String[] continents = {&quot;Asia&quot;, &quot;Europe&quot;, &quot;North America&quot;, &quot;Africa&quot;, &quot;Oceania&quot;,</span>
-                    &quot;Antarctica&quot;, &quot;South America&quot;};
-<span class="nc" id="L689">            long[] continentPops = {0, 0, 0, 0, 0, 0, 0};</span>
-<span class="nc" id="L690">            long[] cityPops = {0, 0, 0, 0, 0, 0, 0,};</span>
-            double percent;
+            // Also initialises a percentage variable to calculate % of population living in a city for the output.
+<span class="nc" id="L685">            String[] continents = {&quot;Asia&quot;, &quot;Europe&quot;, &quot;North America&quot;, &quot;Africa&quot;};</span>
+<span class="nc" id="L686">            long[] continentPops = {0, 0, 0, 0};</span>
+<span class="nc" id="L687">            long[] cityPops = {0, 0, 0, 0};</span>
+            double percentInCity;
+            double percentNotInCity;
             // For each iteration, get a continent's population, find the collective city populations
             // inside the continent, and then find the number of people not living in cities, and percentage.
-<span class="nc bnc" id="L694" title="All 2 branches missed.">            for(int i = 0; i &lt; 7; i++)</span>
+<span class="nc bnc" id="L692" title="All 2 branches missed.">            for(int i = 0; i &lt; 4; i++)</span>
             {
-                // If statement used exclusively for Antarctica, which has no cities and a population of 0.
-<span class="nc bnc" id="L697" title="All 2 branches missed.">                if(i == 5)</span>
-                {
-<span class="nc" id="L699">                    System.out.println(continents[i] + &quot; : &quot;);</span>
-<span class="nc" id="L700">                    System.out.println(&quot;No cities in Antarctica!&quot;);</span>
-<span class="nc" id="L701">                    System.out.println(&quot;Nobody lives in Antarctica!&quot;);</span>
-                }
-                else {
-<span class="nc" id="L704">                    continentPops[i] = a.GetPopulation(2, continents[i]);</span>
-<span class="nc" id="L705">                    cityPops[i] = a.GetAllCityPopulations(1, continents[i]);</span>
-<span class="nc" id="L706">                    percent = cityPops[i] * 100 / continentPops[i];</span>
-<span class="nc" id="L707">                    System.out.println(continents[i] + &quot; : &quot;);</span>
-<span class="nc" id="L708">                    System.out.println(&quot;People living in the continent : &quot; + String.format(&quot;%,d&quot;, continentPops[i]));</span>
-<span class="nc" id="L709">                    System.out.println(&quot;People living in cities : &quot; + String.format(&quot;%,d&quot;, cityPops[i]));</span>
-<span class="nc" id="L710">                    System.out.println(&quot;People not living in cities : &quot; + String.format(&quot;%,d&quot;, (continentPops[i] - cityPops[i]))</span>
-                            + &quot; ( &quot; + percent + &quot;% )&quot;);
-                }
-
+<span class="nc" id="L694">                continentPops[i] = a.GetPopulation(2, continents[i]);</span>
+<span class="nc" id="L695">                cityPops[i] = a.GetAllCityPopulations(1, continents[i]);</span>
+<span class="nc" id="L696">                percentInCity = ((float)cityPops[i] / (float)continentPops[i]) * 100;</span>
+<span class="nc" id="L697">                percentNotInCity = (((float)continentPops[i] - (float)cityPops[i]) / (float)continentPops[i]) * 100;</span>
+<span class="nc" id="L698">                System.out.println(continents[i] + &quot; : &quot;);</span>
+<span class="nc" id="L699">                System.out.println(&quot;People living in the continent : &quot; + String.format(&quot;%,d&quot;, continentPops[i]));</span>
+<span class="nc" id="L700">                System.out.println(&quot;People living in cities : &quot; + String.format(&quot;%,d&quot;, cityPops[i]) + &quot; ( &quot; + percentInCity + &quot;% )&quot;);</span>
+<span class="nc" id="L701">                System.out.println(&quot;People not living in cities : &quot; + String.format(&quot;%,d&quot;, (continentPops[i] - cityPops[i])) + &quot; ( &quot; + percentNotInCity + &quot;% )&quot;);</span>
             }
+
+            // Print population of people not living in cities in a region or country (Use Case 12)
+<span class="nc" id="L705">            System.out.println(&quot;\n----- PEOPLE NOT LIVING IN CITIES IN REGIONS OR COUNTRIES - USE CASE 12&quot;);</span>
+            // Get population of a country, both in cities and not in cities, and find percentage of each
+<span class="nc" id="L707">            long CountryPop = a.GetPopulation(4, &quot;United Kingdom&quot;);</span>
+<span class="nc" id="L708">            long CityPop = a.GetAllCityPopulations(2, &quot;United Kingdom&quot;);</span>
+<span class="nc" id="L709">            percentInCity = ((float) CityPop / (float) CountryPop) * 100;</span>
+<span class="nc" id="L710">            percentNotInCity = (((float) CountryPop - (float)CityPop) / (float) CountryPop) * 100;</span>
+<span class="nc" id="L711">            System.out.println(&quot;People living in the UK : &quot; + String.format(&quot;%,d&quot;, CountryPop));</span>
+<span class="nc" id="L712">            System.out.println(&quot;People living in the UK in a city : &quot; + String.format(&quot;%,d&quot;, CityPop) + &quot; : &quot; + percentInCity + &quot;%&quot;);</span>
+<span class="nc" id="L713">            System.out.println(&quot;People living in the UK not in a city : &quot; + String.format(&quot;%,d&quot;, CountryPop - CityPop) + &quot; : &quot; + percentNotInCity + &quot;%&quot;);</span>
+            // Get population of a region, both in cities and not in cities, and find percentage of each
+<span class="nc" id="L715">            long RegionPop = a.GetPopulation(3, &quot;British Islands&quot;);</span>
+<span class="nc" id="L716">            CityPop = a.GetAllCityPopulations(3, &quot;British Islands&quot;);</span>
+<span class="nc" id="L717">            percentInCity = ((float) CityPop / (float) RegionPop) * 100;</span>
+<span class="nc" id="L718">            percentNotInCity = (((float) RegionPop - (float)CityPop) / (float) RegionPop) * 100;</span>
+<span class="nc" id="L719">            System.out.println(&quot;People living in the British Islands : &quot; + String.format(&quot;%,d&quot;, RegionPop));</span>
+<span class="nc" id="L720">            System.out.println(&quot;People living in the British Islands in a city : &quot; + String.format(&quot;%,d&quot;, CityPop) + &quot; : &quot; + percentInCity + &quot;%&quot;);</span>
+<span class="nc" id="L721">            System.out.println(&quot;People living in the British Islands not in a city : &quot; + String.format(&quot;%,d&quot;, RegionPop - CityPop) + &quot; : &quot; + percentNotInCity + &quot;%&quot;);</span>
+
             // Terminate connection to the database.
-<span class="nc" id="L716">            a.Disconnect();</span>
+<span class="nc" id="L724">            a.Disconnect();</span>
 
 
-<span class="nc" id="L719">        }</span>
+<span class="nc" id="L727">        }</span>
     }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
