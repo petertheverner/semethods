@@ -23,6 +23,8 @@ A list of clear steps that will result in the bug occurring. Include the initial
 
 ...
 
+_________________________________________________________
+
 
 **Expected behavior**
 A clear description of how the application at this time is meant to function.
