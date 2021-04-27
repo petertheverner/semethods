@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Added integration tests for GetCapitalCityReport">
+    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Integrated changes from other branches">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/Languages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/Languages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/Region.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/App.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/CapitalCity.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/City.class" beforeDir="false" />
@@ -23,6 +21,7 @@
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/seMethods-0.1.0.7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/seMethods-0.1.0.8.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/seMethods.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/App.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.napier.sem/App.java.html" beforeDir="false" />
@@ -512,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619311447911</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Integrated changes from other branches">
+      <created>1619560996986</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1619560996986</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -531,7 +537,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Realigned stages" />
     <MESSAGE value="Renamed test folder" />
     <MESSAGE value="Rebuilt updated project" />
     <MESSAGE value="Updated entrypoint for Dockerfile" />
@@ -556,7 +561,8 @@
     <MESSAGE value="Repackaged project" />
     <MESSAGE value="Project correctly packaged and unit tests added." />
     <MESSAGE value="Added integration tests for GetCapitalCityReport" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added integration tests for GetCapitalCityReport" />
+    <MESSAGE value="Integrated changes from other branches" />
+    <option name="LAST_COMMIT_MESSAGE" value="Integrated changes from other branches" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/seMethods$AppIntegrationTest_TestGetCapitalCityReport.ic" NAME="AppIntegrationTest.TestGetCapitalCityReport Coverage Results" MODIFIED="1619308429551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
