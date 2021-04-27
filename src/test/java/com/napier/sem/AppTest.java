@@ -2,7 +2,6 @@ package com.napier.sem;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AppTest {
@@ -22,21 +21,21 @@ public class AppTest {
     @Test
     void TestGetPopulationRange()
     {
-        assertEquals(-1, a.GetPopulation(8, ""));
+        assertEquals(-1, a.GetPopulation(8, "United Kingdom"), "Error! Invalid value for searchType passed");
     }
 
     // Test if the method can handle an empty string with a search type of > 1.
     @Test
     void TestGetPopulationEmpty()
     {
-        assertEquals(-1, a.GetPopulation(4, ""));
+        assertEquals(-1, a.GetPopulation(4, ""), "Error! Empty string passed for search target");
     }
 
     // Test if the method can handle null strings with a negative search range.
     @Test
     void TestGetPopulationNull()
     {
-        assertEquals(-1, a.GetPopulation(-3, null));
+        assertEquals(-1, a.GetPopulation(-3, null), "Error! Negative value for searchType passed");
     }
 
 
@@ -48,7 +47,7 @@ public class AppTest {
     void TestGetCountryReportNull()
     {
         Country testCountry = a.GetCountryReport(null);
-        assertEquals(-1, testCountry.getPopulation());
+        assertEquals(-1, testCountry.getPopulation(), "Error! Null value passed for a country input");
     }
 
     // Test country report with an empty input.
@@ -56,7 +55,7 @@ public class AppTest {
     void TestGetCountryReportEmpty()
     {
         Country testCountry = a.GetCountryReport("");
-        assertEquals(-1, testCountry.getPopulation());
+        assertEquals(-1, testCountry.getPopulation(), "Error! Empty string country input passed");
     }
 
     // Tests for the method GetCountryPopulations(int count)
@@ -67,7 +66,7 @@ public class AppTest {
     void TestGetCountryPopulationsZero()
     {
         int arraySize = a.GetCountryPopulations(0).size();
-        assertEquals(0, arraySize);
+        assertEquals(0, arraySize, "Error! 0 country count passed");
     }
 
     // Test country populations generator with a negative count
@@ -75,7 +74,7 @@ public class AppTest {
     void TestGetCountryPopulationsNegative()
     {
         int arraySize = a.GetCountryPopulations(-20).size();
-        assertEquals(0, arraySize);
+        assertEquals(0, arraySize, "Error! Negative number of countries passed");
     }
 
     // Tests for the method getCapitalCityReport(String city)
@@ -85,7 +84,7 @@ public class AppTest {
     void TestGetCapitalCityEmptyString()
     {
         City tempCity = a.getCapitalCityReport("");
-        assertEquals(null, tempCity);
+        assertEquals(null, tempCity, "Error! Empty string passed for a city input");
     }
 
     // Test by passing in a null input
@@ -93,7 +92,7 @@ public class AppTest {
     void TestGetCapitalCityNull()
     {
         City tempCity = a.getCapitalCityReport(null);
-        assertEquals(null, tempCity);
+        assertEquals(null, tempCity, "Error! Null value passed for a city input");
     }
 
     // No unit tests can be done for the method GetCapitalCities as no matter what, the user cannot
@@ -107,6 +106,7 @@ public class AppTest {
     void TestCityPopulationsInvalidType()
     {
         long tempNumber = a.GetAllCityPopulations(10, "United Kingdom");
+        assertEquals(-1, tempNumber, "Error! Invalid search type passed to method");
     }
 
 }

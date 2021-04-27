@@ -7,11 +7,9 @@
 package com.napier.sem;
 // Imports all SQL methods.
 
-import org.apache.commons.lang.ObjectUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class App
@@ -230,7 +228,6 @@ public class App
         public City GetCityReport(String city)
         {
             City tempCity = new City();
-            int CityNameSearch = 0;
             String query = "SELECT Name, Population, District, CountryCode "
                     +"FROM city "
                     +"WHERE Name = '" + city + "'";
@@ -299,8 +296,7 @@ public class App
             }
             catch(Exception e)
             {
-                System.out.println(e.getMessage());
-                System.out.println("Error retrieving the report for the country " + country);
+                System.out.println("Error retrieving the report for the country " + country + "\n" + e.getMessage());
                 return null;
             }
 
@@ -316,8 +312,7 @@ public class App
             }
             catch(Exception e)
             {
-                System.out.println(e.getMessage());
-                System.out.println("Error retrieving the capital city from the country " + country);
+                System.out.println("Error retrieving the capital city from the country " + country + "\n" + e.getMessage());
                 return null;
             }
             return tempCountry;
@@ -366,8 +361,7 @@ public class App
             }
             catch(Exception e)
             {
-                System.out.println(e.getMessage());
-                System.out.println("Error retrieving population data for top populated countries.");
+                System.out.println("Error retrieving population data for top populated countries.\n" + e.getMessage());
             }
 
             return Countries;
@@ -397,8 +391,7 @@ public class App
 
             catch (Exception e)
             {
-                System.out.println(e.getMessage());
-                System.out.println("Unable to retrieve country capital cites.");
+                System.out.println("Unable to retrieve country capital cites.\n" + e.getMessage());
             }
 
             // For each capital city code found, execute a query to find the city with that code
@@ -428,8 +421,7 @@ public class App
 
                 catch(Exception e)
                 {
-                    System.out.println(e.getMessage());
-                    System.out.println("Unable to retrieve and/or record capital city names and populations.");
+                    System.out.println("Unable to retrieve and/or record capital city names and populations.\n" + e.getMessage());
                 }
             }
 
@@ -440,7 +432,6 @@ public class App
         {
             // Init variables to retrieve country code and the ID of the city
             int cityID = -1;
-            int countryCode = -1;
             City TempCity = new City();
 
             // Check that a correct is input is given
@@ -451,7 +442,7 @@ public class App
             }
 
             // Setup initial query to get simple city data
-            String query = "SELECT ID, Name, District, Population, CountryCode "
+            String query = "SELECT ID, Name, District, Population "
                     +"FROM city "
                     +"WHERE Name='" + city + "'";
 
@@ -537,6 +528,7 @@ public class App
                 case 1: query += "Continent='" + area + "'"; break;
                 case 2: query += "Name='" + area + "'"; break;
                 case 3: query+= "Region='" + area + "'"; break;
+                default: return -1;
             }
 
             try
@@ -551,7 +543,7 @@ public class App
             }
             catch(Exception e)
             {
-                System.out.println("Error assembling list of countries!");
+                System.out.println("Error assembling list of countries!\n" + e.getMessage());
                 return -1;
             }
 
@@ -572,7 +564,7 @@ public class App
                 }
                 catch(Exception e)
                 {
-                    System.out.println("Error retrieving population for a city!");
+                    System.out.println("Error retrieving population for a city!\n" + e.getMessage());
                 }
             }
             return cityPops;
@@ -615,6 +607,7 @@ public class App
             // Print report of a specified country (Use Case 07)
             System.out.println("\n----- COUNTRY REPORT - Use Case 07 -----");
             System.out.println("\n Country report of the country 'Denmark' : ");
+
             // Calls the GetCountryReport method which returns a country object. Then it calls
             // the toString method of the Country class which returns a text output.
             System.out.println(a.GetCountryReport("Denmark").toString());
@@ -632,7 +625,7 @@ public class App
             System.out.println("\n----- COUNTRY POPULATION BY NUMBER - USE CASE 2 -----");
             System.out.println("\nTop 10 most populated countries : ");
             // Init array for output
-            ArrayList <Country> Countries = new ArrayList<Country>();
+            ArrayList <Country> Countries;
             // Retrieve array
             Countries = a.GetCountryPopulations(10);
             // Output
@@ -646,7 +639,7 @@ public class App
             System.out.println("\n----- CITY POPULATION BY NUMBER - USE CASE 14 -----");
             System.out.println("\nTop 10 most populated City's : ");
             // Init array for output
-            ArrayList <City> Citys = new ArrayList<City>();
+            ArrayList <City> Citys;
             // Retrieve array
             Citys = a.GetCityPopulations(10);
             // Output
@@ -659,7 +652,7 @@ public class App
 
             // Print all capital cities by population (Use Case 03).
             System.out.println("\n----- CAPITAL CITIES BY POPULATION - USE CASE 03 -----");
-            ArrayList<City> CitiesPopulations = new ArrayList<City>();
+            ArrayList<City> CitiesPopulations;
             // Populate arraylist
             CitiesPopulations = a.GetCapitalCities();
             // Sort arraylist in ascending order
@@ -672,11 +665,13 @@ public class App
                 System.out.println("Population : " + CitiesPopulations.get(i).getCityPopulation() + "\n");
             }
 
+
             // Print information on a specific capital city (Use Case 09)
             System.out.println("\n----- CAPITAL CITY REPORT - USE CASE 09 -----");
-            City ACity = new City();
+            City ACity;
             ACity = a.getCapitalCityReport("London");
             System.out.println(ACity.toString());
+
 
             // Print population of people not living in cities in continents (Use Case 11)
             System.out.println("\n----- PEOPLE NOT LIVING IN CITIES IN CONTINENTS - USE CASE 11");
@@ -687,38 +682,49 @@ public class App
             long[] cityPops = {0, 0, 0, 0};
             double percentInCity;
             double percentNotInCity;
+
             // For each iteration, get a continent's population, find the collective city populations
             // inside the continent, and then find the number of people not living in cities, and percentage.
             for(int i = 0; i < 4; i++)
             {
                 continentPops[i] = a.GetPopulation(2, continents[i]);
                 cityPops[i] = a.GetAllCityPopulations(1, continents[i]);
+
                 percentInCity = ((float)cityPops[i] / (float)continentPops[i]) * 100;
                 percentNotInCity = (((float)continentPops[i] - (float)cityPops[i]) / (float)continentPops[i]) * 100;
+
                 System.out.println(continents[i] + " : ");
                 System.out.println("People living in the continent : " + String.format("%,d", continentPops[i]));
                 System.out.println("People living in cities : " + String.format("%,d", cityPops[i]) + " ( " + percentInCity + "% )");
                 System.out.println("People not living in cities : " + String.format("%,d", (continentPops[i] - cityPops[i])) + " ( " + percentNotInCity + "% )");
             }
 
+
             // Print population of people not living in cities in a region or country (Use Case 12)
             System.out.println("\n----- PEOPLE NOT LIVING IN CITIES IN REGIONS OR COUNTRIES - USE CASE 12");
+
             // Get population of a country, both in cities and not in cities, and find percentage of each
             long CountryPop = a.GetPopulation(4, "United Kingdom");
             long CityPop = a.GetAllCityPopulations(2, "United Kingdom");
+
             percentInCity = ((float) CityPop / (float) CountryPop) * 100;
             percentNotInCity = (((float) CountryPop - (float)CityPop) / (float) CountryPop) * 100;
+
             System.out.println("People living in the UK : " + String.format("%,d", CountryPop));
             System.out.println("People living in the UK in a city : " + String.format("%,d", CityPop) + " : " + percentInCity + "%");
             System.out.println("People living in the UK not in a city : " + String.format("%,d", CountryPop - CityPop) + " : " + percentNotInCity + "%");
+
             // Get population of a region, both in cities and not in cities, and find percentage of each
             long RegionPop = a.GetPopulation(3, "British Islands");
             CityPop = a.GetAllCityPopulations(3, "British Islands");
+
             percentInCity = ((float) CityPop / (float) RegionPop) * 100;
             percentNotInCity = (((float) RegionPop - (float)CityPop) / (float) RegionPop) * 100;
+
             System.out.println("People living in the British Islands : " + String.format("%,d", RegionPop));
             System.out.println("People living in the British Islands in a city : " + String.format("%,d", CityPop) + " : " + percentInCity + "%");
             System.out.println("People living in the British Islands not in a city : " + String.format("%,d", RegionPop - CityPop) + " : " + percentNotInCity + "%");
+
 
             // Terminate connection to the database.
             a.Disconnect();
