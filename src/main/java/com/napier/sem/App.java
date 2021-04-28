@@ -382,6 +382,7 @@ public class App
          * @param region String The name of the region used as an input for the search
          * @return Region An object with relevant information to it's region.
          */
+        /*
         public Region GetRegionReport(String region)
         {
             Region tempRegion = new Region();
@@ -407,14 +408,16 @@ public class App
                 return null;
             }
             return tempRegion;
-        }
+        }*/
 
         /** This method instantiates a country arraylist and adds countries equal to the count
          * provided by the user. Only logs country names and populations.
          *
          * @param count int The number of regions to output
          * @return Regions An arraylist of regions, stores region objects for output.
-         */
+         **/
+
+        /*
         public ArrayList<Region> GetRegionPopulations(int count)
         {
             // init array list
@@ -458,8 +461,14 @@ public class App
 
             return Regions;
         }
+        */
 
 
+        /** This method instantiates a city arraylist and retrieves capital cities from
+         * all countries in the world
+         *
+         * @return Cities An arrayList of capital cities
+         **/
         public ArrayList<City> GetCapitalCities()
         {
             ArrayList<City> Cities = new ArrayList<City>();
@@ -523,7 +532,12 @@ public class App
             return Cities;
         }
 
-
+        /** This method generates a report on a capital city. The method will also check that
+         * the input city is a capital city.
+         *
+         * @param city String The name of the city
+         * @return City A populated city object
+         **/
         public City getCapitalCityReport(String city)
         {
             // Init variables to retrieve country code and the ID of the city
@@ -708,7 +722,13 @@ public class App
             return Language;
         }
     */
-
+        /** This method returns the combined popoulation of all cities within a given continent,
+         * country, or region.
+         *
+         * @param searchType int The type of area the search is being done on (region, country or continent).
+         * @param area String the name of the location to search.
+         * @return long A number representing the total combined city populations present in the area.
+         **/
         long GetAllCityPopulations(int searchType, String area)
         {
             String query;

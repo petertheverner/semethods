@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Fixed duplication of methods error.">
+    <list default="true" id="1ced05e7-a623-4e72-90ed-ca5c281c5f8f" name="Default Changelist" comment="Added multiple additional tests for existing methods, and cleaned up duplicate code.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/napier/sem/AppIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/napier/sem/AppIntegrationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/App.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/CapitalCity.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/City.class" beforeDir="false" />
@@ -114,16 +113,14 @@
       <recent name="C:\Users\blair\IdeaProjects\semethods" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.com.napier.sem in seMethods">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Docker.Docker Image">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -132,38 +129,6 @@
       <module name="seMethods" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppIntegrationTest.TestGetCityPopulations" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="seMethods" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.napier.sem.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.napier.sem" />
-      <option name="MAIN_CLASS_NAME" value="com.napier.sem.AppIntegrationTest" />
-      <option name="METHOD_NAME" value="TestGetCityPopulations" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppIntegrationTest.TestGetCityPopulationsNullCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="seMethods" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.napier.sem.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.napier.sem" />
-      <option name="MAIN_CLASS_NAME" value="com.napier.sem.AppIntegrationTest" />
-      <option name="METHOD_NAME" value="TestGetCityPopulationsNullCount" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -198,13 +163,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Docker Image" type="docker-deploy" factoryName="docker-image" temporary="true" server-name="Docker">
+      <deployment type="docker-image">
+        <settings>
+          <option name="imageTag" value="semethods_db:latest" />
+          <option name="command" value="" />
+          <option name="containerName" value="" />
+          <option name="entrypoint" value="" />
+          <option name="commandLineOptions" value="-e MYSQL_ROOT_PASSWORD=example -p 33060:3306" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="db/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="db/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.Docker Image" />
+        <item itemvalue="Docker.db/Dockerfile" />
         <item itemvalue="JUnit.com.napier.sem in seMethods" />
         <item itemvalue="JUnit.All in seMethods" />
         <item itemvalue="JUnit.AppIntegrationTest.TestGetCityReport" />
-        <item itemvalue="JUnit.AppIntegrationTest.TestGetCityPopulationsNullCount" />
-        <item itemvalue="JUnit.AppIntegrationTest.TestGetCityPopulations" />
       </list>
     </recent_temporary>
   </component>
@@ -229,6 +214,7 @@
       <workItem from="1618992997875" duration="1964000" />
       <workItem from="1618995502391" duration="4753000" />
       <workItem from="1619277929733" duration="16304000" />
+      <workItem from="1619598545086" duration="639000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed errors">
       <created>1616580236230</created>
@@ -531,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619562261982</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Added multiple additional tests for existing methods, and cleaned up duplicate code.">
+      <created>1619565861455</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1619565861455</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,7 +543,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated entrypoint for Dockerfile" />
     <MESSAGE value="Re-implemented code cov reporter" />
     <MESSAGE value="Fixed method getcityreport output error" />
     <MESSAGE value="Fixed query typo in GetCityReport" />
@@ -575,7 +567,8 @@
     <MESSAGE value="Integrated changes from other branches" />
     <MESSAGE value="Fixed errors created from merging." />
     <MESSAGE value="Fixed duplication of methods error." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed duplication of methods error." />
+    <MESSAGE value="Added multiple additional tests for existing methods, and cleaned up duplicate code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added multiple additional tests for existing methods, and cleaned up duplicate code." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/seMethods$All_in_seMethods.ic" NAME="All in seMethods Coverage Results" MODIFIED="1619565422271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
@@ -585,7 +578,7 @@
     <SUITE FILE_PATH="coverage/seMethods$AppIntegrationTest.ic" NAME="AppIntegrationTest Coverage Results" MODIFIED="1619563400673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.napier.sem.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/seMethods$com_napier_sem_in_seMethods.ic" NAME="com.napier.sem in seMethods Coverage Results" MODIFIED="1619565486969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/seMethods$com_napier_sem_in_seMethods.ic" NAME="com.napier.sem in seMethods Coverage Results" MODIFIED="1619565811838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.napier.sem.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/seMethods$Tests.ic" NAME="Tests Coverage Results" MODIFIED="1616581514282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
