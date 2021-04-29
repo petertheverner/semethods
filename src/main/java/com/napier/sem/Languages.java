@@ -18,5 +18,6 @@ public class Languages {
     public String getLanguage_Name() { return this.Language_Name; }
     public int getPercentage() {return this.Percentage;}
     public String getIsofficial() { return this.Isofficial; }
+    public int getLanguageCCODE() {return this.LanguageCCODE;}
 
 }

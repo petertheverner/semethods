@@ -615,7 +615,7 @@ public class App
         }
 
         //Currently unused
-        /*
+
         public Languages GetLanguageReport(String languages) //(use case 13)
         {
             // init language with a country code to find a country and how many langauges there are there/ the most spoken
@@ -692,7 +692,7 @@ public class App
             int i = 0;
             // Init query
             String query = "SELECT Language, Percentage, Isofficial "
-                    +"FROM countrylanguages "
+                    +"FROM countrylanguage "
                     +"ORDER BY Percentage DESC";
 
             try
@@ -721,7 +721,7 @@ public class App
 
             return Language;
         }
-    */
+
         /** This method returns the combined popoulation of all cities within a given continent,
          * country, or region.
          *
@@ -857,7 +857,7 @@ public class App
                 System.out.println("Population : " + String.format("%,d", Countries.get(i).getPopulation()));
             }
 
-            /*
+
             //print the N most populated countries by each language (Use Case 06)
             System.out.println("\n----- POPULATION BY LANGUAGE - USE CASE 6 -----");
             System.out.println("\nTop languages by countries : ");
@@ -868,13 +868,11 @@ public class App
             // Output
             for(int i = 0; i < 10; i++)
             {
-           //     System.out.println("Country " +  " : " + Countries.get(i).getName());
-           //     System.out.println("Language Speaking population " +  " : " + String.format("%,d",Language.get(i).getLanguageSpeakers()));
-           //     System.out.println("English Population : " + Language.get(i).getEnglish());
-           //     System.out.println("Hindi Population : " + Language.get(i).getHindi());
-           //     System.out.println("Spanish Population : " + Language.get(i).getSpanish());
-           //     System.out.println("Chinese Population : " + Language.get(i).getChinese());
-           //    System.out.println("Arabic Population : " + Language.get(i).getArabic());
+                System.out.println("Country " +  " : " + Countries.get(i).getName());
+                System.out.println("Country Code : " +  " : " + String.format("%,d",Language.get(i).getLanguageCCODE()));
+                System.out.println("Language Name : " + Language.get(i).getLanguage_Name());
+                System.out.println("Official Language (True/False) : " + Language.get(i).getIsofficial());
+                System.out.println("Percentage of Speakers in that language " +  " : " + String.format("%,d",Language.get(i).getPercentage()));
             }
 
             // Print a Language Report for City's, country's and regions (Use Case 13)
@@ -883,7 +881,7 @@ public class App
             // Calls the GetCountryReport method which returns a country object. Then it calls
             // the toString method of the Country class which returns a text output.
             System.out.println(a.GetLanguageReport("English").toString());
-            */
+
 
 
             // Print N most populated city's in the world (Use Case 14).
