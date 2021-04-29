@@ -417,7 +417,7 @@ public class App
          * @return Regions An arraylist of regions, stores region objects for output.
          **/
 
-        /*
+
         public ArrayList<Region> GetRegionPopulations(int count)
         {
             // init array list
@@ -432,8 +432,8 @@ public class App
             // i used to check count
             int i = 0;
             // Init query
-            String query = "SELECT Population, Name "
-                    +"FROM Region "
+            String query = "SELECT Name ,Population, Region "
+                    +"FROM Country "
                     +"ORDER BY Population DESC";
 
             try
@@ -447,8 +447,9 @@ public class App
                 while(rset.next() && i < count)
                 {
                     Region tempRegion = new Region();
+                    tempRegion.setRegionCountry(rset.getString("Regions Country"));
                     tempRegion.setRPopulation(rset.getInt("Population"));
-                    tempRegion.setRegionName(rset.getString("Name"));
+                    tempRegion.setRegionName(rset.getString("Region Name"));
                     Regions.add(tempRegion);
                     i++;
                 }
@@ -461,7 +462,6 @@ public class App
 
             return Regions;
         }
-        */
 
 
         /** This method instantiates a city arraylist and retrieves capital cities from
@@ -811,7 +811,7 @@ public class App
                 a.Connect(args[0]);
             }
 
-            // Print populations of regions (Use Case 04)
+            // Print populations of the world, a continent, a region, a country, a district and a city (Use Case 04)
             System.out.println("----- POPULATIONS - Use Case 04 -----");
 
             System.out.println("\nPopulation of the world");
@@ -836,7 +836,7 @@ public class App
             System.out.println(a.GetCountryReport("Denmark").toString());
 
 
-            // Print report of a specified country (Use Case 08)
+            // Print report of a specified city (Use Case 08)
             System.out.println("\n----- CITY REPORT - Use Case 08 -----");
             System.out.println("\n City report of the city 'Edinburgh' : ");
             // Calls the GetCountryReport method which returns a country object. Then it calls
@@ -881,12 +881,15 @@ public class App
             // Calls the GetCountryReport method which returns a country object. Then it calls
             // the toString method of the Country class which returns a text output.
             System.out.println(a.GetLanguageReport("English").toString());
-
+            System.out.println(a.GetLanguageReport("Hindi").toString());
+            System.out.println(a.GetLanguageReport("Chinese").toString());
+            System.out.println(a.GetLanguageReport("Spanish").toString());
+            System.out.println(a.GetLanguageReport("Arabic").toString());
 
 
             // Print N most populated city's in the world (Use Case 14).
             System.out.println("\n----- CITY POPULATION BY NUMBER - USE CASE 14 -----");
-            System.out.println("\nTop 10 most populated City's : ");
+            System.out.println("\nTop 10 most populated City's in the world : ");
             // Init array for output
             ArrayList <City> Citys = new ArrayList<City>();
             // Retrieve array
@@ -897,6 +900,8 @@ public class App
             { System.out.println("City Name" +  " : " + Citys.get(i).getCityName());
                 System.out.println(" City Population : " + String.format("%,d", Citys.get(i).getCityPopulation()));
             }
+
+            //All countries in a continent organised by largest to smallest population (use case
 
 
             // Print population of people not living in cities in continents (Use Case 11)
