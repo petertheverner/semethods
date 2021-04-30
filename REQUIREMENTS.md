@@ -26,8 +26,18 @@
 | 25 | The population of people, people living in cities, and people not living in cities in each region.             | No  |         |
 | 26 | The population of people, people living in cities, and people not living in cities in each country.            | No  |         |
 | 27 | The population of the world, a continent, a region, a country, a district, a city.                             | Yes |         |                                      
-| 28 | The number of people who speak Selected languages from greatest number to smallest.                            | Yes |         |
-| 29 | Country Report columns: Code, Name, Continent, Region, Population and Capital.                                 | Yes |         |
-| 30 | City Report with Columns: Name, Country, District and Population.                                              | Yes |         |
-| 31 | Capital City Report: Name, Country and Population.                                                             | Yes |         |
-| 32 | Population Report: total population of continent/region/country, living in cities and not living in cities.    | No  |         |
+| 28 | Population of the world. speak Selected languages from greatest number to smallest.                            | Yes |         |
+| 29 | Population of a continent.                                                                                     | Yes |         |
+| 30 | Population of a region.                                                                                        | Yes |         |
+| 31 | Population of a country.                                                                                       | Yes |         |
+| 32 | Population of a district.                                                                                      | No  |         |
+| 33 | Population of a city.                                                                                          | No  |         |
+| 34 | Number of Chinese speakers.                                                                                    | No  |         |
+| 35 | Number of English speakers.                                                                                    | No  |         |
+| 36 | Number of Hindi speakers.                                                                                      | No  |         |
+| 37 | Number of Spanish speakers.                                                                                    | No  |         |
+| 38 | Number of Arabic speakers.                                                                                     | No  |         |
+| 39 | Country report layout is correct.                                                                              | No  |         |
+| 40 | City report layout is correct.                                                                                 | No  |         |
+| 41 | Capital city report layout is correct.                                                                         | No  |         |
+| 42 | Population report layout is correct.                                                                           | No  |         |
