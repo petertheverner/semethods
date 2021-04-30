@@ -7,6 +7,7 @@
 package com.napier.sem;
 // Imports all SQL methods.
 
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -233,7 +234,7 @@ public class App
         public City GetCityReport(String city)
         {
             City tempCity = new City();
-            int CityNameSearch = 0;
+            String countryCode = "";
             String query = "SELECT Name, Population, District, CountryCode "
                     +"FROM city "
                     +"WHERE Name = '" + city + "'";
@@ -247,7 +248,8 @@ public class App
                     tempCity.setCityName(rset.getString("Name"));
                     tempCity.setCitypopulation(rset.getInt("Population"));
                     tempCity.setCitydistrict(rset.getString("District"));
-                    tempCity.setCityCountry(rset.getString("CountryCode"));
+                    countryCode = rset.getString("CountryCode");
+
 
                 }
             }
@@ -256,6 +258,22 @@ public class App
                 System.out.println(e.getMessage());
                 System.out.println("Error retrieving the report for the city " + city);
                 return null;
+            }
+            try {
+                query = "SELECT Name, Code "
+                        +"FROM country "
+                        +"WHERE Code='" + countryCode + "'";
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery(query);
+                if(rset.next())
+                {
+                    tempCity.setCityCountry(rset.getString("Name"));
+                }
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Error retrieving the report for the city " + city);
             }
             return tempCity;
         }
@@ -848,13 +866,15 @@ public class App
             System.out.println("\n----- COUNTRY POPULATION BY NUMBER - USE CASE 2 -----");
             System.out.println("\nTop 10 most populated countries : ");
             // Init array for output
-            ArrayList <Country> Countries = new ArrayList<Country>();
+            ArrayList <Country> CountryList = new ArrayList<Country>();
             // Retrieve array
-            Countries = a.GetCountryPopulations(10);
-            // Output
+            CountryList = a.GetCountryPopulations(10);
+            Country aCountry;
+            // Output and getting country reports
             for(int i = 0; i < 10; i++)
-            { System.out.println("Country " +  " : " + Countries.get(i).getName());
-                System.out.println("Population : " + String.format("%,d", Countries.get(i).getPopulation()));
+            {
+                aCountry = a.GetCountryReport(CountryList.get(i).getName());
+                System.out.println(aCountry.toString() + "\n");
             }
 
 
@@ -868,13 +888,13 @@ public class App
             // Output
             for(int i = 0; i < 10; i++)
             {
-                System.out.println("Country " +  " : " + Countries.get(i).getName());
                 System.out.println("Country Code : " +  " : " + String.format("%,d",Language.get(i).getLanguageCCODE()));
                 System.out.println("Language Name : " + Language.get(i).getLanguage_Name());
                 System.out.println("Official Language (True/False) : " + Language.get(i).getIsofficial());
                 System.out.println("Percentage of Speakers in that language " +  " : " + String.format("%,d",Language.get(i).getPercentage()));
             }
 
+            /*
             // Print a Language Report for City's, country's and regions (Use Case 13)
             System.out.println("\n----- LANGUAGE REPORT - Use Case 13 -----");
             System.out.println("\n Language report for the English Language : ");
@@ -885,20 +905,22 @@ public class App
             System.out.println(a.GetLanguageReport("Chinese").toString());
             System.out.println(a.GetLanguageReport("Spanish").toString());
             System.out.println(a.GetLanguageReport("Arabic").toString());
-
+                */
 
             // Print N most populated city's in the world or continent (Use Case 14).
             System.out.println("\n----- CITY POPULATION BY NUMBER - USE CASE 14 -----");
             System.out.println("\nTop 10 most populated City's in the world : ");
             // Init array for output
-            ArrayList <City> Citys = new ArrayList<City>();
+            City aCity;
+            ArrayList <City> CityList;
             // Retrieve array
-            Citys = a.GetCityPopulations(10);
+            CityList = a.GetCityPopulations(10);
             // Output
             System.out.println("TOP 10 MOST POPULATED CITY'S : ");
             for(int i = 0; i < 10; i++)
-            { System.out.println("City Name" +  " : " + Citys.get(i).getCityName());
-                System.out.println(" City Population : " + String.format("%,d", Citys.get(i).getCityPopulation()));
+            {
+                aCity = a.GetCityReport(CityList.get(i).getCityName());
+                System.out.println(aCity.toString() + "\n");
             }
 
             //All countries in a continent organised by largest to smallest population (use case
