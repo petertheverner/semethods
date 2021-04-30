@@ -26,12 +26,12 @@
 | 25 | The population of people, people living in cities, and people not living in cities in each region.             | No  |         |
 | 26 | The population of people, people living in cities, and people not living in cities in each country.            | No  |         |
 | 27 | The population of the world, a continent, a region, a country, a district, a city.                             | Yes |         |                                      
-| 28 | Population of the world. speak Selected languages from greatest number to smallest.                            | Yes |         |
+| 28 | Population of the world                                                                                        | Yes |         |
 | 29 | Population of a continent.                                                                                     | Yes |         |
 | 30 | Population of a region.                                                                                        | Yes |         |
 | 31 | Population of a country.                                                                                       | Yes |         |
-| 32 | Population of a district.                                                                                      | No  |         |
-| 33 | Population of a city.                                                                                          | No  |         |
+| 32 | Population of a district.                                                                                      | Yes |         |
+| 33 | Population of a city.                                                                                          | Yes |         |
 | 34 | Number of Chinese speakers.                                                                                    | No  |         |
 | 35 | Number of English speakers.                                                                                    | No  |         |
 | 36 | Number of Hindi speakers.                                                                                      | No  |         |
