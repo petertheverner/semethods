@@ -1,8 +1,8 @@
 | ID |  Description | Met |  Image  |
 | :----:        |    :----:   |          :----: |  :----: |  
-| 1  | All the countries in the world organised by largest population to smallest.| No |  |
-| 2  | All the countries in a continent organised by largest population to smallest.| No  |         |
-| 3  | All the countries in a region organised by largest population to smallest.| No |         |
+| 1  | All the countries in the world organised by largest population to smallest.| Yes | ![1](https://user-images.githubusercontent.com/73906847/116722897-e54c2400-a9d6-11eb-8fcf-c1e0bb55b46f.PNG) |
+| 2  | All the countries in a continent organised by largest population to smallest.| Yes  |   ![2](https://user-images.githubusercontent.com/73906847/116722899-e67d5100-a9d6-11eb-8dc5-19536bef7f44.PNG)      |
+| 3  | All the countries in a region organised by largest population to smallest.| Yes |    ![3](https://user-images.githubusercontent.com/73906847/116722901-e67d5100-a9d6-11eb-905d-21282dc0fc18.PNG)     |
 | 4  | The top N populated countries in the world where N is provided by the user.                                    | Yes | ![4](https://user-images.githubusercontent.com/73906847/116698356-2f73dc00-a9bc-11eb-9edc-35f8c1424217.PNG)        |
 | 5  | The top N populated countries in a continent where N is provided by the user.                                  | No  |         |
 | 6  | The top N populated countries in a region where N is provided by the user.                                     | No  |         |
@@ -14,7 +14,6 @@
 | 12 | The top N populated cities in the world where N is provided by the user.                                       | Yes | ![12](https://user-images.githubusercontent.com/73906847/116697954-ba080b80-a9bb-11eb-94b6-3f7be511e1b2.PNG)|        |
 | 13 | The top N populated cities in a continent where N is provided by the user.                                     | No  |         |
 | 14 | The top N populated cities in a region where N is provided by the user.                                        | No  |         |
-![33](https://user-images.githubusercontent.com/73906847/116698508-5d592080-a9bc-11eb-82dc-b0e6cef489b1.PNG)
 | 15 | The top N populated cities in a country where N is provided by the user.                                       | No  |         |
 | 16 | The top N populated cities in a district where N is provided by the user.                                      | No  |         |
 | 18 | All the capital cities in the world organised by largest population to smallest.                               | No  |         |
@@ -32,12 +31,15 @@
 | 30 | Population of a country.                                                                                       | Yes | ![31](https://user-images.githubusercontent.com/73906847/116698506-5d592080-a9bc-11eb-809e-3029f84e8c33.PNG)       |
 | 31 | Population of a district.                                                                                      | Yes | ![32](https://user-images.githubusercontent.com/73906847/116698507-5d592080-a9bc-11eb-8b4b-72a667e5eccf.PNG)        |
 | 32 | Population of a city.                                                                                          | Yes | ![33](https://user-images.githubusercontent.com/73906847/116698508-5d592080-a9bc-11eb-82dc-b0e6cef489b1.PNG)        |
-| 33 | Number of Chinese speakers.                                                                                    | No  |         |
-| 34 | Number of English speakers.                                                                                    | No  |         |
-| 35 | Number of Hindi speakers.                                                                                      | No  |         |
-| 36 | Number of Spanish speakers.                                                                                    | No  |         |
-| 37 | Number of Arabic speakers.                                                                                     | No  |         |
-| 38 | Country report layout is correct.                                                                              | No  |         |
-| 39 | City report layout is correct.                                                                                 | No  |         |
-| 40 | Capital city report layout is correct.                                                                         | No  |         |
-| 41 | Population report layout is correct.                                                                           | No  |         |
+| 33 | Language Number of Chinese speakers,Number of English speakers, Number of Hindi speakers, Number of Spanish speakers, Number of Arabic speakers.      | No  | |        
+| 34 | Country report layout is correct.                                                                              | Yes  |  ![38](https://user-images.githubusercontent.com/73906847/116722863-da918f00-a9d6-11eb-84c9-9705634ecf1a.PNG)       |
+| 35 | City report layout is correct.                                                                                 | Yes  |   ![39](https://user-images.githubusercontent.com/73906847/116722867-db2a2580-a9d6-11eb-9c39-4f0cb49bc8c8.PNG)      |
+| 36 | Capital city report layout is correct.                                                                         | No  |         |
+| 37 | Population report layout is correct.                                                                           | Yes  |   ![41](https://user-images.githubusercontent.com/73906847/116722860-da918f00-a9d6-11eb-8db9-5c9611b3a728.PNG)      |
+
+
+17 out of 37%
+
+Percentage of use cases finished 45.95%
+
+
