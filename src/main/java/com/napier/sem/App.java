@@ -633,7 +633,7 @@ public class App
         }
 
         //Currently unused
-
+/*
         public Languages GetLanguageReport(String languages) //(use case 13)
         {
             // init language with a country code to find a country and how many langauges there are there/ the most spoken
@@ -693,52 +693,8 @@ public class App
             }
             return tempLanguage;
         }
+*/
 
-
-        public ArrayList<Languages> GetLanguagePopulations(int count)
-        {
-            // init array list
-            ArrayList<Languages> Language = new ArrayList<Languages>();
-
-            // Check if count input is negative or 0
-            if(count <= 0)
-            {
-                System.out.println("Error: count was either 0 or negative.");
-                return Language;
-            }
-            // i used to check count
-            int i = 0;
-            // Init query
-            String query = "SELECT Language, Percentage, IsOfficial "
-                    +"FROM countrylanguage "
-                    +"ORDER BY Percentage DESC";
-
-            try
-            {
-                // Execute statement
-                Statement stmt = con.createStatement();
-                ResultSet rset = stmt.executeQuery(query);
-
-                // Keep adding language objects until either the entire countrylanguage table has been searched or the count limited
-                // is reached.
-                while(rset.next() && i < count)
-                {
-                    Languages tempLanguage = new Languages();
-                    tempLanguage.setLanguage_Name(rset.getString("Language"));
-                    tempLanguage.setPercentage(rset.getInt("Percentage"));
-                    tempLanguage.setIsofficial(rset.getString("IsOfficial"));
-                    Language.add(tempLanguage);
-                    i++;
-                }
-            }
-            catch(Exception e)
-            {
-                System.out.println(e.getMessage());
-                System.out.println("Error retrieving population data for top populated countries.");
-            }
-
-            return Language;
-        }
 
         public long GetLanguagePopulation(int searchType, String search)
         {
