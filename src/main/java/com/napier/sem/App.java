@@ -435,7 +435,7 @@ public class App
          * @return Regions An arraylist of regions, stores region objects for output.
          **/
 
-
+/*
         public ArrayList<Region> GetRegionPopulations(int count)
         {
             // init array list
@@ -480,7 +480,7 @@ public class App
 
             return Regions;
         }
-
+*/
 
         /** This method instantiates a city arraylist and retrieves capital cities from
          * all countries in the world
@@ -740,6 +740,88 @@ public class App
             return Language;
         }
 
+        public long GetLanguagePopulation(int searchType, String search)
+        {
+            // Total stored as long to be able to output extremely large population numbers, such
+            // as worldwide population
+            long Ltotal = 0;
+
+            if((search == "" && searchType != 1) || search == null)
+            {
+                System.out.println("Error: search type provided was greater than 1, but no search given");
+                return -1;
+            }
+            String query;
+
+            // Switch statement takes in the search type and uses it to determine what language population search
+            // is being done. For example, inputting a searchType of 2 means that a query will be built for
+            // searching for continent population data.
+            switch (searchType)
+            {
+                // English Population
+                case 1:
+                    query = "SELECT Percentage FROM countrylanguage"
+                             +"FROM countrylanguage "
+                             +"WHERE Language = 'English'" + search;
+                    break;
+
+                // Hindi Population
+                case 2:
+                    query = "SELECT Percentage FROM countrylanguage"
+                            +"FROM countrylanguage "
+                            +"WHERE Language = 'Hindi'" + search;
+                    break;
+
+                // Spanish Population
+                case 3:
+                    query = "SELECT Percentage FROM countrylanguage"
+                            +"FROM countrylanguage "
+                            +"WHERE Language = 'Spanish'" + search;
+                    break;
+
+                // Arabic Population
+                case 4:
+                    query = "SELECT Percentage FROM countrylanguage"
+                            +"FROM countrylanguage "
+                            +"WHERE Language = 'Arabic'" + search;
+                    break;
+
+                // Chinese Population
+                case 5:
+                query = "SELECT Percentage FROM countrylanguage"
+                        +"FROM countrylanguage "
+                        +"WHERE Language = 'Chinese'" + search;
+                    break;
+
+                default:
+                    System.out.println("Error: Incorrect search type provided.");
+                    return -1;
+            }
+
+            try
+            {
+                // After query is built, it is executed
+                Statement stmt = con.createStatement();
+                ResultSet rset = stmt.executeQuery(query);
+
+                // Loops through all retrieved rows.
+                while(rset.next())
+                {
+                    // Population is added to the total
+                    Ltotal += rset.getInt("Percentage");
+                }
+            }
+            // Catches any errors that occur during the query execution and returns an appropriate
+            // error message.
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Error retrieving percentage data for:" + search);
+            }
+            // Total is returned if no errors are found and the query is successfully executed.
+            return Ltotal;
+        }
+
         /** This method returns the combined popoulation of all cities within a given continent,
          * country, or region.
          *
@@ -878,34 +960,25 @@ public class App
             }
 
 
-            //print the N most populated countries by each language (Use Case 06)
-            System.out.println("\n----- POPULATION BY LANGUAGE - USE CASE 6 -----");
-            System.out.println("\nTop languages by countries : ");
+            // Print different languages  populations out for the English, Hindi, Spanish, Arabic and Chinese
+            // (Use Case 13)
+            System.out.println("\n----- LANGUAGE REPORT - Use Case 13 -----");
+            System.out.println("\n Language report for the English, Chinese, Hindi, Spanish and Arabic Language : ");
             // Init array for output
             ArrayList <Languages> Language = new ArrayList<Languages>();
             // Retrieve array
-            Language = a.GetLanguagePopulations(10);
             // Output
             for(int i = 0; i < 10; i++)
-            {
-                System.out.println("Country Code : " +  " : " + String.format("%,d",Language.get(i).getLanguageCCODE()));
-                System.out.println("Language Name : " + Language.get(i).getLanguage_Name());
-                System.out.println("Official Language (True/False) : " + Language.get(i).getIsofficial());
-                System.out.println("Percentage of Speakers in that language " +  " : " + String.format("%,d",Language.get(i).getPercentage()));
-            }
-
-            /*
-            // Print a Language Report for City's, country's and regions (Use Case 13)
-            System.out.println("\n----- LANGUAGE REPORT - Use Case 13 -----");
-            System.out.println("\n Language report for the English Language : ");
-            // Calls the GetCountryReport method which returns a country object. Then it calls
-            // the toString method of the Country class which returns a text output.
-            System.out.println(a.GetLanguageReport("English").toString());
-            System.out.println(a.GetLanguageReport("Hindi").toString());
-            System.out.println(a.GetLanguageReport("Chinese").toString());
-            System.out.println(a.GetLanguageReport("Spanish").toString());
-            System.out.println(a.GetLanguageReport("Arabic").toString());
-                */
+                System.out.println("\nPopulation of English Language Speakers in the World" + "");
+            System.out.println(">> " + String.format("%,d",a.GetLanguagePopulation(1, "English")) + " <<");
+            System.out.println("Population of Hindi Speakers in the World");
+            System.out.println(">> " + String.format("%,d", a.GetLanguagePopulation(2, "Hindi")) + " <<");
+            System.out.println("Population of Spanish Speakers in the World");
+            System.out.println(">> " + String.format("%,d", a.GetLanguagePopulation(3, "Spanish")) + " <<");
+            System.out.println("Population of Arabic Speakers in the World");
+            System.out.println(">> " + String.format("%,d", a.GetLanguagePopulation(4, "Arabic")) + " <<");
+            System.out.println("Population of Chinese Speakers in the World");
+            System.out.println(">> " + String.format("%,d", a.GetLanguagePopulation(5, "Scotland")) + " <<");
 
             // Print N most populated city's in the world or continent (Use Case 14).
             System.out.println("\n----- CITY POPULATION BY NUMBER - USE CASE 14 -----");
