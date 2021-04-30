@@ -13,11 +13,12 @@ public class AppTest {
     @BeforeAll
     static void init() { a = new App(); }
 
-
-    // Tests for the method : GetPopulation(int searchType, string search).
-
-    // countType outside the range 1 - 7.
-    // If countType is outside the range, -1 is returned.
+    /**
+    * Tests for the method : GetPopulation(int searchType, string search).
+    *
+    * countType outside the range 1 - 7.
+    * If countType is outside the range, -1 is returned.
+     **/
     @Test
     void TestGetPopulationRange()
     {

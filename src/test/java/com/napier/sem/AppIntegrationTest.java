@@ -1,6 +1,7 @@
 package com.napier.sem;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -24,7 +25,8 @@ public class AppIntegrationTest {
 
     // Test that the correct worldwide population is retrieved.
     @Test
-    void TestGetPopulationWorld()
+    @DisplayName("GetPopulation World")
+    void testGetPopulationWorld()
     {
         long worldPop = a.GetPopulation(1, "");
         assertEquals(6078749450L, worldPop, "Error! Incorrect worldwide population!");

@@ -691,7 +691,7 @@ public class App
             // i used to check count
             int i = 0;
             // Init query
-            String query = "SELECT Language, Percentage, Isofficial "
+            String query = "SELECT Language, Percentage, IsOfficial "
                     +"FROM countrylanguage "
                     +"ORDER BY Percentage DESC";
 
@@ -706,9 +706,9 @@ public class App
                 while(rset.next() && i < count)
                 {
                     Languages tempLanguage = new Languages();
-                    tempLanguage.setLanguage_Name(rset.getString("Name of Language"));
-                    tempLanguage.setPercentage(rset.getInt("Population of Language Speakers"));
-                    tempLanguage.setIsofficial(rset.getString("Country's  Official Language"));
+                    tempLanguage.setLanguage_Name(rset.getString("Language"));
+                    tempLanguage.setPercentage(rset.getInt("Percentage"));
+                    tempLanguage.setIsofficial(rset.getString("IsOfficial"));
                     Language.add(tempLanguage);
                     i++;
                 }
@@ -887,7 +887,7 @@ public class App
             System.out.println(a.GetLanguageReport("Arabic").toString());
 
 
-            // Print N most populated city's in the world (Use Case 14).
+            // Print N most populated city's in the world or continent (Use Case 14).
             System.out.println("\n----- CITY POPULATION BY NUMBER - USE CASE 14 -----");
             System.out.println("\nTop 10 most populated City's in the world : ");
             // Init array for output
